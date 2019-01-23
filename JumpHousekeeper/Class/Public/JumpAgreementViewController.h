@@ -16,4 +16,7 @@
 //titleName
 @property (copy,nonatomic) NSString *titleName;
 
+//收否有收藏功能
+@property (assign,nonatomic) BOOL isShow;
+
 @end

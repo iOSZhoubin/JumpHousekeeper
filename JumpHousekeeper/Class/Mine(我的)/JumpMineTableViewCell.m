@@ -27,11 +27,22 @@
 
 -(void)refreshWithIndexPath:(NSIndexPath *)indexPath{
     
-    NSArray *titleArray = @[@"账户信息",@"设备列表",@"我的收藏",@"关于我们",@"意见反馈",@"清除缓存",@"修改密码"];
-    NSArray *imageArray = @[@"accountImage",@"device1",@"collectionImage",@"aboutimage",@"feedback",@"cleanImage",@"changepassword"];
-        
-    self.title.text = titleArray[indexPath.row];
-    self.imageView.image = [UIImage imageNamed:imageArray[indexPath.row]];
+    NSArray *array1 = @[@{@"title":@"账户信息",@"image":@"accountImage"}];
+    NSArray *array2 = @[
+                          @{@"title":@"我的收藏",@"image":@"collectionImage"},
+                          @{@"title":@"关于我们",@"image":@"aboutimage"},
+                          @{@"title":@"意见反馈",@"image":@"feedback"}
+                        ];
+    NSArray *array3 = @[@{@"title":@"清除缓存",@"image":@"cleanImage"}];
+    NSArray *array4 = @[@{@"title":@"修改密码",@"image":@"changepassword"}];
+
+    NSArray *sumArray = @[array1,array2,array3,array4];
+    
+    self.title.text = SafeString(sumArray[indexPath.section][indexPath.row][@"title"]);
+    
+    NSString *imgeName = SafeString(sumArray[indexPath.section][indexPath.row][@"image"]);
+    
+    self.imageView.image = [UIImage imageNamed:imgeName];
 }
 
 

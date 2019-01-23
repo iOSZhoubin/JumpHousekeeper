@@ -26,7 +26,7 @@
     self.navigationItem.title = SafeString(self.titleName);
     
     self.view.backgroundColor = [UIColor whiteColor];
-    
+ 
     [self creatWebView];
 }
 
@@ -74,6 +74,11 @@
 /* 页面加载完成 */
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
     
+    if(self.isShow == YES){
+        
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"收藏" style:UIBarButtonItemStyleDone target:self action:@selector(collectionAction:)];
+    }
+    
     [UIView animateWithDuration:0.5 animations:^{
         
         self.progressLine.width = kWidth;
@@ -86,6 +91,17 @@
         }
     }];
 }
+
+
+#pragma mark --- 收藏
+
+-(void)collectionAction:(UIBarButtonItem *)item{
+    
+    JumpLog(@"收藏");
+}
+
+
+
 
 
 @end

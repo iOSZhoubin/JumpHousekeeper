@@ -88,12 +88,26 @@
     
     JumpAgreementViewController *vc = [[JumpAgreementViewController alloc]init];
     
+    vc.hidesBottomBarWhenPushed = YES;
+    
+    vc.isShow = YES;
+    
     vc.url = @"https://www.baidu.com";
     
     vc.titleName = @"资讯详情";
     
     [self.navigationController pushViewController:vc animated:YES];
 }
+
+
+#pragma mark ---  SLBannerViewDelegate
+
+/** 监听点击的图片 */
+- (void)bannerView:(SLBannerView *)banner didClickImagesAtIndex:(NSInteger)index{
+    
+    JumpLog(@"点击了第%ld张图片",index);
+}
+
 
 
 

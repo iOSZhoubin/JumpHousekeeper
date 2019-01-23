@@ -24,6 +24,13 @@
 		3917019921F851AD00D90AC0 /* JumpMineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3917019621F851AD00D90AC0 /* JumpMineTableViewCell.xib */; };
 		3917019D21F854FC00D90AC0 /* SwitchDeviceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3917019B21F854FC00D90AC0 /* SwitchDeviceTableViewCell.m */; };
 		3917019E21F854FC00D90AC0 /* SwitchDeviceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3917019C21F854FC00D90AC0 /* SwitchDeviceTableViewCell.xib */; };
+		391701A221F860A700D90AC0 /* JumpAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 391701A021F860A700D90AC0 /* JumpAboutViewController.m */; };
+		391701A321F860A700D90AC0 /* JumpAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 391701A121F860A700D90AC0 /* JumpAboutViewController.xib */; };
+		391701A621F862C200D90AC0 /* JumpAccountDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 391701A521F862C200D90AC0 /* JumpAccountDetailTableViewController.m */; };
+		391701AA21F8633100D90AC0 /* AccountDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 391701A821F8633100D90AC0 /* AccountDetailTableViewCell.m */; };
+		391701AB21F8633100D90AC0 /* AccountDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 391701A921F8633100D90AC0 /* AccountDetailTableViewCell.xib */; };
+		391701AE21F8656A00D90AC0 /* JumpAccountDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 391701AD21F8656A00D90AC0 /* JumpAccountDetailModel.m */; };
+		391701B121F868CE00D90AC0 /* JumpCollectionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 391701B021F868CE00D90AC0 /* JumpCollectionTableViewController.m */; };
 		39A5D19A21F16A2D002CBC0D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A5D19921F16A2D002CBC0D /* AppDelegate.m */; };
 		39A5D1A321F16A2E002CBC0D /* JumpHousekeeper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 39A5D1A121F16A2E002CBC0D /* JumpHousekeeper.xcdatamodeld */; };
 		39A5D1A521F16A3C002CBC0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39A5D1A421F16A3C002CBC0D /* Assets.xcassets */; };
@@ -77,6 +84,18 @@
 		3917019A21F854FC00D90AC0 /* SwitchDeviceTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwitchDeviceTableViewCell.h; sourceTree = "<group>"; };
 		3917019B21F854FC00D90AC0 /* SwitchDeviceTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SwitchDeviceTableViewCell.m; sourceTree = "<group>"; };
 		3917019C21F854FC00D90AC0 /* SwitchDeviceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SwitchDeviceTableViewCell.xib; sourceTree = "<group>"; };
+		3917019F21F860A700D90AC0 /* JumpAboutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JumpAboutViewController.h; sourceTree = "<group>"; };
+		391701A021F860A700D90AC0 /* JumpAboutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JumpAboutViewController.m; sourceTree = "<group>"; };
+		391701A121F860A700D90AC0 /* JumpAboutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JumpAboutViewController.xib; sourceTree = "<group>"; };
+		391701A421F862C200D90AC0 /* JumpAccountDetailTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JumpAccountDetailTableViewController.h; sourceTree = "<group>"; };
+		391701A521F862C200D90AC0 /* JumpAccountDetailTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JumpAccountDetailTableViewController.m; sourceTree = "<group>"; };
+		391701A721F8633100D90AC0 /* AccountDetailTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountDetailTableViewCell.h; sourceTree = "<group>"; };
+		391701A821F8633100D90AC0 /* AccountDetailTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountDetailTableViewCell.m; sourceTree = "<group>"; };
+		391701A921F8633100D90AC0 /* AccountDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountDetailTableViewCell.xib; sourceTree = "<group>"; };
+		391701AC21F8656A00D90AC0 /* JumpAccountDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JumpAccountDetailModel.h; sourceTree = "<group>"; };
+		391701AD21F8656A00D90AC0 /* JumpAccountDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JumpAccountDetailModel.m; sourceTree = "<group>"; };
+		391701AF21F868CE00D90AC0 /* JumpCollectionTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JumpCollectionTableViewController.h; sourceTree = "<group>"; };
+		391701B021F868CE00D90AC0 /* JumpCollectionTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JumpCollectionTableViewController.m; sourceTree = "<group>"; };
 		39A5D19521F16A2D002CBC0D /* JumpHousekeeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JumpHousekeeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39A5D19821F16A2D002CBC0D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		39A5D19921F16A2D002CBC0D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -147,6 +166,9 @@
 		3917015421F80D6D00D90AC0 /* About(关于) */ = {
 			isa = PBXGroup;
 			children = (
+				3917019F21F860A700D90AC0 /* JumpAboutViewController.h */,
+				391701A021F860A700D90AC0 /* JumpAboutViewController.m */,
+				391701A121F860A700D90AC0 /* JumpAboutViewController.xib */,
 			);
 			path = "About(关于)";
 			sourceTree = "<group>";
@@ -161,6 +183,8 @@
 		3917015621F80D6D00D90AC0 /* Collection(收藏) */ = {
 			isa = PBXGroup;
 			children = (
+				391701AF21F868CE00D90AC0 /* JumpCollectionTableViewController.h */,
+				391701B021F868CE00D90AC0 /* JumpCollectionTableViewController.m */,
 			);
 			path = "Collection(收藏)";
 			sourceTree = "<group>";
@@ -189,6 +213,13 @@
 		3917015A21F80D6D00D90AC0 /* AccountDetail(账户信息) */ = {
 			isa = PBXGroup;
 			children = (
+				391701A421F862C200D90AC0 /* JumpAccountDetailTableViewController.h */,
+				391701A521F862C200D90AC0 /* JumpAccountDetailTableViewController.m */,
+				391701A721F8633100D90AC0 /* AccountDetailTableViewCell.h */,
+				391701A821F8633100D90AC0 /* AccountDetailTableViewCell.m */,
+				391701A921F8633100D90AC0 /* AccountDetailTableViewCell.xib */,
+				391701AC21F8656A00D90AC0 /* JumpAccountDetailModel.h */,
+				391701AD21F8656A00D90AC0 /* JumpAccountDetailModel.m */,
 			);
 			path = "AccountDetail(账户信息)";
 			sourceTree = "<group>";
@@ -470,9 +501,11 @@
 				3917019E21F854FC00D90AC0 /* SwitchDeviceTableViewCell.xib in Resources */,
 				3917016421F80EB700D90AC0 /* JumpInformationViewController.xib in Resources */,
 				39A5D1A821F16A3C002CBC0D /* LaunchScreen.storyboard in Resources */,
+				391701AB21F8633100D90AC0 /* AccountDetailTableViewCell.xib in Resources */,
 				39A5D1A521F16A3C002CBC0D /* Assets.xcassets in Resources */,
 				3917019921F851AD00D90AC0 /* JumpMineTableViewCell.xib in Resources */,
 				3917016C21F80F3300D90AC0 /* JumpSupportViewController.xib in Resources */,
+				391701A321F860A700D90AC0 /* JumpAboutViewController.xib in Resources */,
 				3917018C21F8483000D90AC0 /* JumpInfomationTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -529,10 +562,13 @@
 				39A5D1A321F16A2E002CBC0D /* JumpHousekeeper.xcdatamodeld in Sources */,
 				39A5D1AB21F16A3C002CBC0D /* main.m in Sources */,
 				3917016B21F80F3300D90AC0 /* JumpSupportViewController.m in Sources */,
+				391701AA21F8633100D90AC0 /* AccountDetailTableViewCell.m in Sources */,
 				39A5D19A21F16A2D002CBC0D /* AppDelegate.m in Sources */,
 				39A5D1D821F1A510002CBC0D /* UIImage+Extension.m in Sources */,
 				39A5D1DF21F1A510002CBC0D /* JumpKeyChain.m in Sources */,
 				39A5D1BB21F16E19002CBC0D /* JumpFirstViewController.m in Sources */,
+				391701A621F862C200D90AC0 /* JumpAccountDetailTableViewController.m in Sources */,
+				391701AE21F8656A00D90AC0 /* JumpAccountDetailModel.m in Sources */,
 				3917016F21F80F4700D90AC0 /* JumpMineTableViewController.m in Sources */,
 				39A5D1E521F1A711002CBC0D /* JumpBaseViewController.m in Sources */,
 				3917018321F8470C00D90AC0 /* SLBannerView.m in Sources */,
@@ -542,9 +578,11 @@
 				39A5D1DC21F1A510002CBC0D /* SecurityNSString.m in Sources */,
 				3917015121F808F600D90AC0 /* JumpBaseTabBarViewController.m in Sources */,
 				39A5D1DE21F1A510002CBC0D /* RefreshHelper.m in Sources */,
+				391701A221F860A700D90AC0 /* JumpAboutViewController.m in Sources */,
 				3917019821F851AD00D90AC0 /* JumpMineTableViewCell.m in Sources */,
 				3917018721F8472200D90AC0 /* JumpInformationModel.m in Sources */,
 				3917016721F80EDC00D90AC0 /* JumpDeviceTableViewController.m in Sources */,
+				391701B121F868CE00D90AC0 /* JumpCollectionTableViewController.m in Sources */,
 				3917018B21F8483000D90AC0 /* JumpInfomationTableViewCell.m in Sources */,
 				3917018F21F84C5A00D90AC0 /* JumpAgreementViewController.m in Sources */,
 				39A5D1DB21F1A510002CBC0D /* ExperienceViewController.m in Sources */,

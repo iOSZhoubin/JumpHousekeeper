@@ -8,6 +8,9 @@
 
 #import "JumpMineTableViewController.h"
 #import "JumpMineTableViewCell.h"
+#import "JumpAboutViewController.h"
+#import "JumpAccountDetailTableViewController.h"
+#import "JumpCollectionTableViewController.h"
 
 @interface JumpMineTableViewController ()
 
@@ -25,8 +28,10 @@
 
 -(void)setupUI{
     
+    self.view.backgroundColor = BackGroundColor;
+        
     [self.tableView registerNib:[UINib nibWithNibName:@"JumpMineTableViewCell" bundle:nil] forCellReuseIdentifier:@"JumpMineTableViewCell"];
-    
+        
     self.tableView.tableFooterView = [[UIView alloc]init];
     
 }
@@ -36,12 +41,17 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 8;
+    if(section == 1){
+        
+        return 3;
+    }
+    
+    return 1;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
-    return 1;
+    return 5;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -51,7 +61,7 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if(indexPath.row == 7){
+    if(indexPath.section == 4){
         
         static NSString *identifier = @"cell";
         
@@ -87,23 +97,12 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     
-    return 150;
+    return 20;
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     
-    UIView *headView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kWidth, 150)];
-    
-    UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, kWidth, 150)];
-    
-    imageView.image = [UIImage imageNamed:@"photo3"];
-    
-    [headView addSubview:imageView];
-    
-    headView.backgroundColor = CustomerBlue;
-    
-    return headView;
-    
+    return nil;
 }
 
 
@@ -111,21 +110,45 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
-    if(indexPath.row == 0){
+    if(indexPath.section == 0){
+        
         //账户信息
-    }else if (indexPath.row == 1){
-        //设备列表
-    }else if (indexPath.row == 2){
-        //我的收藏
-    }else if (indexPath.row == 3){
-        //关于我们
-    }else if (indexPath.row == 4){
-        //意见反馈
-    }else if (indexPath.row == 5){
+        JumpAccountDetailTableViewController *vc = [[JumpAccountDetailTableViewController alloc]init];
+        
+        vc.hidesBottomBarWhenPushed = YES;
+        
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    }else if (indexPath.section == 1){
+        
+        if(indexPath.row == 0){
+            
+            //我的收藏
+            JumpCollectionTableViewController *vc = [[JumpCollectionTableViewController alloc]init];
+            
+            vc.hidesBottomBarWhenPushed = YES;
+            
+            [self.navigationController pushViewController:vc animated:YES];
+            
+        }else if (indexPath.row == 1){
+            
+            //关于我们
+            JumpAboutViewController *vc = [[JumpAboutViewController alloc]init];
+            
+            vc.hidesBottomBarWhenPushed = YES;
+            
+            [self.navigationController pushViewController:vc animated:YES];
+            
+        }else{
+            
+            //意见反馈
+        }
+        
+    }else if (indexPath.section == 2){
         //清除缓存
-    }else if (indexPath.row == 6){
+    }else if (indexPath.section == 3){
         //修改密码
-    }else if (indexPath.row == 7){
+    }else if (indexPath.section == 4){
         //注销登录
     }
 }
