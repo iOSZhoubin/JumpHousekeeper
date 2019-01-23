@@ -7,8 +7,16 @@
 //
 
 #import "JumpInformationViewController.h"
+#import "JumpInfomationTableViewCell.h"
+#import "JumpAgreementViewController.h"
+#import "SLBannerView.h"
 
-@interface JumpInformationViewController ()
+@interface JumpInformationViewController ()<SLBannerViewDelegate,UITableViewDelegate,UITableViewDataSource>
+
+//轮播图
+@property (weak, nonatomic) IBOutlet UIView *headView;
+//tableView
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -17,8 +25,77 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self setupUI];
 
 }
+
+-(void)setupUI{
+    
+    [self figurePicture];
+
+    self.tableView.delegate = self;
+    
+    self.tableView.dataSource = self;
+    
+    [self.tableView registerNib:[UINib nibWithNibName:@"JumpInfomationTableViewCell" bundle:nil] forCellReuseIdentifier:@"JumpInfomationTableViewCell"];
+    
+}
+
+
+#pragma mark --- 轮播图
+
+-(void)figurePicture{
+    
+    SLBannerView *banner = [SLBannerView bannerViewXib];
+
+    banner.frame = CGRectMake(0, 0, kWidth, 180);
+    
+    //工程图片
+    banner.slImages = @[@"photo1.png", @"photo2.png", @"photo3.png", @"photo4.png"];
+    //监听设置代理
+    banner.delegate = self;
+    //banner添加到UI上
+    [self.headView addSubview:banner];
+    //自定义动画时间，建议动画持续时间小于停留时间
+    banner.durTimeInterval = 0.2;
+    banner.imgStayTimeInterval = 2.5;
+}
+
+
+
+#pragma mark --- UItableView数据源和代理
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    return 90;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    return 5;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    JumpInfomationTableViewCell *cell =[tableView dequeueReusableCellWithIdentifier:@"JumpInfomationTableViewCell" forIndexPath:indexPath];
+    
+    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    
+    JumpAgreementViewController *vc = [[JumpAgreementViewController alloc]init];
+    
+    vc.url = @"https://www.baidu.com";
+    
+    vc.titleName = @"资讯详情";
+    
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
