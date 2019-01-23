@@ -19,9 +19,19 @@
 
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+#pragma mark --- 配置向导
+
+- (IBAction)configurationAction:(UIButton *)sender {
+    
+    JumpLog(@"配置向导");
+}
+
+#pragma mark --- 常见问题
+
+- (IBAction)problemAction:(UIButton *)sender {
+   
+    JumpLog(@"常见问题");
 }
 
 @end
