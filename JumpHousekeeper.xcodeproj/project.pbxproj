@@ -1,0 +1,692 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3917015121F808F600D90AC0 /* JumpBaseTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3917015021F808F600D90AC0 /* JumpBaseTabBarViewController.m */; };
+		3917016321F80EB700D90AC0 /* JumpInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3917016121F80EB700D90AC0 /* JumpInformationViewController.m */; };
+		3917016421F80EB700D90AC0 /* JumpInformationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3917016221F80EB700D90AC0 /* JumpInformationViewController.xib */; };
+		3917016721F80EDC00D90AC0 /* JumpDeviceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3917016621F80EDC00D90AC0 /* JumpDeviceTableViewController.m */; };
+		3917016B21F80F3300D90AC0 /* JumpSupportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3917016921F80F3300D90AC0 /* JumpSupportViewController.m */; };
+		3917016C21F80F3300D90AC0 /* JumpSupportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3917016A21F80F3300D90AC0 /* JumpSupportViewController.xib */; };
+		3917016F21F80F4700D90AC0 /* JumpMineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3917016E21F80F4700D90AC0 /* JumpMineTableViewController.m */; };
+		39A5D19A21F16A2D002CBC0D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A5D19921F16A2D002CBC0D /* AppDelegate.m */; };
+		39A5D1A321F16A2E002CBC0D /* JumpHousekeeper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 39A5D1A121F16A2E002CBC0D /* JumpHousekeeper.xcdatamodeld */; };
+		39A5D1A521F16A3C002CBC0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39A5D1A421F16A3C002CBC0D /* Assets.xcassets */; };
+		39A5D1A821F16A3C002CBC0D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39A5D1A621F16A3C002CBC0D /* LaunchScreen.storyboard */; };
+		39A5D1AB21F16A3C002CBC0D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A5D1AA21F16A3C002CBC0D /* main.m */; };
+		39A5D1BB21F16E19002CBC0D /* JumpFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A5D1B921F16E19002CBC0D /* JumpFirstViewController.m */; };
+		39A5D1BC21F16E19002CBC0D /* JumpFirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39A5D1BA21F16E19002CBC0D /* JumpFirstViewController.xib */; };
+		39A5D1C321F1A216002CBC0D /* myWkWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A5D1C121F1A216002CBC0D /* myWkWebView.m */; };
+		39A5D1D821F1A510002CBC0D /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A5D1C621F1A50E002CBC0D /* UIImage+Extension.m */; };
+		39A5D1D921F1A510002CBC0D /* SVPShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A5D1C821F1A50E002CBC0D /* SVPShow.m */; };
+		39A5D1DA21F1A510002CBC0D /* UIView+UIViewExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A5D1CC21F1A50E002CBC0D /* UIView+UIViewExtension.m */; };
+		39A5D1DB21F1A510002CBC0D /* ExperienceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A5D1CD21F1A50E002CBC0D /* ExperienceViewController.m */; };
+		39A5D1DC21F1A510002CBC0D /* SecurityNSString.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A5D1D021F1A50E002CBC0D /* SecurityNSString.m */; };
+		39A5D1DD21F1A510002CBC0D /* AFNHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A5D1D121F1A50E002CBC0D /* AFNHelper.m */; };
+		39A5D1DE21F1A510002CBC0D /* RefreshHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A5D1D221F1A50F002CBC0D /* RefreshHelper.m */; };
+		39A5D1DF21F1A510002CBC0D /* JumpKeyChain.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A5D1D321F1A50F002CBC0D /* JumpKeyChain.m */; };
+		39A5D1E521F1A711002CBC0D /* JumpBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A5D1E221F1A710002CBC0D /* JumpBaseViewController.m */; };
+		39A5D1E621F1A711002CBC0D /* JumpBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A5D1E421F1A710002CBC0D /* JumpBaseTableViewController.m */; };
+		39A5D1EE21F1AC18002CBC0D /* echarts.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 39A5D1ED21F1AC18002CBC0D /* echarts.min.js */; };
+		39A5D1F521F1B9ED002CBC0D /* JumpEcharts.html in Resources */ = {isa = PBXBuildFile; fileRef = 39A5D1F421F1B9ED002CBC0D /* JumpEcharts.html */; };
+		4494B01E50976A44153903CA /* libPods-JumpHousekeeper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C7BF406B98F3C5CE93A51CB /* libPods-JumpHousekeeper.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1C7BF406B98F3C5CE93A51CB /* libPods-JumpHousekeeper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JumpHousekeeper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3917014F21F808F600D90AC0 /* JumpBaseTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JumpBaseTabBarViewController.h; sourceTree = "<group>"; };
+		3917015021F808F600D90AC0 /* JumpBaseTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JumpBaseTabBarViewController.m; sourceTree = "<group>"; };
+		3917016021F80EB700D90AC0 /* JumpInformationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JumpInformationViewController.h; sourceTree = "<group>"; };
+		3917016121F80EB700D90AC0 /* JumpInformationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JumpInformationViewController.m; sourceTree = "<group>"; };
+		3917016221F80EB700D90AC0 /* JumpInformationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JumpInformationViewController.xib; sourceTree = "<group>"; };
+		3917016521F80EDC00D90AC0 /* JumpDeviceTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JumpDeviceTableViewController.h; sourceTree = "<group>"; };
+		3917016621F80EDC00D90AC0 /* JumpDeviceTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JumpDeviceTableViewController.m; sourceTree = "<group>"; };
+		3917016821F80F3300D90AC0 /* JumpSupportViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JumpSupportViewController.h; sourceTree = "<group>"; };
+		3917016921F80F3300D90AC0 /* JumpSupportViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JumpSupportViewController.m; sourceTree = "<group>"; };
+		3917016A21F80F3300D90AC0 /* JumpSupportViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JumpSupportViewController.xib; sourceTree = "<group>"; };
+		3917016D21F80F4700D90AC0 /* JumpMineTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JumpMineTableViewController.h; sourceTree = "<group>"; };
+		3917016E21F80F4700D90AC0 /* JumpMineTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JumpMineTableViewController.m; sourceTree = "<group>"; };
+		39A5D19521F16A2D002CBC0D /* JumpHousekeeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JumpHousekeeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		39A5D19821F16A2D002CBC0D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		39A5D19921F16A2D002CBC0D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		39A5D1A221F16A2E002CBC0D /* JumpHousekeeper.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JumpHousekeeper.xcdatamodel; sourceTree = "<group>"; };
+		39A5D1A421F16A3C002CBC0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		39A5D1A721F16A3C002CBC0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		39A5D1A921F16A3C002CBC0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		39A5D1AA21F16A3C002CBC0D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		39A5D1B821F16E19002CBC0D /* JumpFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JumpFirstViewController.h; sourceTree = "<group>"; };
+		39A5D1B921F16E19002CBC0D /* JumpFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JumpFirstViewController.m; sourceTree = "<group>"; };
+		39A5D1BA21F16E19002CBC0D /* JumpFirstViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JumpFirstViewController.xib; sourceTree = "<group>"; };
+		39A5D1C121F1A216002CBC0D /* myWkWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myWkWebView.m; sourceTree = "<group>"; };
+		39A5D1C221F1A216002CBC0D /* myWkWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myWkWebView.h; sourceTree = "<group>"; };
+		39A5D1C421F1A46E002CBC0D /* JumpPch.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JumpPch.pch; sourceTree = "<group>"; };
+		39A5D1C521F1A49B002CBC0D /* InterfacePublicDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterfacePublicDefine.h; sourceTree = "<group>"; };
+		39A5D1C621F1A50E002CBC0D /* UIImage+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extension.m"; sourceTree = "<group>"; };
+		39A5D1C721F1A50E002CBC0D /* SVPShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPShow.h; sourceTree = "<group>"; };
+		39A5D1C821F1A50E002CBC0D /* SVPShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVPShow.m; sourceTree = "<group>"; };
+		39A5D1C921F1A50E002CBC0D /* RefreshHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshHelper.h; sourceTree = "<group>"; };
+		39A5D1CA21F1A50E002CBC0D /* UIImage+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extension.h"; sourceTree = "<group>"; };
+		39A5D1CB21F1A50E002CBC0D /* ExperienceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExperienceViewController.h; sourceTree = "<group>"; };
+		39A5D1CC21F1A50E002CBC0D /* UIView+UIViewExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+UIViewExtension.m"; sourceTree = "<group>"; };
+		39A5D1CD21F1A50E002CBC0D /* ExperienceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExperienceViewController.m; sourceTree = "<group>"; };
+		39A5D1CF21F1A50E002CBC0D /* JumpKeyChain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JumpKeyChain.h; sourceTree = "<group>"; };
+		39A5D1D021F1A50E002CBC0D /* SecurityNSString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecurityNSString.m; sourceTree = "<group>"; };
+		39A5D1D121F1A50E002CBC0D /* AFNHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNHelper.m; sourceTree = "<group>"; };
+		39A5D1D221F1A50F002CBC0D /* RefreshHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshHelper.m; sourceTree = "<group>"; };
+		39A5D1D321F1A50F002CBC0D /* JumpKeyChain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JumpKeyChain.m; sourceTree = "<group>"; };
+		39A5D1D521F1A50F002CBC0D /* AFNHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNHelper.h; sourceTree = "<group>"; };
+		39A5D1D621F1A50F002CBC0D /* UIView+UIViewExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+UIViewExtension.h"; sourceTree = "<group>"; };
+		39A5D1D721F1A50F002CBC0D /* SecurityNSString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecurityNSString.h; sourceTree = "<group>"; };
+		39A5D1E121F1A710002CBC0D /* JumpBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JumpBaseViewController.h; sourceTree = "<group>"; };
+		39A5D1E221F1A710002CBC0D /* JumpBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JumpBaseViewController.m; sourceTree = "<group>"; };
+		39A5D1E321F1A710002CBC0D /* JumpBaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JumpBaseTableViewController.h; sourceTree = "<group>"; };
+		39A5D1E421F1A710002CBC0D /* JumpBaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JumpBaseTableViewController.m; sourceTree = "<group>"; };
+		39A5D1ED21F1AC18002CBC0D /* echarts.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = echarts.min.js; sourceTree = "<group>"; };
+		39A5D1F421F1B9ED002CBC0D /* JumpEcharts.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = JumpEcharts.html; sourceTree = "<group>"; };
+		546E89845DE27A75D0EA085C /* Pods-JumpHousekeeper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JumpHousekeeper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JumpHousekeeper/Pods-JumpHousekeeper.debug.xcconfig"; sourceTree = "<group>"; };
+		7F6BD521FED8EF3957FC5C09 /* Pods-JumpHousekeeper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JumpHousekeeper.release.xcconfig"; path = "Pods/Target Support Files/Pods-JumpHousekeeper/Pods-JumpHousekeeper.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		39A5D19221F16A2D002CBC0D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4494B01E50976A44153903CA /* libPods-JumpHousekeeper.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3917015221F80D6D00D90AC0 /* DeviceDetail(设备详情) */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "DeviceDetail(设备详情)";
+			sourceTree = "<group>";
+		};
+		3917015321F80D6D00D90AC0 /* Login(登录) */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Login(登录)";
+			sourceTree = "<group>";
+		};
+		3917015421F80D6D00D90AC0 /* About(关于) */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "About(关于)";
+			sourceTree = "<group>";
+		};
+		3917015521F80D6D00D90AC0 /* Feedback(反馈) */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Feedback(反馈)";
+			sourceTree = "<group>";
+		};
+		3917015621F80D6D00D90AC0 /* Collection(收藏) */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Collection(收藏)";
+			sourceTree = "<group>";
+		};
+		3917015721F80D6D00D90AC0 /* PassWord(密码) */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "PassWord(密码)";
+			sourceTree = "<group>";
+		};
+		3917015821F80D6D00D90AC0 /* SecurityThings(安全事件) */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "SecurityThings(安全事件)";
+			sourceTree = "<group>";
+		};
+		3917015921F80D6D00D90AC0 /* Register(注册) */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Register(注册)";
+			sourceTree = "<group>";
+		};
+		3917015A21F80D6D00D90AC0 /* AccountDetail(账户信息) */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "AccountDetail(账户信息)";
+			sourceTree = "<group>";
+		};
+		3917015B21F80D6D00D90AC0 /* Camera(扫描相机) */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Camera(扫描相机)";
+			sourceTree = "<group>";
+		};
+		3917015C21F80DC100D90AC0 /* Mine(我的) */ = {
+			isa = PBXGroup;
+			children = (
+				3917016D21F80F4700D90AC0 /* JumpMineTableViewController.h */,
+				3917016E21F80F4700D90AC0 /* JumpMineTableViewController.m */,
+			);
+			path = "Mine(我的)";
+			sourceTree = "<group>";
+		};
+		3917015D21F80DC800D90AC0 /* Support(一键支持) */ = {
+			isa = PBXGroup;
+			children = (
+				3917016821F80F3300D90AC0 /* JumpSupportViewController.h */,
+				3917016921F80F3300D90AC0 /* JumpSupportViewController.m */,
+				3917016A21F80F3300D90AC0 /* JumpSupportViewController.xib */,
+			);
+			path = "Support(一键支持)";
+			sourceTree = "<group>";
+		};
+		3917015E21F80DCF00D90AC0 /* Device(设备管理) */ = {
+			isa = PBXGroup;
+			children = (
+				3917016521F80EDC00D90AC0 /* JumpDeviceTableViewController.h */,
+				3917016621F80EDC00D90AC0 /* JumpDeviceTableViewController.m */,
+			);
+			path = "Device(设备管理)";
+			sourceTree = "<group>";
+		};
+		3917015F21F80DD400D90AC0 /* Information(资讯) */ = {
+			isa = PBXGroup;
+			children = (
+				3917016021F80EB700D90AC0 /* JumpInformationViewController.h */,
+				3917016121F80EB700D90AC0 /* JumpInformationViewController.m */,
+				3917016221F80EB700D90AC0 /* JumpInformationViewController.xib */,
+			);
+			path = "Information(资讯)";
+			sourceTree = "<group>";
+		};
+		39A5D18C21F16A2D002CBC0D = {
+			isa = PBXGroup;
+			children = (
+				39A5D19721F16A2D002CBC0D /* JumpHousekeeper */,
+				39A5D19621F16A2D002CBC0D /* Products */,
+				42604E14DFD05A6A613F40D0 /* Pods */,
+				AFB2B70BC42AB7A08302640C /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		39A5D19621F16A2D002CBC0D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				39A5D19521F16A2D002CBC0D /* JumpHousekeeper.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		39A5D19721F16A2D002CBC0D /* JumpHousekeeper */ = {
+			isa = PBXGroup;
+			children = (
+				39A5D1B321F16DE3002CBC0D /* Class */,
+				39A5D19821F16A2D002CBC0D /* AppDelegate.h */,
+				39A5D19921F16A2D002CBC0D /* AppDelegate.m */,
+				39A5D1B821F16E19002CBC0D /* JumpFirstViewController.h */,
+				39A5D1B921F16E19002CBC0D /* JumpFirstViewController.m */,
+				39A5D1BA21F16E19002CBC0D /* JumpFirstViewController.xib */,
+				39A5D1A421F16A3C002CBC0D /* Assets.xcassets */,
+				39A5D1A621F16A3C002CBC0D /* LaunchScreen.storyboard */,
+				39A5D1A921F16A3C002CBC0D /* Info.plist */,
+				39A5D1AA21F16A3C002CBC0D /* main.m */,
+				39A5D1A121F16A2E002CBC0D /* JumpHousekeeper.xcdatamodeld */,
+				39A5D1C421F1A46E002CBC0D /* JumpPch.pch */,
+				39A5D1C521F1A49B002CBC0D /* InterfacePublicDefine.h */,
+			);
+			path = JumpHousekeeper;
+			sourceTree = "<group>";
+		};
+		39A5D1B321F16DE3002CBC0D /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				3917015F21F80DD400D90AC0 /* Information(资讯) */,
+				3917015E21F80DCF00D90AC0 /* Device(设备管理) */,
+				3917015D21F80DC800D90AC0 /* Support(一键支持) */,
+				3917015C21F80DC100D90AC0 /* Mine(我的) */,
+				39A5D1B421F16DE3002CBC0D /* Base */,
+				39A5D1B521F16DE3002CBC0D /* Echarts */,
+				39A5D1B621F16DE3002CBC0D /* Others */,
+				39A5D1B721F16DE3002CBC0D /* Public */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		39A5D1B421F16DE3002CBC0D /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				3917014F21F808F600D90AC0 /* JumpBaseTabBarViewController.h */,
+				3917015021F808F600D90AC0 /* JumpBaseTabBarViewController.m */,
+				39A5D1E321F1A710002CBC0D /* JumpBaseTableViewController.h */,
+				39A5D1E421F1A710002CBC0D /* JumpBaseTableViewController.m */,
+				39A5D1E121F1A710002CBC0D /* JumpBaseViewController.h */,
+				39A5D1E221F1A710002CBC0D /* JumpBaseViewController.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		39A5D1B521F16DE3002CBC0D /* Echarts */ = {
+			isa = PBXGroup;
+			children = (
+				39A5D1ED21F1AC18002CBC0D /* echarts.min.js */,
+				39A5D1F421F1B9ED002CBC0D /* JumpEcharts.html */,
+			);
+			path = Echarts;
+			sourceTree = "<group>";
+		};
+		39A5D1B621F16DE3002CBC0D /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				3917015421F80D6D00D90AC0 /* About(关于) */,
+				3917015A21F80D6D00D90AC0 /* AccountDetail(账户信息) */,
+				3917015B21F80D6D00D90AC0 /* Camera(扫描相机) */,
+				3917015621F80D6D00D90AC0 /* Collection(收藏) */,
+				3917015221F80D6D00D90AC0 /* DeviceDetail(设备详情) */,
+				3917015521F80D6D00D90AC0 /* Feedback(反馈) */,
+				3917015321F80D6D00D90AC0 /* Login(登录) */,
+				3917015721F80D6D00D90AC0 /* PassWord(密码) */,
+				3917015921F80D6D00D90AC0 /* Register(注册) */,
+				3917015821F80D6D00D90AC0 /* SecurityThings(安全事件) */,
+			);
+			path = Others;
+			sourceTree = "<group>";
+		};
+		39A5D1B721F16DE3002CBC0D /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				39A5D1D521F1A50F002CBC0D /* AFNHelper.h */,
+				39A5D1D121F1A50E002CBC0D /* AFNHelper.m */,
+				39A5D1CB21F1A50E002CBC0D /* ExperienceViewController.h */,
+				39A5D1CD21F1A50E002CBC0D /* ExperienceViewController.m */,
+				39A5D1CF21F1A50E002CBC0D /* JumpKeyChain.h */,
+				39A5D1D321F1A50F002CBC0D /* JumpKeyChain.m */,
+				39A5D1C921F1A50E002CBC0D /* RefreshHelper.h */,
+				39A5D1D221F1A50F002CBC0D /* RefreshHelper.m */,
+				39A5D1D721F1A50F002CBC0D /* SecurityNSString.h */,
+				39A5D1D021F1A50E002CBC0D /* SecurityNSString.m */,
+				39A5D1C721F1A50E002CBC0D /* SVPShow.h */,
+				39A5D1C821F1A50E002CBC0D /* SVPShow.m */,
+				39A5D1CA21F1A50E002CBC0D /* UIImage+Extension.h */,
+				39A5D1C621F1A50E002CBC0D /* UIImage+Extension.m */,
+				39A5D1D621F1A50F002CBC0D /* UIView+UIViewExtension.h */,
+				39A5D1CC21F1A50E002CBC0D /* UIView+UIViewExtension.m */,
+				39A5D1C221F1A216002CBC0D /* myWkWebView.h */,
+				39A5D1C121F1A216002CBC0D /* myWkWebView.m */,
+			);
+			path = Public;
+			sourceTree = "<group>";
+		};
+		42604E14DFD05A6A613F40D0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				546E89845DE27A75D0EA085C /* Pods-JumpHousekeeper.debug.xcconfig */,
+				7F6BD521FED8EF3957FC5C09 /* Pods-JumpHousekeeper.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		AFB2B70BC42AB7A08302640C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1C7BF406B98F3C5CE93A51CB /* libPods-JumpHousekeeper.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		39A5D19421F16A2D002CBC0D /* JumpHousekeeper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 39A5D1AE21F16A3C002CBC0D /* Build configuration list for PBXNativeTarget "JumpHousekeeper" */;
+			buildPhases = (
+				DF066E3C3320B0969C1B2A19 /* [CP] Check Pods Manifest.lock */,
+				39A5D19121F16A2D002CBC0D /* Sources */,
+				39A5D19221F16A2D002CBC0D /* Frameworks */,
+				39A5D19321F16A2D002CBC0D /* Resources */,
+				7E1D033DC1CB6C082762DBA6 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JumpHousekeeper;
+			productName = JumpHousekeeper;
+			productReference = 39A5D19521F16A2D002CBC0D /* JumpHousekeeper.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		39A5D18D21F16A2D002CBC0D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = zhoubin;
+				TargetAttributes = {
+					39A5D19421F16A2D002CBC0D = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
+				};
+			};
+			buildConfigurationList = 39A5D19021F16A2D002CBC0D /* Build configuration list for PBXProject "JumpHousekeeper" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 39A5D18C21F16A2D002CBC0D;
+			productRefGroup = 39A5D19621F16A2D002CBC0D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				39A5D19421F16A2D002CBC0D /* JumpHousekeeper */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		39A5D19321F16A2D002CBC0D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39A5D1BC21F16E19002CBC0D /* JumpFirstViewController.xib in Resources */,
+				39A5D1F521F1B9ED002CBC0D /* JumpEcharts.html in Resources */,
+				39A5D1EE21F1AC18002CBC0D /* echarts.min.js in Resources */,
+				3917016421F80EB700D90AC0 /* JumpInformationViewController.xib in Resources */,
+				39A5D1A821F16A3C002CBC0D /* LaunchScreen.storyboard in Resources */,
+				39A5D1A521F16A3C002CBC0D /* Assets.xcassets in Resources */,
+				3917016C21F80F3300D90AC0 /* JumpSupportViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7E1D033DC1CB6C082762DBA6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-JumpHousekeeper/Pods-JumpHousekeeper-resources.sh",
+				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
+				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JumpHousekeeper/Pods-JumpHousekeeper-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DF066E3C3320B0969C1B2A19 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JumpHousekeeper-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		39A5D19121F16A2D002CBC0D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39A5D1DD21F1A510002CBC0D /* AFNHelper.m in Sources */,
+				39A5D1A321F16A2E002CBC0D /* JumpHousekeeper.xcdatamodeld in Sources */,
+				39A5D1AB21F16A3C002CBC0D /* main.m in Sources */,
+				3917016B21F80F3300D90AC0 /* JumpSupportViewController.m in Sources */,
+				39A5D19A21F16A2D002CBC0D /* AppDelegate.m in Sources */,
+				39A5D1D821F1A510002CBC0D /* UIImage+Extension.m in Sources */,
+				39A5D1DF21F1A510002CBC0D /* JumpKeyChain.m in Sources */,
+				39A5D1BB21F16E19002CBC0D /* JumpFirstViewController.m in Sources */,
+				3917016F21F80F4700D90AC0 /* JumpMineTableViewController.m in Sources */,
+				39A5D1E521F1A711002CBC0D /* JumpBaseViewController.m in Sources */,
+				39A5D1DA21F1A510002CBC0D /* UIView+UIViewExtension.m in Sources */,
+				39A5D1D921F1A510002CBC0D /* SVPShow.m in Sources */,
+				39A5D1DC21F1A510002CBC0D /* SecurityNSString.m in Sources */,
+				3917015121F808F600D90AC0 /* JumpBaseTabBarViewController.m in Sources */,
+				39A5D1DE21F1A510002CBC0D /* RefreshHelper.m in Sources */,
+				3917016721F80EDC00D90AC0 /* JumpDeviceTableViewController.m in Sources */,
+				39A5D1DB21F1A510002CBC0D /* ExperienceViewController.m in Sources */,
+				39A5D1E621F1A711002CBC0D /* JumpBaseTableViewController.m in Sources */,
+				3917016321F80EB700D90AC0 /* JumpInformationViewController.m in Sources */,
+				39A5D1C321F1A216002CBC0D /* myWkWebView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		39A5D1A621F16A3C002CBC0D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				39A5D1A721F16A3C002CBC0D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		39A5D1AC21F16A3C002CBC0D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/JumpHousekeeper/JumpPch.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		39A5D1AD21F16A3C002CBC0D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/JumpHousekeeper/JumpPch.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		39A5D1AF21F16A3C002CBC0D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 546E89845DE27A75D0EA085C /* Pods-JumpHousekeeper.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8JTMG383E9;
+				INFOPLIST_FILE = JumpHousekeeper/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = jump.JumpHousekeeper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		39A5D1B021F16A3C002CBC0D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F6BD521FED8EF3957FC5C09 /* Pods-JumpHousekeeper.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8JTMG383E9;
+				INFOPLIST_FILE = JumpHousekeeper/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = jump.JumpHousekeeper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		39A5D19021F16A2D002CBC0D /* Build configuration list for PBXProject "JumpHousekeeper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				39A5D1AC21F16A3C002CBC0D /* Debug */,
+				39A5D1AD21F16A3C002CBC0D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		39A5D1AE21F16A3C002CBC0D /* Build configuration list for PBXNativeTarget "JumpHousekeeper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				39A5D1AF21F16A3C002CBC0D /* Debug */,
+				39A5D1B021F16A3C002CBC0D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		39A5D1A121F16A2E002CBC0D /* JumpHousekeeper.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				39A5D1A221F16A2E002CBC0D /* JumpHousekeeper.xcdatamodel */,
+			);
+			currentVersion = 39A5D1A221F16A2E002CBC0D /* JumpHousekeeper.xcdatamodel */;
+			path = JumpHousekeeper.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 39A5D18D21F16A2D002CBC0D /* Project object */;
+}
