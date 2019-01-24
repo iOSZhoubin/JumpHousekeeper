@@ -21,6 +21,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumber;
 //密码
 @property (weak, nonatomic) IBOutlet UITextField *passWord;
+//密码标题
+@property (weak, nonatomic) IBOutlet UILabel *passWordTitle;
 //验证码
 @property (weak, nonatomic) IBOutlet UITextField *code;
 //验证码按钮
@@ -49,6 +51,8 @@
         
         self.navigationItem.title = @"注册";
         
+        self.passWordTitle.text = @"密码";
+        
         self.topH.constant = 100;
         
         self.deviceView.hidden = NO;
@@ -58,6 +62,8 @@
     }else if ([self.type isEqualToString:@"2"]){
         
         self.navigationItem.title = @"修改密码";
+        
+        self.passWordTitle.text = @"新密码";
         
         self.topH.constant = 40;
         
@@ -69,6 +75,8 @@
         
         self.navigationItem.title = @"忘记密码";
         
+        self.passWordTitle.text = @"新密码";
+
         self.topH.constant = 40;
         
         self.deviceView.hidden = YES;
@@ -155,6 +163,36 @@
 
     [self.view endEditing:YES];
     
+    if(SafeString(self.phoneNumber.text).length < 1){
+        
+        [SVPShow showInfoWithMessage:@"手机号不能为空"];
+        
+        return;
+   
+    }else if (SafeString(self.passWord.text).length < 1){
+        
+        [SVPShow showInfoWithMessage:@"密码不能为空"];
+        
+        return;
+        
+    }else if (SafeString(self.code.text).length < 1){
+        
+        [SVPShow showInfoWithMessage:@"验证码不能为空"];
+        
+        return;
+    }
+    
+    BOOL isPhoneNum = [self validateCellPhoneNumber:SafeString(self.phoneNumber.text)];
+    
+    if(isPhoneNum == NO){
+        
+        [SVPShow showInfoWithMessage:@"手机号格式有误"];
+        
+        return;
+    }
+    
+    
+    
     if([self.type isEqualToString:@"1"]){
         
         JumpLog(@"注册");
@@ -167,6 +205,8 @@
         
         JumpLog(@"忘记密码");
     }
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

@@ -18,6 +18,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    [self isLogin]; //判断是否登录过
+    
     self.window = [[UIWindow alloc]init];
     
     self.window.frame = [UIScreen mainScreen].bounds;
@@ -33,6 +35,31 @@
 
     return YES;
 }
+
+
+//判断是否登录
+-(void)isLogin{
+    
+    NSDictionary *dict = [JumpKeyChain getKeychainDataForKey:@"userInfo"];
+
+    NSString *account = SafeString(dict[@"account"]);
+    NSString *password = SafeString(dict[@"password"]);
+    NSString *isLogin = SafeString(dict[@"isLogin"]);
+    
+    if(isLogin.length < 1){
+        
+        NSDictionary *userInfo = @{@"account":account,@"password":password,@"isLogin":@"0"};
+
+        [JumpKeyChain addKeychainData:userInfo forKey:@"userInfo"];
+
+    }else{
+        
+        NSDictionary *userInfo = @{@"account":account,@"password":password,@"isLogin":isLogin};
+        
+        [JumpKeyChain addKeychainData:userInfo forKey:@"userInfo"];
+    }
+}
+
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {

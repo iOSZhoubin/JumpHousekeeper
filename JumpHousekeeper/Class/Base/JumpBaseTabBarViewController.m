@@ -11,6 +11,7 @@
 #import "JumpDeviceTableViewController.h"
 #import "JumpSupportViewController.h"
 #import "JumpMineTableViewController.h"
+#import "JumpLoginViewController.h"
 
 
 @interface JumpBaseTabBarViewController ()
@@ -44,6 +45,9 @@
     [item setTitleTextAttributes:dict forState:UIControlStateNormal];
     [item setTitleTextAttributes:dict forState:UIControlStateSelected];
     
+    NSDictionary *userInfo = [JumpKeyChain getKeychainDataForKey:@"userInfo"];
+    
+    NSString *isLogin = SafeString(userInfo[@"isLogin"]);
     
     //添加子控制器
     
@@ -51,18 +55,35 @@
 
     [self setVc:vc1 title:@"资讯" image:@"information" selectImage:@"infomationSelect"];
     
-    JumpDeviceTableViewController *vc2 = [[JumpDeviceTableViewController alloc]init];
+    if([isLogin isEqualToString:@"1"]){
+        
+        JumpDeviceTableViewController *vc2 = [[JumpDeviceTableViewController alloc]init];
+        
+        [self setVc:vc2 title:@"设备管理" image:@"deviceDefault" selectImage:@"deviceSelect"];
+        
+    }else{
+        
+        JumpLoginViewController *vc2 = [[JumpLoginViewController alloc]init];
 
-    [self setVc:vc2 title:@"设备管理" image:@"deviceDefault" selectImage:@"deviceSelect"];
-    
+        [self setVc:vc2 title:@"设备管理" image:@"deviceDefault" selectImage:@"deviceSelect"];
+    }
+
     JumpSupportViewController *vc3 = [[JumpSupportViewController alloc]init];
     
     [self setVc:vc3 title:@"一键支持" image:@"supportImage" selectImage:@"supportSelect"];
     
-    JumpMineTableViewController *vc4 = [[JumpMineTableViewController alloc]init];
-    
-    [self setVc:vc4 title:@"我的" image:@"accountImage" selectImage:@"accountSelect"];
-  
+    if([isLogin isEqualToString:@"1"]){
+        
+        JumpMineTableViewController *vc4 = [[JumpMineTableViewController alloc]init];
+        
+        [self setVc:vc4 title:@"我的" image:@"accountImage" selectImage:@"accountSelect"];
+        
+    }else{
+        
+        JumpLoginViewController *vc4 = [[JumpLoginViewController alloc]init];
+
+        [self setVc:vc4 title:@"我的" image:@"accountImage" selectImage:@"accountSelect"];
+    }
 }
 
 

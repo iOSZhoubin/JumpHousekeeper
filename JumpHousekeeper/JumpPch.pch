@@ -17,6 +17,7 @@
 #import "InterfacePublicDefine.h"
 #import "SecurityNSString.h"
 #import "JumpKeyChain.h"
+#import "AppDelegate.h"
 
 #ifndef JumpPch_pch
 #define JumpPch_pch

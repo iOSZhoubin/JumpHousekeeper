@@ -236,13 +236,6 @@
 			path = "SecurityThings(安全事件)";
 			sourceTree = "<group>";
 		};
-		3917015921F80D6D00D90AC0 /* Register(注册) */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Register(注册)";
-			sourceTree = "<group>";
-		};
 		3917015A21F80D6D00D90AC0 /* AccountDetail(账户信息) */ = {
 			isa = PBXGroup;
 			children = (
@@ -450,7 +443,6 @@
 				3917015521F80D6D00D90AC0 /* Feedback(反馈) */,
 				3917015321F80D6D00D90AC0 /* Login(登录) */,
 				3917015721F80D6D00D90AC0 /* PassWord(密码) */,
-				3917015921F80D6D00D90AC0 /* Register(注册) */,
 				3917015821F80D6D00D90AC0 /* SecurityThings(安全事件) */,
 			);
 			path = Others;

@@ -15,6 +15,7 @@
 #import "JumpCollectionTableViewController.h"
 #import "JumpFeedbackTableViewController.h"
 #import "ChangePassWordViewController.h"
+#import "JumpBaseTabBarViewController.h"
 
 @interface JumpMineTableViewController ()
 
@@ -173,6 +174,14 @@
         
     }else if (indexPath.section == 4){
         //注销登录
+       
+        [JumpKeyChain deleteKeychainDataForKey:@"userInfo"];//删除保存的账户密码
+        
+        JumpBaseTabBarViewController *vc = [[JumpBaseTabBarViewController alloc]init];
+        
+        AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                
+        appdelegate.window.rootViewController = vc;
     }
 }
 
@@ -182,9 +191,7 @@
 -(void)cleanRubbish{
     
     L2CWeakSelf(self);
-    
-    
-    
+
     UIAlertController * alertController = [UIAlertController alertControllerWithTitle: @"确认清理缓存?" message: nil preferredStyle:UIAlertControllerStyleActionSheet];
     
     [alertController addAction: [UIAlertAction actionWithTitle:@"确定" style: UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {

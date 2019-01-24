@@ -8,8 +8,9 @@
 
 #import "JumpLoginViewController.h"
 #import "ChangePassWordViewController.h"
+#import "JumpBaseTabBarViewController.h"
 
-@interface JumpLoginViewController ()
+@interface JumpLoginViewController ()<UITextFieldDelegate>
 
 //用户名
 @property (weak, nonatomic) IBOutlet UITextField *account;
@@ -41,13 +42,45 @@
     
     self.passWord.clearButtonMode = UITextFieldViewModeWhileEditing;
     
+    self.passWord.delegate = self;
+    
+    self.account.delegate = self;
+
     [self.passWord setSecureTextEntry:YES];//密文
 }
 
 #pragma mark --- 登录
 
 - (IBAction)loginAction:(UIButton *)sender {
+    
+    if(self.account.text.length < 1){
+        
+        [SVPShow showInfoWithMessage:@"用户名不能为空"];
+        
+        return;
+        
+    }else if (self.passWord.text.length < 1){
+        
+        [SVPShow showInfoWithMessage:@"密码不能为空"];
+        
+        return;
+    }
 
+    NSString *account = SafeString(self.account.text);
+    
+    NSString *password = SafeString(self.passWord.text);
+    
+    NSString *isLogin = @"1";
+    
+    NSDictionary *userInfo = @{@"account":account,@"password":password,@"isLogin":isLogin};
+    
+    [JumpKeyChain addKeychainData:userInfo forKey:@"userInfo"];
+    
+    JumpBaseTabBarViewController *vc = [[JumpBaseTabBarViewController alloc]init];
+    
+    AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        
+    appdelegate.window.rootViewController = vc;
 }
 
 #pragma mark --- 忘记密码
@@ -58,11 +91,31 @@
     
     vc.type = @"3";
     
+    vc.hidesBottomBarWhenPushed = YES;
+    
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark --- 扫码注册
 
 - (IBAction)sweepAction:(UIButton *)sender {
+    
+    ChangePassWordViewController *vc = [[ChangePassWordViewController alloc]init];
+    
+    vc.type = @"1";
+    
+    vc.hidesBottomBarWhenPushed = YES;
+
+    [self.navigationController pushViewController:vc animated:YES];
 }
+
+#pragma mark --- textField代理方法
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    
+    return YES;
+}
+
 @end
