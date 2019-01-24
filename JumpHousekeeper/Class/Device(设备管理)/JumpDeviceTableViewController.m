@@ -8,6 +8,7 @@
 
 #import "JumpDeviceTableViewController.h"
 #import "SwitchDeviceTableViewCell.h"
+#import "ScanningDeviceViewController.h"
 
 @interface JumpDeviceTableViewController ()
 
@@ -23,15 +24,13 @@
         
         _toolBarBtn = [[UIButton alloc] initWithFrame:CGRectMake(30, 0, kWidth-60, 40)];
         
-        _toolBarBtn.backgroundColor = BackGroundColor;
-        
         _toolBarBtn.layer.cornerRadius =  5;
         
-        [_toolBarBtn setTitle:@"   添加新设备" forState:UIControlStateNormal];
+        [_toolBarBtn setTitle:@"添加新设备" forState:UIControlStateNormal];
         
-        [_toolBarBtn setImage:[UIImage imageNamed:@"scanningImage"] forState:UIControlStateNormal];
+//        [_toolBarBtn setImage:[UIImage imageNamed:@"scanningImage"] forState:UIControlStateNormal];
         
-        [_toolBarBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_toolBarBtn setTitleColor:CustomerBlue forState:UIControlStateNormal];
         
         [_toolBarBtn addTarget:self action:@selector(addAction:) forControlEvents:UIControlEventTouchUpInside];
         

@@ -13,4 +13,7 @@
 //1-注册  2-修改密码 3-忘记密码
 @property (copy,nonatomic) NSString *type;
 
+//注册为1时   扫描后的字符串
+@property (copy,nonatomic) NSString *deviceStr;
+
 @end

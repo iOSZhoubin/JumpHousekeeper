@@ -9,6 +9,7 @@
 #import "JumpLoginViewController.h"
 #import "ChangePassWordViewController.h"
 #import "JumpBaseTabBarViewController.h"
+#import "ScanningDeviceViewController.h"
 
 @interface JumpLoginViewController ()<UITextFieldDelegate>
 
@@ -109,13 +110,12 @@
 
 - (IBAction)sweepAction:(UIButton *)sender {
     
-    ChangePassWordViewController *vc = [[ChangePassWordViewController alloc]init];
-    
-    vc.type = @"1";
+    ScanningDeviceViewController *vc = [[ScanningDeviceViewController alloc]init];
     
     vc.hidesBottomBarWhenPushed = YES;
-
+    
     [self.navigationController pushViewController:vc animated:YES];
+    
 }
 
 #pragma mark --- textField代理方法

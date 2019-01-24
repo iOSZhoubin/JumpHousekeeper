@@ -50,6 +50,8 @@
 
     if([self.type isEqualToString:@"1"]){
         
+        self.deviceCode.text = self.deviceStr;
+        
         self.navigationItem.title = @"注册";
         
         self.passWordTitle.text = @"密码";
@@ -162,6 +164,8 @@
 
 - (IBAction)sureAction:(UIButton *)sender {
 
+    L2CWeakSelf(self);
+    
     [self.view endEditing:YES];
     
     if(SafeString(self.phoneNumber.text).length < 1){
@@ -197,6 +201,14 @@
     if([self.type isEqualToString:@"1"]){
         
         JumpLog(@"注册");
+        
+        for (UIViewController *vc in weakself.navigationController.viewControllers) {
+            
+            if ([NSStringFromClass([vc class]) isEqualToString:@"JumpDeviceTableViewController"]) {
+                
+                [weakself.navigationController popToViewController:vc animated:YES];
+            }
+        }
         
     }else if ([self.type isEqualToString:@"2"]){
         

@@ -40,6 +40,9 @@
 		397C637821F98B0300E566A3 /* ChangePassWordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 397C637621F98B0300E566A3 /* ChangePassWordViewController.xib */; };
 		397C637C21F98B5400E566A3 /* JumpLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 397C637A21F98B5400E566A3 /* JumpLoginViewController.m */; };
 		397C637D21F98B5400E566A3 /* JumpLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 397C637B21F98B5400E566A3 /* JumpLoginViewController.xib */; };
+		397C638321F9B1A300E566A3 /* QiCodePreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 397C638021F9B1A300E566A3 /* QiCodePreviewView.m */; };
+		397C638421F9B1A300E566A3 /* QiCodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 397C638221F9B1A300E566A3 /* QiCodeManager.m */; };
+		397C638721F9B27700E566A3 /* ScanningDeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 397C638621F9B27700E566A3 /* ScanningDeviceViewController.m */; };
 		39A5D19A21F16A2D002CBC0D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A5D19921F16A2D002CBC0D /* AppDelegate.m */; };
 		39A5D1A321F16A2E002CBC0D /* JumpHousekeeper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 39A5D1A121F16A2E002CBC0D /* JumpHousekeeper.xcdatamodeld */; };
 		39A5D1A521F16A3C002CBC0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39A5D1A421F16A3C002CBC0D /* Assets.xcassets */; };
@@ -121,6 +124,12 @@
 		397C637921F98B5400E566A3 /* JumpLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JumpLoginViewController.h; sourceTree = "<group>"; };
 		397C637A21F98B5400E566A3 /* JumpLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JumpLoginViewController.m; sourceTree = "<group>"; };
 		397C637B21F98B5400E566A3 /* JumpLoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JumpLoginViewController.xib; sourceTree = "<group>"; };
+		397C637F21F9B1A300E566A3 /* QiCodeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiCodeManager.h; sourceTree = "<group>"; };
+		397C638021F9B1A300E566A3 /* QiCodePreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiCodePreviewView.m; sourceTree = "<group>"; };
+		397C638121F9B1A300E566A3 /* QiCodePreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiCodePreviewView.h; sourceTree = "<group>"; };
+		397C638221F9B1A300E566A3 /* QiCodeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiCodeManager.m; sourceTree = "<group>"; };
+		397C638521F9B27700E566A3 /* ScanningDeviceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScanningDeviceViewController.h; sourceTree = "<group>"; };
+		397C638621F9B27700E566A3 /* ScanningDeviceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScanningDeviceViewController.m; sourceTree = "<group>"; };
 		39A5D19521F16A2D002CBC0D /* JumpHousekeeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JumpHousekeeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39A5D19821F16A2D002CBC0D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		39A5D19921F16A2D002CBC0D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -250,13 +259,6 @@
 			path = "AccountDetail(账户信息)";
 			sourceTree = "<group>";
 		};
-		3917015B21F80D6D00D90AC0 /* Camera(扫描相机) */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Camera(扫描相机)";
-			sourceTree = "<group>";
-		};
 		3917015C21F80DC100D90AC0 /* Mine(我的) */ = {
 			isa = PBXGroup;
 			children = (
@@ -354,6 +356,19 @@
 			path = "DeviceType(设备问题类型)";
 			sourceTree = "<group>";
 		};
+		397C637E21F9B17F00E566A3 /* Scanning(扫描) */ = {
+			isa = PBXGroup;
+			children = (
+				397C638521F9B27700E566A3 /* ScanningDeviceViewController.h */,
+				397C638621F9B27700E566A3 /* ScanningDeviceViewController.m */,
+				397C637F21F9B1A300E566A3 /* QiCodeManager.h */,
+				397C638221F9B1A300E566A3 /* QiCodeManager.m */,
+				397C638121F9B1A300E566A3 /* QiCodePreviewView.h */,
+				397C638021F9B1A300E566A3 /* QiCodePreviewView.m */,
+			);
+			path = "Scanning(扫描)";
+			sourceTree = "<group>";
+		};
 		39A5D18C21F16A2D002CBC0D = {
 			isa = PBXGroup;
 			children = (
@@ -432,12 +447,12 @@
 		39A5D1B621F16DE3002CBC0D /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				397C637E21F9B17F00E566A3 /* Scanning(扫描) */,
 				397C637021F95C9C00E566A3 /* DeviceType(设备问题类型) */,
 				397C636621F946D400E566A3 /* Configuration(配置向导) */,
 				397C635E21F9456400E566A3 /* Clean(清理缓存) */,
 				3917015421F80D6D00D90AC0 /* About(关于) */,
 				3917015A21F80D6D00D90AC0 /* AccountDetail(账户信息) */,
-				3917015B21F80D6D00D90AC0 /* Camera(扫描相机) */,
 				3917015621F80D6D00D90AC0 /* Collection(收藏) */,
 				3917015221F80D6D00D90AC0 /* DeviceDetail(设备详情) */,
 				3917015521F80D6D00D90AC0 /* Feedback(反馈) */,
@@ -626,6 +641,7 @@
 				397C637721F98B0300E566A3 /* ChangePassWordViewController.m in Sources */,
 				391701AA21F8633100D90AC0 /* AccountDetailTableViewCell.m in Sources */,
 				39A5D19A21F16A2D002CBC0D /* AppDelegate.m in Sources */,
+				397C638721F9B27700E566A3 /* ScanningDeviceViewController.m in Sources */,
 				39A5D1D821F1A510002CBC0D /* UIImage+Extension.m in Sources */,
 				39A5D1DF21F1A510002CBC0D /* JumpKeyChain.m in Sources */,
 				39A5D1BB21F16E19002CBC0D /* JumpFirstViewController.m in Sources */,
@@ -638,10 +654,12 @@
 				39A5D1DA21F1A510002CBC0D /* UIView+UIViewExtension.m in Sources */,
 				39A5D1D921F1A510002CBC0D /* SVPShow.m in Sources */,
 				3917019D21F854FC00D90AC0 /* SwitchDeviceTableViewCell.m in Sources */,
+				397C638321F9B1A300E566A3 /* QiCodePreviewView.m in Sources */,
 				397C636F21F9500100E566A3 /* JumpFeedbackTableViewController.m in Sources */,
 				39A5D1DC21F1A510002CBC0D /* SecurityNSString.m in Sources */,
 				3917015121F808F600D90AC0 /* JumpBaseTabBarViewController.m in Sources */,
 				39A5D1DE21F1A510002CBC0D /* RefreshHelper.m in Sources */,
+				397C638421F9B1A300E566A3 /* QiCodeManager.m in Sources */,
 				391701A221F860A700D90AC0 /* JumpAboutViewController.m in Sources */,
 				397C636421F9456B00E566A3 /* CleanCaches.m in Sources */,
 				3917019821F851AD00D90AC0 /* JumpMineTableViewCell.m in Sources */,
