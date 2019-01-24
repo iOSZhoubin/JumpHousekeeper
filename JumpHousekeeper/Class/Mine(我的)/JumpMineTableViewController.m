@@ -7,6 +7,8 @@
 //
 
 #import "JumpMineTableViewController.h"
+#import "JRSandBoxPath.h"
+#import "CleanCaches.h"
 #import "JumpMineTableViewCell.h"
 #import "JumpAboutViewController.h"
 #import "JumpAccountDetailTableViewController.h"
@@ -146,6 +148,7 @@
         
     }else if (indexPath.section == 2){
         //清除缓存
+        [self cleanRubbish];
     }else if (indexPath.section == 3){
         //修改密码
     }else if (indexPath.section == 4){
@@ -154,7 +157,44 @@
 }
 
 
+#pragma mark --- 清理缓存
 
+-(void)cleanRubbish{
+    
+    L2CWeakSelf(self);
+    
+    UIAlertController * alertController = [UIAlertController alertControllerWithTitle: @"确认清理缓存?" message: nil preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    [alertController addAction: [UIAlertAction actionWithTitle:@"确定" style: UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+        
+        //获得要删除的path
+        NSString *path = [JRSandBoxPath getCachesDirectory];
+        //清空指定文件夹
+        [CleanCaches clearCachesFromDirectoryPath:path];
+        
+        
+        //清除cookies
+        NSHTTPCookie *cookie;
+        NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+        for (cookie in [storage cookies]){
+            [storage deleteCookie:cookie];
+        }
+        //清除UIWebView的缓存
+        [[NSURLCache sharedURLCache] removeAllCachedResponses];
+        NSURLCache * cache = [NSURLCache sharedURLCache];
+        [cache removeAllCachedResponses];
+        [cache setDiskCapacity:0];
+        [cache setMemoryCapacity:0];
+        
+        [SVPShow showSuccessWithMessage:@"清理缓存成功"];
+        
+    }]];
+    
+    [alertController addAction: [UIAlertAction actionWithTitle:@"取消" style: UIAlertActionStyleCancel handler:nil]];
+    
+    [weakself presentViewController:alertController animated:YES completion:nil];
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

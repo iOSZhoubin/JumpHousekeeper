@@ -48,10 +48,13 @@
     
     SLBannerView *banner = [SLBannerView bannerViewXib];
 
-    banner.frame = CGRectMake(0, 0, kWidth, 180);
+    banner.frame = CGRectMake(0, 0, kWidth, 160);
     
-    //工程图片
-    banner.slImages = @[@"photo1.png", @"photo2.png", @"photo3.png", @"photo4.png"];
+    //图片
+    banner.slImages = @[@"photo1.png", @"photo2.png", @"photo3.png"];
+    //标题
+    banner.slTitles = @[@"WAF是一个软硬件一体化架构的系统",@"WAF是一个软硬件一体化架构的系统",@"WAF是一个软硬件一体化架构的系统"];
+    
     //监听设置代理
     banner.delegate = self;
     //banner添加到UI上

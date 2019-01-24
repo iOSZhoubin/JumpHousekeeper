@@ -17,4 +17,12 @@
  */
 -(void)refreshWithModel:(JumpAccountDetailModel *)model indexPath:(NSIndexPath *)indexPath;
 
+
+
+/**
+ * 配置向导和常见问题刷新方法
+ * @indexPath 索引
+ */
+-(void)refreshWithindexPath:(NSIndexPath *)indexPath;
+
 @end

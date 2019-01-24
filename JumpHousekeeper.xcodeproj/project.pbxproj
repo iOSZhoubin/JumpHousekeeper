@@ -31,6 +31,9 @@
 		391701AB21F8633100D90AC0 /* AccountDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 391701A921F8633100D90AC0 /* AccountDetailTableViewCell.xib */; };
 		391701AE21F8656A00D90AC0 /* JumpAccountDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 391701AD21F8656A00D90AC0 /* JumpAccountDetailModel.m */; };
 		391701B121F868CE00D90AC0 /* JumpCollectionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 391701B021F868CE00D90AC0 /* JumpCollectionTableViewController.m */; };
+		397C636321F9456B00E566A3 /* JRSandBoxPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 397C635F21F9456B00E566A3 /* JRSandBoxPath.m */; };
+		397C636421F9456B00E566A3 /* CleanCaches.m in Sources */ = {isa = PBXBuildFile; fileRef = 397C636221F9456B00E566A3 /* CleanCaches.m */; };
+		397C636921F946EC00E566A3 /* ConfigurationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 397C636821F946EC00E566A3 /* ConfigurationTableViewController.m */; };
 		39A5D19A21F16A2D002CBC0D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A5D19921F16A2D002CBC0D /* AppDelegate.m */; };
 		39A5D1A321F16A2E002CBC0D /* JumpHousekeeper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 39A5D1A121F16A2E002CBC0D /* JumpHousekeeper.xcdatamodeld */; };
 		39A5D1A521F16A3C002CBC0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39A5D1A421F16A3C002CBC0D /* Assets.xcassets */; };
@@ -96,6 +99,12 @@
 		391701AD21F8656A00D90AC0 /* JumpAccountDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JumpAccountDetailModel.m; sourceTree = "<group>"; };
 		391701AF21F868CE00D90AC0 /* JumpCollectionTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JumpCollectionTableViewController.h; sourceTree = "<group>"; };
 		391701B021F868CE00D90AC0 /* JumpCollectionTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JumpCollectionTableViewController.m; sourceTree = "<group>"; };
+		397C635F21F9456B00E566A3 /* JRSandBoxPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JRSandBoxPath.m; sourceTree = "<group>"; };
+		397C636021F9456B00E566A3 /* CleanCaches.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CleanCaches.h; sourceTree = "<group>"; };
+		397C636121F9456B00E566A3 /* JRSandBoxPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JRSandBoxPath.h; sourceTree = "<group>"; };
+		397C636221F9456B00E566A3 /* CleanCaches.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CleanCaches.m; sourceTree = "<group>"; };
+		397C636721F946EC00E566A3 /* ConfigurationTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfigurationTableViewController.h; sourceTree = "<group>"; };
+		397C636821F946EC00E566A3 /* ConfigurationTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConfigurationTableViewController.m; sourceTree = "<group>"; };
 		39A5D19521F16A2D002CBC0D /* JumpHousekeeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JumpHousekeeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39A5D19821F16A2D002CBC0D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		39A5D19921F16A2D002CBC0D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -299,6 +308,26 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		397C635E21F9456400E566A3 /* Clean(清理缓存) */ = {
+			isa = PBXGroup;
+			children = (
+				397C636021F9456B00E566A3 /* CleanCaches.h */,
+				397C636221F9456B00E566A3 /* CleanCaches.m */,
+				397C636121F9456B00E566A3 /* JRSandBoxPath.h */,
+				397C635F21F9456B00E566A3 /* JRSandBoxPath.m */,
+			);
+			path = "Clean(清理缓存)";
+			sourceTree = "<group>";
+		};
+		397C636621F946D400E566A3 /* Configuration(配置向导) */ = {
+			isa = PBXGroup;
+			children = (
+				397C636721F946EC00E566A3 /* ConfigurationTableViewController.h */,
+				397C636821F946EC00E566A3 /* ConfigurationTableViewController.m */,
+			);
+			path = "Configuration(配置向导)";
+			sourceTree = "<group>";
+		};
 		39A5D18C21F16A2D002CBC0D = {
 			isa = PBXGroup;
 			children = (
@@ -377,6 +406,8 @@
 		39A5D1B621F16DE3002CBC0D /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				397C636621F946D400E566A3 /* Configuration(配置向导) */,
+				397C635E21F9456400E566A3 /* Clean(清理缓存) */,
 				3917015421F80D6D00D90AC0 /* About(关于) */,
 				3917015A21F80D6D00D90AC0 /* AccountDetail(账户信息) */,
 				3917015B21F80D6D00D90AC0 /* Camera(扫描相机) */,
@@ -560,6 +591,7 @@
 			files = (
 				39A5D1DD21F1A510002CBC0D /* AFNHelper.m in Sources */,
 				39A5D1A321F16A2E002CBC0D /* JumpHousekeeper.xcdatamodeld in Sources */,
+				397C636321F9456B00E566A3 /* JRSandBoxPath.m in Sources */,
 				39A5D1AB21F16A3C002CBC0D /* main.m in Sources */,
 				3917016B21F80F3300D90AC0 /* JumpSupportViewController.m in Sources */,
 				391701AA21F8633100D90AC0 /* AccountDetailTableViewCell.m in Sources */,
@@ -579,11 +611,13 @@
 				3917015121F808F600D90AC0 /* JumpBaseTabBarViewController.m in Sources */,
 				39A5D1DE21F1A510002CBC0D /* RefreshHelper.m in Sources */,
 				391701A221F860A700D90AC0 /* JumpAboutViewController.m in Sources */,
+				397C636421F9456B00E566A3 /* CleanCaches.m in Sources */,
 				3917019821F851AD00D90AC0 /* JumpMineTableViewCell.m in Sources */,
 				3917018721F8472200D90AC0 /* JumpInformationModel.m in Sources */,
 				3917016721F80EDC00D90AC0 /* JumpDeviceTableViewController.m in Sources */,
 				391701B121F868CE00D90AC0 /* JumpCollectionTableViewController.m in Sources */,
 				3917018B21F8483000D90AC0 /* JumpInfomationTableViewCell.m in Sources */,
+				397C636921F946EC00E566A3 /* ConfigurationTableViewController.m in Sources */,
 				3917018F21F84C5A00D90AC0 /* JumpAgreementViewController.m in Sources */,
 				39A5D1DB21F1A510002CBC0D /* ExperienceViewController.m in Sources */,
 				39A5D1E621F1A711002CBC0D /* JumpBaseTableViewController.m in Sources */,

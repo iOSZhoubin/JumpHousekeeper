@@ -53,6 +53,8 @@
     
     self.tableView.tableFooterView = [[UIView alloc]init];
     
+    self.view.backgroundColor = BackGroundColor;
+    
 }
 
 #pragma mark --- UITableViewDelegate And DataSource
