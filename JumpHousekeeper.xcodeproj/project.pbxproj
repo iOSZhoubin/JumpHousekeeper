@@ -36,6 +36,10 @@
 		397C636921F946EC00E566A3 /* ConfigurationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 397C636821F946EC00E566A3 /* ConfigurationTableViewController.m */; };
 		397C636F21F9500100E566A3 /* JumpFeedbackTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 397C636E21F9500100E566A3 /* JumpFeedbackTableViewController.m */; };
 		397C637321F95CB000E566A3 /* JumpTypeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 397C637221F95CB000E566A3 /* JumpTypeTableViewController.m */; };
+		397C637721F98B0300E566A3 /* ChangePassWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 397C637521F98B0300E566A3 /* ChangePassWordViewController.m */; };
+		397C637821F98B0300E566A3 /* ChangePassWordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 397C637621F98B0300E566A3 /* ChangePassWordViewController.xib */; };
+		397C637C21F98B5400E566A3 /* JumpLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 397C637A21F98B5400E566A3 /* JumpLoginViewController.m */; };
+		397C637D21F98B5400E566A3 /* JumpLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 397C637B21F98B5400E566A3 /* JumpLoginViewController.xib */; };
 		39A5D19A21F16A2D002CBC0D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A5D19921F16A2D002CBC0D /* AppDelegate.m */; };
 		39A5D1A321F16A2E002CBC0D /* JumpHousekeeper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 39A5D1A121F16A2E002CBC0D /* JumpHousekeeper.xcdatamodeld */; };
 		39A5D1A521F16A3C002CBC0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39A5D1A421F16A3C002CBC0D /* Assets.xcassets */; };
@@ -111,6 +115,12 @@
 		397C636E21F9500100E566A3 /* JumpFeedbackTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JumpFeedbackTableViewController.m; sourceTree = "<group>"; };
 		397C637121F95CB000E566A3 /* JumpTypeTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JumpTypeTableViewController.h; sourceTree = "<group>"; };
 		397C637221F95CB000E566A3 /* JumpTypeTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JumpTypeTableViewController.m; sourceTree = "<group>"; };
+		397C637421F98B0300E566A3 /* ChangePassWordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangePassWordViewController.h; sourceTree = "<group>"; };
+		397C637521F98B0300E566A3 /* ChangePassWordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangePassWordViewController.m; sourceTree = "<group>"; };
+		397C637621F98B0300E566A3 /* ChangePassWordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangePassWordViewController.xib; sourceTree = "<group>"; };
+		397C637921F98B5400E566A3 /* JumpLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JumpLoginViewController.h; sourceTree = "<group>"; };
+		397C637A21F98B5400E566A3 /* JumpLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JumpLoginViewController.m; sourceTree = "<group>"; };
+		397C637B21F98B5400E566A3 /* JumpLoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JumpLoginViewController.xib; sourceTree = "<group>"; };
 		39A5D19521F16A2D002CBC0D /* JumpHousekeeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JumpHousekeeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39A5D19821F16A2D002CBC0D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		39A5D19921F16A2D002CBC0D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -174,6 +184,9 @@
 		3917015321F80D6D00D90AC0 /* Login(登录) */ = {
 			isa = PBXGroup;
 			children = (
+				397C637921F98B5400E566A3 /* JumpLoginViewController.h */,
+				397C637A21F98B5400E566A3 /* JumpLoginViewController.m */,
+				397C637B21F98B5400E566A3 /* JumpLoginViewController.xib */,
 			);
 			path = "Login(登录)";
 			sourceTree = "<group>";
@@ -209,6 +222,9 @@
 		3917015721F80D6D00D90AC0 /* PassWord(密码) */ = {
 			isa = PBXGroup;
 			children = (
+				397C637421F98B0300E566A3 /* ChangePassWordViewController.h */,
+				397C637521F98B0300E566A3 /* ChangePassWordViewController.m */,
+				397C637621F98B0300E566A3 /* ChangePassWordViewController.xib */,
 			);
 			path = "PassWord(密码)";
 			sourceTree = "<group>";
@@ -543,9 +559,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				397C637821F98B0300E566A3 /* ChangePassWordViewController.xib in Resources */,
 				39A5D1BC21F16E19002CBC0D /* JumpFirstViewController.xib in Resources */,
 				3917018421F8470C00D90AC0 /* SLBannerView.xib in Resources */,
 				39A5D1F521F1B9ED002CBC0D /* JumpEcharts.html in Resources */,
+				397C637D21F98B5400E566A3 /* JumpLoginViewController.xib in Resources */,
 				39A5D1EE21F1AC18002CBC0D /* echarts.min.js in Resources */,
 				3917019E21F854FC00D90AC0 /* SwitchDeviceTableViewCell.xib in Resources */,
 				3917016421F80EB700D90AC0 /* JumpInformationViewController.xib in Resources */,
@@ -613,6 +631,7 @@
 				397C636321F9456B00E566A3 /* JRSandBoxPath.m in Sources */,
 				39A5D1AB21F16A3C002CBC0D /* main.m in Sources */,
 				3917016B21F80F3300D90AC0 /* JumpSupportViewController.m in Sources */,
+				397C637721F98B0300E566A3 /* ChangePassWordViewController.m in Sources */,
 				391701AA21F8633100D90AC0 /* AccountDetailTableViewCell.m in Sources */,
 				39A5D19A21F16A2D002CBC0D /* AppDelegate.m in Sources */,
 				39A5D1D821F1A510002CBC0D /* UIImage+Extension.m in Sources */,
@@ -622,6 +641,7 @@
 				391701AE21F8656A00D90AC0 /* JumpAccountDetailModel.m in Sources */,
 				3917016F21F80F4700D90AC0 /* JumpMineTableViewController.m in Sources */,
 				39A5D1E521F1A711002CBC0D /* JumpBaseViewController.m in Sources */,
+				397C637C21F98B5400E566A3 /* JumpLoginViewController.m in Sources */,
 				3917018321F8470C00D90AC0 /* SLBannerView.m in Sources */,
 				39A5D1DA21F1A510002CBC0D /* UIView+UIViewExtension.m in Sources */,
 				39A5D1D921F1A510002CBC0D /* SVPShow.m in Sources */,

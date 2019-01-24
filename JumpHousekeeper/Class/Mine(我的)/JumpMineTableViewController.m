@@ -14,6 +14,7 @@
 #import "JumpAccountDetailTableViewController.h"
 #import "JumpCollectionTableViewController.h"
 #import "JumpFeedbackTableViewController.h"
+#import "ChangePassWordViewController.h"
 
 @interface JumpMineTableViewController ()
 
@@ -162,6 +163,14 @@
         
     }else if (indexPath.section == 3){
         //修改密码
+        ChangePassWordViewController *vc = [[ChangePassWordViewController alloc]init];
+        
+        vc.type = @"2";
+        
+        vc.hidesBottomBarWhenPushed = YES;
+        
+        [self.navigationController pushViewController:vc animated:YES];
+        
     }else if (indexPath.section == 4){
         //注销登录
     }
