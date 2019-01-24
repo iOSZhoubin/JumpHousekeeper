@@ -8,7 +8,7 @@
 
 #import "AccountDetailTableViewCell.h"
 
-@interface AccountDetailTableViewCell()
+@interface AccountDetailTableViewCell()<UITextFieldDelegate>
 
 //名称
 @property (weak, nonatomic) IBOutlet UILabel *titleName;
@@ -75,6 +75,89 @@
 }
 
 
+
+-(void)refreshOpinionWithContent:(NSMutableDictionary *)contentDict indexPath:(NSIndexPath *)indexPath{
+
+    NSArray *array1 = @[@"设备类型"];
+    NSArray *array2 = @[@"问题类型",@"问题描述"];
+    NSArray *array3 = @[@"联系人姓名",@"联系人电话"];
+    
+    NSArray *sumArray = @[array1,array2,array3];
+    
+    self.titleName.text = sumArray[indexPath.section][indexPath.row];
+    
+    self.arrowImage.hidden = NO;
+    
+    switch (indexPath.section) {
+        case 0:
+            self.contentField.enabled = NO;
+            self.contentField.placeholder = @"请选择设备类型";
+            self.contentField.text = SafeString(contentDict[@"deviceType"]);
+            
+            break;
+        case 1:
+            
+        {
+            self.contentField.enabled = NO;
+            
+            if(indexPath.row == 0){
+                
+                self.contentField.text = SafeString(contentDict[@"problemType"]);
+                self.contentField.placeholder = @"请选择问题类型";
+
+            }else{
+
+                self.contentField.text = SafeString(contentDict[@"problemContent"]);
+                self.contentField.placeholder = @"请填写问题描述(可选)";
+
+            }
+            
+        }
+
+            break;
+        case 2:
+            
+        {
+            self.contentField.enabled = YES;
+            self.contentField.delegate = self;
+            self.arrowImage.hidden = YES;
+
+            if(indexPath.row == 0){
+                
+                self.contentField.text = SafeString(contentDict[@"contactName"]);
+                self.contentField.placeholder = @"请输入姓名(可选)";
+
+            }else{
+                
+                self.contentField.text = SafeString(contentDict[@"contactNumber"]);
+                self.contentField.placeholder = @"请输入电话(必填)";
+
+            }
+        }
+            break;
+        default:
+            break;
+    }
+
+}
+
+
+#pragma mark --- UITextFieldDelegate
+
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+    
+    if(self.delegate){
+        
+        [self.delegate contentDetail:SafeString(textField.text) andCell:self];
+    }
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    
+    return YES;
+}
 
 - (void)awakeFromNib {
     [super awakeFromNib];

@@ -34,6 +34,7 @@
 		397C636321F9456B00E566A3 /* JRSandBoxPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 397C635F21F9456B00E566A3 /* JRSandBoxPath.m */; };
 		397C636421F9456B00E566A3 /* CleanCaches.m in Sources */ = {isa = PBXBuildFile; fileRef = 397C636221F9456B00E566A3 /* CleanCaches.m */; };
 		397C636921F946EC00E566A3 /* ConfigurationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 397C636821F946EC00E566A3 /* ConfigurationTableViewController.m */; };
+		397C636F21F9500100E566A3 /* JumpFeedbackTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 397C636E21F9500100E566A3 /* JumpFeedbackTableViewController.m */; };
 		39A5D19A21F16A2D002CBC0D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A5D19921F16A2D002CBC0D /* AppDelegate.m */; };
 		39A5D1A321F16A2E002CBC0D /* JumpHousekeeper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 39A5D1A121F16A2E002CBC0D /* JumpHousekeeper.xcdatamodeld */; };
 		39A5D1A521F16A3C002CBC0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39A5D1A421F16A3C002CBC0D /* Assets.xcassets */; };
@@ -105,6 +106,8 @@
 		397C636221F9456B00E566A3 /* CleanCaches.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CleanCaches.m; sourceTree = "<group>"; };
 		397C636721F946EC00E566A3 /* ConfigurationTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfigurationTableViewController.h; sourceTree = "<group>"; };
 		397C636821F946EC00E566A3 /* ConfigurationTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConfigurationTableViewController.m; sourceTree = "<group>"; };
+		397C636D21F9500100E566A3 /* JumpFeedbackTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JumpFeedbackTableViewController.h; sourceTree = "<group>"; };
+		397C636E21F9500100E566A3 /* JumpFeedbackTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JumpFeedbackTableViewController.m; sourceTree = "<group>"; };
 		39A5D19521F16A2D002CBC0D /* JumpHousekeeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JumpHousekeeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39A5D19821F16A2D002CBC0D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		39A5D19921F16A2D002CBC0D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -185,6 +188,8 @@
 		3917015521F80D6D00D90AC0 /* Feedback(反馈) */ = {
 			isa = PBXGroup;
 			children = (
+				397C636D21F9500100E566A3 /* JumpFeedbackTableViewController.h */,
+				397C636E21F9500100E566A3 /* JumpFeedbackTableViewController.m */,
 			);
 			path = "Feedback(反馈)";
 			sourceTree = "<group>";
@@ -607,6 +612,7 @@
 				39A5D1DA21F1A510002CBC0D /* UIView+UIViewExtension.m in Sources */,
 				39A5D1D921F1A510002CBC0D /* SVPShow.m in Sources */,
 				3917019D21F854FC00D90AC0 /* SwitchDeviceTableViewCell.m in Sources */,
+				397C636F21F9500100E566A3 /* JumpFeedbackTableViewController.m in Sources */,
 				39A5D1DC21F1A510002CBC0D /* SecurityNSString.m in Sources */,
 				3917015121F808F600D90AC0 /* JumpBaseTabBarViewController.m in Sources */,
 				39A5D1DE21F1A510002CBC0D /* RefreshHelper.m in Sources */,

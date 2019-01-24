@@ -40,6 +40,22 @@
 }
 
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    kToolbarAppearItem(self.toolBarBtn);
+    
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    kToolbarDisappearItem;
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 

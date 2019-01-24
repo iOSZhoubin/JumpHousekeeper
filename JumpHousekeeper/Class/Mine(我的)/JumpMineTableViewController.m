@@ -13,6 +13,7 @@
 #import "JumpAboutViewController.h"
 #import "JumpAccountDetailTableViewController.h"
 #import "JumpCollectionTableViewController.h"
+#import "JumpFeedbackTableViewController.h"
 
 @interface JumpMineTableViewController ()
 
@@ -99,6 +100,11 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     
+    if(section == 0){
+        
+        return 0.01;
+    }
+    
     return 20;
 }
 
@@ -142,13 +148,18 @@
             [self.navigationController pushViewController:vc animated:YES];
             
         }else{
-            
             //意见反馈
+            JumpFeedbackTableViewController *vc = [[JumpFeedbackTableViewController alloc]init];
+           
+            vc.hidesBottomBarWhenPushed = YES;
+            
+            [self.navigationController pushViewController:vc animated:YES];
         }
         
     }else if (indexPath.section == 2){
         //清除缓存
         [self cleanRubbish];
+        
     }else if (indexPath.section == 3){
         //修改密码
     }else if (indexPath.section == 4){
@@ -162,6 +173,8 @@
 -(void)cleanRubbish{
     
     L2CWeakSelf(self);
+    
+    
     
     UIAlertController * alertController = [UIAlertController alertControllerWithTitle: @"确认清理缓存?" message: nil preferredStyle:UIAlertControllerStyleActionSheet];
     
