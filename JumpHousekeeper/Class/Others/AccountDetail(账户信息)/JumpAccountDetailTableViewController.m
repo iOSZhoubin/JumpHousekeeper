@@ -9,6 +9,7 @@
 #import "JumpAccountDetailTableViewController.h"
 #import "AccountDetailTableViewCell.h"
 #import "JumpAccountDetailModel.h"
+#import "ExperienceViewController.h"
 
 @interface JumpAccountDetailTableViewController ()
 
@@ -57,7 +58,16 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
     if(indexPath.row == 5){
-        //详细信息
+        //详细地址
+            
+        ExperienceViewController *vc = [[ExperienceViewController alloc]init];
+        
+        vc.vcTitle = @"详细地址";
+        
+        vc.saveText = @"陕西省西安市高新技术产业开发区科技二路西安交大捷普网络科技有限公司";
+        
+        [self.navigationController pushViewController:vc animated:YES];
+
     }
 }
 

@@ -7,6 +7,7 @@
 //
 
 #import "ChangePassWordViewController.h"
+#import "JumpBaseTabBarViewController.h"
 
 @interface ChangePassWordViewController ()
 //设备号
@@ -200,15 +201,45 @@
     }else if ([self.type isEqualToString:@"2"]){
         
         JumpLog(@"修改密码");
+
+        [self defaultLogin];
         
     }else{
         
         JumpLog(@"忘记密码");
+        
+        [self defaultLogin];
     }
     
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+
+#pragma mark --- 修改密码和忘记密码提交成功后都需要重新进行登录
+
+-(void)defaultLogin{
+    
+    L2CWeakSelf(self);
+    
+    UIAlertController * alertController = [UIAlertController alertControllerWithTitle: @"更改密码后需要重新登录,确认更改?" message: nil preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    [alertController addAction: [UIAlertAction actionWithTitle:@"确认" style: UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+        
+        [JumpKeyChain deleteKeychainDataForKey:@"userInfo"];//删除保存的账户密码
+        
+        JumpBaseTabBarViewController *vc = [[JumpBaseTabBarViewController alloc]init];
+        
+        AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        
+        appdelegate.window.rootViewController = vc;
+        
+    }]];
+    
+    [alertController addAction: [UIAlertAction actionWithTitle:@"取消" style: UIAlertActionStyleCancel handler:nil]];
+    
+    [weakself presentViewController:alertController animated:YES completion:nil];
+    
+}
 
 
 #pragma mark --- 正则校验手机号码

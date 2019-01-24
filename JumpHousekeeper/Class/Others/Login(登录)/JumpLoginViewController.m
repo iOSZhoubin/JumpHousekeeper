@@ -47,6 +47,15 @@
     self.account.delegate = self;
 
     [self.passWord setSecureTextEntry:YES];//密文
+    
+    //如果有本地保存，那么直接赋值
+    NSDictionary *dict = [JumpKeyChain getKeychainDataForKey:@"userInfo"];
+    
+    NSString *account = SafeString(dict[@"account"]);
+    NSString *password = SafeString(dict[@"password"]);
+
+    self.account.text = account;
+    self.passWord.text = password;
 }
 
 #pragma mark --- 登录
