@@ -107,7 +107,7 @@
 
             }else{
 
-                self.contentField.text = SafeString(contentDict[@"problemContent"]);
+                self.contentField.text = SafeString(contentDict[@"remark"]);
                 self.contentField.placeholder = @"请填写问题描述(可选)";
 
             }

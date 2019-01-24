@@ -9,6 +9,7 @@
 #import "JumpFeedbackTableViewController.h"
 #import "AccountDetailTableViewCell.h"
 #import "ExperienceViewController.h"
+#import "JumpTypeTableViewController.h"
 
 @interface JumpFeedbackTableViewController ()<OpinionTextDelegate>
 
@@ -164,12 +165,14 @@
     if(indexPath.section == 0){
         
         JumpLog(@"设备类型");
+        [self pushWithTpye:@"1"];
         
     }else if (indexPath.section == 1){
         
         if(indexPath.row == 0){
             
             JumpLog(@"问题类型");
+            [self pushWithTpye:@"2"];
             
         }else{
             JumpLog(@"问题描述");
@@ -199,6 +202,37 @@
         
     }
 }
+
+
+#pragma mark --- 问题类型和设备类型跳转方法
+
+-(void)pushWithTpye:(NSString *)type{
+    
+    L2CWeakSelf(self);
+    
+    JumpTypeTableViewController *vc = [[JumpTypeTableViewController alloc]init];
+    
+    vc.type = type;
+    
+    vc.block = ^(NSMutableDictionary *selectDict) {
+        
+        if([type isEqualToString:@"1"]){
+            
+            weakself.contentDict[@"deviceType"] = SafeString(selectDict[@"title"]);
+            weakself.contentDict[@"deviceTypeId"] = SafeString(selectDict[@"id"]);
+
+        }else{
+            
+            weakself.contentDict[@"problemType"] = SafeString(selectDict[@"title"]);
+            weakself.contentDict[@"problemTypeId"] = SafeString(selectDict[@"id"]);
+        }
+        
+        [weakself.tableView reloadData];
+    };
+    
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 
 
 #pragma mark --- 发送

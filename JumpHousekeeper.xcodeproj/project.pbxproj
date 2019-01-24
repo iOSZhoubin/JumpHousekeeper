@@ -35,6 +35,7 @@
 		397C636421F9456B00E566A3 /* CleanCaches.m in Sources */ = {isa = PBXBuildFile; fileRef = 397C636221F9456B00E566A3 /* CleanCaches.m */; };
 		397C636921F946EC00E566A3 /* ConfigurationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 397C636821F946EC00E566A3 /* ConfigurationTableViewController.m */; };
 		397C636F21F9500100E566A3 /* JumpFeedbackTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 397C636E21F9500100E566A3 /* JumpFeedbackTableViewController.m */; };
+		397C637321F95CB000E566A3 /* JumpTypeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 397C637221F95CB000E566A3 /* JumpTypeTableViewController.m */; };
 		39A5D19A21F16A2D002CBC0D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A5D19921F16A2D002CBC0D /* AppDelegate.m */; };
 		39A5D1A321F16A2E002CBC0D /* JumpHousekeeper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 39A5D1A121F16A2E002CBC0D /* JumpHousekeeper.xcdatamodeld */; };
 		39A5D1A521F16A3C002CBC0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39A5D1A421F16A3C002CBC0D /* Assets.xcassets */; };
@@ -108,6 +109,8 @@
 		397C636821F946EC00E566A3 /* ConfigurationTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConfigurationTableViewController.m; sourceTree = "<group>"; };
 		397C636D21F9500100E566A3 /* JumpFeedbackTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JumpFeedbackTableViewController.h; sourceTree = "<group>"; };
 		397C636E21F9500100E566A3 /* JumpFeedbackTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JumpFeedbackTableViewController.m; sourceTree = "<group>"; };
+		397C637121F95CB000E566A3 /* JumpTypeTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JumpTypeTableViewController.h; sourceTree = "<group>"; };
+		397C637221F95CB000E566A3 /* JumpTypeTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JumpTypeTableViewController.m; sourceTree = "<group>"; };
 		39A5D19521F16A2D002CBC0D /* JumpHousekeeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JumpHousekeeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39A5D19821F16A2D002CBC0D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		39A5D19921F16A2D002CBC0D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -333,6 +336,15 @@
 			path = "Configuration(配置向导)";
 			sourceTree = "<group>";
 		};
+		397C637021F95C9C00E566A3 /* DeviceType(设备问题类型) */ = {
+			isa = PBXGroup;
+			children = (
+				397C637121F95CB000E566A3 /* JumpTypeTableViewController.h */,
+				397C637221F95CB000E566A3 /* JumpTypeTableViewController.m */,
+			);
+			path = "DeviceType(设备问题类型)";
+			sourceTree = "<group>";
+		};
 		39A5D18C21F16A2D002CBC0D = {
 			isa = PBXGroup;
 			children = (
@@ -411,6 +423,7 @@
 		39A5D1B621F16DE3002CBC0D /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				397C637021F95C9C00E566A3 /* DeviceType(设备问题类型) */,
 				397C636621F946D400E566A3 /* Configuration(配置向导) */,
 				397C635E21F9456400E566A3 /* Clean(清理缓存) */,
 				3917015421F80D6D00D90AC0 /* About(关于) */,
@@ -595,6 +608,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				39A5D1DD21F1A510002CBC0D /* AFNHelper.m in Sources */,
+				397C637321F95CB000E566A3 /* JumpTypeTableViewController.m in Sources */,
 				39A5D1A321F16A2E002CBC0D /* JumpHousekeeper.xcdatamodeld in Sources */,
 				397C636321F9456B00E566A3 /* JRSandBoxPath.m in Sources */,
 				39A5D1AB21F16A3C002CBC0D /* main.m in Sources */,
