@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "JumpAccountDetailModel.h"
-
+#import "DeviceDetailModel.h"
 
 @class AccountDetailTableViewCell;
+
 
 @protocol OpinionTextDelegate <NSObject>
 
@@ -43,6 +44,14 @@
  * @indexPath 索引
  */
 -(void)refreshOpinionWithContent:(NSMutableDictionary *)contentDict indexPath:(NSIndexPath *)indexPath;
+
+
+/**
+ * 设备详情刷新方法
+ * @model 模型
+ * @indexPath 索引
+ */
+-(void)refreshDeviceWithModel:(DeviceDetailModel *)model indexPath:(NSIndexPath *)indexPath;
 
 
 @property (weak,nonatomic) id<OpinionTextDelegate> delegate;

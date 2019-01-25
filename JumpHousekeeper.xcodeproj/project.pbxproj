@@ -48,8 +48,6 @@
 		39A5D1A521F16A3C002CBC0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39A5D1A421F16A3C002CBC0D /* Assets.xcassets */; };
 		39A5D1A821F16A3C002CBC0D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39A5D1A621F16A3C002CBC0D /* LaunchScreen.storyboard */; };
 		39A5D1AB21F16A3C002CBC0D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A5D1AA21F16A3C002CBC0D /* main.m */; };
-		39A5D1BB21F16E19002CBC0D /* JumpFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A5D1B921F16E19002CBC0D /* JumpFirstViewController.m */; };
-		39A5D1BC21F16E19002CBC0D /* JumpFirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39A5D1BA21F16E19002CBC0D /* JumpFirstViewController.xib */; };
 		39A5D1C321F1A216002CBC0D /* myWkWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A5D1C121F1A216002CBC0D /* myWkWebView.m */; };
 		39A5D1D821F1A510002CBC0D /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A5D1C621F1A50E002CBC0D /* UIImage+Extension.m */; };
 		39A5D1D921F1A510002CBC0D /* SVPShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A5D1C821F1A50E002CBC0D /* SVPShow.m */; };
@@ -63,6 +61,12 @@
 		39A5D1E621F1A711002CBC0D /* JumpBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A5D1E421F1A710002CBC0D /* JumpBaseTableViewController.m */; };
 		39A5D1EE21F1AC18002CBC0D /* echarts.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 39A5D1ED21F1AC18002CBC0D /* echarts.min.js */; };
 		39A5D1F521F1B9ED002CBC0D /* JumpEcharts.html in Resources */ = {isa = PBXBuildFile; fileRef = 39A5D1F421F1B9ED002CBC0D /* JumpEcharts.html */; };
+		39FFD6CD21FA9DC800E71924 /* DeviceDetailEchartsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FFD6CB21FA9DC800E71924 /* DeviceDetailEchartsViewController.m */; };
+		39FFD6D121FAAA0B00E71924 /* DeviceHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FFD6D021FAAA0B00E71924 /* DeviceHeadView.m */; };
+		39FFD6D321FAAA1200E71924 /* DeviceHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39FFD6D221FAAA1200E71924 /* DeviceHeadView.xib */; };
+		39FFD6D621FAB69500E71924 /* DeviceDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FFD6D521FAB69500E71924 /* DeviceDetailModel.m */; };
+		39FFD6DA21FAB95300E71924 /* SecurityThingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FFD6D821FAB95300E71924 /* SecurityThingsViewController.m */; };
+		39FFD6DB21FAB95300E71924 /* SecurityThingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39FFD6D921FAB95300E71924 /* SecurityThingsViewController.xib */; };
 		4494B01E50976A44153903CA /* libPods-JumpHousekeeper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C7BF406B98F3C5CE93A51CB /* libPods-JumpHousekeeper.a */; };
 /* End PBXBuildFile section */
 
@@ -138,9 +142,6 @@
 		39A5D1A721F16A3C002CBC0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		39A5D1A921F16A3C002CBC0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		39A5D1AA21F16A3C002CBC0D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		39A5D1B821F16E19002CBC0D /* JumpFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JumpFirstViewController.h; sourceTree = "<group>"; };
-		39A5D1B921F16E19002CBC0D /* JumpFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JumpFirstViewController.m; sourceTree = "<group>"; };
-		39A5D1BA21F16E19002CBC0D /* JumpFirstViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JumpFirstViewController.xib; sourceTree = "<group>"; };
 		39A5D1C121F1A216002CBC0D /* myWkWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myWkWebView.m; sourceTree = "<group>"; };
 		39A5D1C221F1A216002CBC0D /* myWkWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myWkWebView.h; sourceTree = "<group>"; };
 		39A5D1C421F1A46E002CBC0D /* JumpPch.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JumpPch.pch; sourceTree = "<group>"; };
@@ -167,6 +168,16 @@
 		39A5D1E421F1A710002CBC0D /* JumpBaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JumpBaseTableViewController.m; sourceTree = "<group>"; };
 		39A5D1ED21F1AC18002CBC0D /* echarts.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = echarts.min.js; sourceTree = "<group>"; };
 		39A5D1F421F1B9ED002CBC0D /* JumpEcharts.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = JumpEcharts.html; sourceTree = "<group>"; };
+		39FFD6CA21FA9DC800E71924 /* DeviceDetailEchartsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceDetailEchartsViewController.h; sourceTree = "<group>"; };
+		39FFD6CB21FA9DC800E71924 /* DeviceDetailEchartsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceDetailEchartsViewController.m; sourceTree = "<group>"; };
+		39FFD6CF21FAAA0B00E71924 /* DeviceHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceHeadView.h; sourceTree = "<group>"; };
+		39FFD6D021FAAA0B00E71924 /* DeviceHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceHeadView.m; sourceTree = "<group>"; };
+		39FFD6D221FAAA1200E71924 /* DeviceHeadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeviceHeadView.xib; sourceTree = "<group>"; };
+		39FFD6D421FAB69500E71924 /* DeviceDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceDetailModel.h; sourceTree = "<group>"; };
+		39FFD6D521FAB69500E71924 /* DeviceDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceDetailModel.m; sourceTree = "<group>"; };
+		39FFD6D721FAB95300E71924 /* SecurityThingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecurityThingsViewController.h; sourceTree = "<group>"; };
+		39FFD6D821FAB95300E71924 /* SecurityThingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecurityThingsViewController.m; sourceTree = "<group>"; };
+		39FFD6D921FAB95300E71924 /* SecurityThingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecurityThingsViewController.xib; sourceTree = "<group>"; };
 		546E89845DE27A75D0EA085C /* Pods-JumpHousekeeper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JumpHousekeeper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JumpHousekeeper/Pods-JumpHousekeeper.debug.xcconfig"; sourceTree = "<group>"; };
 		7F6BD521FED8EF3957FC5C09 /* Pods-JumpHousekeeper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JumpHousekeeper.release.xcconfig"; path = "Pods/Target Support Files/Pods-JumpHousekeeper/Pods-JumpHousekeeper.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -186,6 +197,13 @@
 		3917015221F80D6D00D90AC0 /* DeviceDetail(设备详情) */ = {
 			isa = PBXGroup;
 			children = (
+				39FFD6CA21FA9DC800E71924 /* DeviceDetailEchartsViewController.h */,
+				39FFD6CB21FA9DC800E71924 /* DeviceDetailEchartsViewController.m */,
+				39FFD6CF21FAAA0B00E71924 /* DeviceHeadView.h */,
+				39FFD6D021FAAA0B00E71924 /* DeviceHeadView.m */,
+				39FFD6D221FAAA1200E71924 /* DeviceHeadView.xib */,
+				39FFD6D421FAB69500E71924 /* DeviceDetailModel.h */,
+				39FFD6D521FAB69500E71924 /* DeviceDetailModel.m */,
 			);
 			path = "DeviceDetail(设备详情)";
 			sourceTree = "<group>";
@@ -241,6 +259,9 @@
 		3917015821F80D6D00D90AC0 /* SecurityThings(安全事件) */ = {
 			isa = PBXGroup;
 			children = (
+				39FFD6D721FAB95300E71924 /* SecurityThingsViewController.h */,
+				39FFD6D821FAB95300E71924 /* SecurityThingsViewController.m */,
+				39FFD6D921FAB95300E71924 /* SecurityThingsViewController.xib */,
 			);
 			path = "SecurityThings(安全事件)";
 			sourceTree = "<group>";
@@ -393,9 +414,6 @@
 				39A5D1B321F16DE3002CBC0D /* Class */,
 				39A5D19821F16A2D002CBC0D /* AppDelegate.h */,
 				39A5D19921F16A2D002CBC0D /* AppDelegate.m */,
-				39A5D1B821F16E19002CBC0D /* JumpFirstViewController.h */,
-				39A5D1B921F16E19002CBC0D /* JumpFirstViewController.m */,
-				39A5D1BA21F16E19002CBC0D /* JumpFirstViewController.xib */,
 				39A5D1A421F16A3C002CBC0D /* Assets.xcassets */,
 				39A5D1A621F16A3C002CBC0D /* LaunchScreen.storyboard */,
 				39A5D1A921F16A3C002CBC0D /* Info.plist */,
@@ -567,7 +585,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				397C637821F98B0300E566A3 /* ChangePassWordViewController.xib in Resources */,
-				39A5D1BC21F16E19002CBC0D /* JumpFirstViewController.xib in Resources */,
 				3917018421F8470C00D90AC0 /* SLBannerView.xib in Resources */,
 				39A5D1F521F1B9ED002CBC0D /* JumpEcharts.html in Resources */,
 				397C637D21F98B5400E566A3 /* JumpLoginViewController.xib in Resources */,
@@ -577,7 +594,9 @@
 				39A5D1A821F16A3C002CBC0D /* LaunchScreen.storyboard in Resources */,
 				391701AB21F8633100D90AC0 /* AccountDetailTableViewCell.xib in Resources */,
 				39A5D1A521F16A3C002CBC0D /* Assets.xcassets in Resources */,
+				39FFD6DB21FAB95300E71924 /* SecurityThingsViewController.xib in Resources */,
 				3917019921F851AD00D90AC0 /* JumpMineTableViewCell.xib in Resources */,
+				39FFD6D321FAAA1200E71924 /* DeviceHeadView.xib in Resources */,
 				3917016C21F80F3300D90AC0 /* JumpSupportViewController.xib in Resources */,
 				391701A321F860A700D90AC0 /* JumpAboutViewController.xib in Resources */,
 				3917018C21F8483000D90AC0 /* JumpInfomationTableViewCell.xib in Resources */,
@@ -632,6 +651,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39FFD6D121FAAA0B00E71924 /* DeviceHeadView.m in Sources */,
 				39A5D1DD21F1A510002CBC0D /* AFNHelper.m in Sources */,
 				397C637321F95CB000E566A3 /* JumpTypeTableViewController.m in Sources */,
 				39A5D1A321F16A2E002CBC0D /* JumpHousekeeper.xcdatamodeld in Sources */,
@@ -640,11 +660,12 @@
 				3917016B21F80F3300D90AC0 /* JumpSupportViewController.m in Sources */,
 				397C637721F98B0300E566A3 /* ChangePassWordViewController.m in Sources */,
 				391701AA21F8633100D90AC0 /* AccountDetailTableViewCell.m in Sources */,
+				39FFD6DA21FAB95300E71924 /* SecurityThingsViewController.m in Sources */,
+				39FFD6CD21FA9DC800E71924 /* DeviceDetailEchartsViewController.m in Sources */,
 				39A5D19A21F16A2D002CBC0D /* AppDelegate.m in Sources */,
 				397C638721F9B27700E566A3 /* ScanningDeviceViewController.m in Sources */,
 				39A5D1D821F1A510002CBC0D /* UIImage+Extension.m in Sources */,
 				39A5D1DF21F1A510002CBC0D /* JumpKeyChain.m in Sources */,
-				39A5D1BB21F16E19002CBC0D /* JumpFirstViewController.m in Sources */,
 				391701A621F862C200D90AC0 /* JumpAccountDetailTableViewController.m in Sources */,
 				391701AE21F8656A00D90AC0 /* JumpAccountDetailModel.m in Sources */,
 				3917016F21F80F4700D90AC0 /* JumpMineTableViewController.m in Sources */,
@@ -666,6 +687,7 @@
 				3917018721F8472200D90AC0 /* JumpInformationModel.m in Sources */,
 				3917016721F80EDC00D90AC0 /* JumpDeviceTableViewController.m in Sources */,
 				391701B121F868CE00D90AC0 /* JumpCollectionTableViewController.m in Sources */,
+				39FFD6D621FAB69500E71924 /* DeviceDetailModel.m in Sources */,
 				3917018B21F8483000D90AC0 /* JumpInfomationTableViewCell.m in Sources */,
 				397C636921F946EC00E566A3 /* ConfigurationTableViewController.m in Sources */,
 				3917018F21F84C5A00D90AC0 /* JumpAgreementViewController.m in Sources */,

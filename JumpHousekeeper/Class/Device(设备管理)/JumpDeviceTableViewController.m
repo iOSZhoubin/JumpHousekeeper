@@ -9,6 +9,7 @@
 #import "JumpDeviceTableViewController.h"
 #import "SwitchDeviceTableViewCell.h"
 #import "ScanningDeviceViewController.h"
+#import "DeviceDetailEchartsViewController.h"
 
 @interface JumpDeviceTableViewController ()
 
@@ -134,6 +135,12 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    
+    DeviceDetailEchartsViewController *vc = [[DeviceDetailEchartsViewController alloc]init];
+    
+    vc.hidesBottomBarWhenPushed = YES;
+    
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 

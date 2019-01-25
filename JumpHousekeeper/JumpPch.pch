@@ -35,9 +35,11 @@
 //公共颜色
 #define BackGroundColor RGB(247,247,247)
 #define CustomerBlue RGB(0,122,255)
+#define Customershallow RGB(44, 159, 252)
 #define CustomerRed RGB(252, 74, 74)
 #define CustomerPlacehodel RGB(153, 153, 153)
 #define CustomerYellow RGB(255, 180, 1)
+#define CustomerLine RGB(240, 240, 240)
 
 //打印
 #ifdef DEBUG
