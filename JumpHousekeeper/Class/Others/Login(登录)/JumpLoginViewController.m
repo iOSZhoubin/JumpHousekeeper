@@ -110,11 +110,35 @@
 
 - (IBAction)sweepAction:(UIButton *)sender {
     
-    ScanningDeviceViewController *vc = [[ScanningDeviceViewController alloc]init];
+    //判断是否开启了相机的权限
+    BOOL isopen = [JumpPublicAction isopenCamera];
     
-    vc.hidesBottomBarWhenPushed = YES;
-    
-    [self.navigationController pushViewController:vc animated:YES];
+    if(isopen){
+        
+        ScanningDeviceViewController *vc = [[ScanningDeviceViewController alloc]init];
+        
+        vc.hidesBottomBarWhenPushed = YES;
+        
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    }else{
+        
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"去开启访问相机权限?" message:nil preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            
+            [JumpPublicAction openfromSetting];
+            
+        }];
+        
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+        }];
+        
+        [alertController addAction:cancel];
+        [alertController addAction:ok];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
     
 }
 

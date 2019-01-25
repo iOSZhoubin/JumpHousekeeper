@@ -110,7 +110,7 @@
         return;
     }
     
-    BOOL isPhoneNum = [self validateCellPhoneNumber:SafeString(self.phoneNumber.text)];
+    BOOL isPhoneNum =   [JumpPublicAction isTruePhoneNumber:SafeString(self.phoneNumber.text)] ;
     
     if(isPhoneNum == NO){
         
@@ -187,8 +187,8 @@
         return;
     }
     
-    BOOL isPhoneNum = [self validateCellPhoneNumber:SafeString(self.phoneNumber.text)];
-    
+    BOOL isPhoneNum =   [JumpPublicAction isTruePhoneNumber:SafeString(self.phoneNumber.text)] ;
+
     if(isPhoneNum == NO){
         
         [SVPShow showInfoWithMessage:@"手机号格式有误"];
@@ -231,11 +231,9 @@
 
 -(void)defaultLogin{
     
-    L2CWeakSelf(self);
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"更改密码后需要重新登录,确认更改?" message:nil preferredStyle:UIAlertControllerStyleAlert];
     
-    UIAlertController * alertController = [UIAlertController alertControllerWithTitle: @"更改密码后需要重新登录,确认更改?" message: nil preferredStyle:UIAlertControllerStyleActionSheet];
-    
-    [alertController addAction: [UIAlertAction actionWithTitle:@"确认" style: UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         
         [JumpKeyChain deleteKeychainDataForKey:@"userInfo"];//删除保存的账户密码
         
@@ -245,58 +243,15 @@
         
         appdelegate.window.rootViewController = vc;
         
-    }]];
+    }];
     
-    [alertController addAction: [UIAlertAction actionWithTitle:@"取消" style: UIAlertActionStyleCancel handler:nil]];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+    }];
     
-    [weakself presentViewController:alertController animated:YES completion:nil];
+    [alertController addAction:cancel];
+    [alertController addAction:ok];
     
-}
-
-
-#pragma mark --- 正则校验手机号码
-
--(BOOL)validateCellPhoneNumber:(NSString *)cellNum{
-    /**
-     * 手机号码
-     * 移动：134[0-8],135,136,137,138,139,150,151,157,158,159,182,187,188
-     * 联通：130,131,132,152,155,156,185,186
-     * 电信：133,1349,153,180,189
-     */
-    NSString * MOBILE = @"^1(3[0-9]|5[0-35-9]|8[025-9])\\d{8}$";
-    
-    /**
-     10         * 中国移动：China Mobile
-     11         * 134[0-8],135,136,137,138,139,150,151,157,158,159,182,187,188
-     12         */
-    NSString * CM = @"^1(34[0-8]|(3[5-9]|5[017-9]|8[278])\\d)\\d{7}$";
-    
-    /**
-     15         * 中国联通：China Unicom
-     16         * 130,131,132,152,155,156,175,176,185,186
-     17         */
-    NSString * CU = @"^1(3[0-2]|5[256]|7[56]|8[56])\\d{8}$";
-    
-    /**
-     20         * 中国电信：China Telecom
-     21         * 133,1349,153,177,180,189
-     22         */
-    NSString * CT = @"^1((33|53|77|8[09])[0-9]|349)\\d{7}$";
-    
-    
-    NSPredicate *regextestmobile = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", MOBILE];
-    NSPredicate *regextestcm = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", CM];
-    NSPredicate *regextestcu = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", CU];
-    NSPredicate *regextestct = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", CT];
-    
-    if(([regextestmobile evaluateWithObject:cellNum] == YES)
-       || ([regextestcm evaluateWithObject:cellNum] == YES)
-       || ([regextestct evaluateWithObject:cellNum] == YES)
-       || ([regextestcu evaluateWithObject:cellNum] == YES)){
-        return YES;
-    }else{
-        return NO;
-    }
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 @end

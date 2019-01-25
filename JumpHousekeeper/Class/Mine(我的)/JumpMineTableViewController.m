@@ -175,13 +175,28 @@
     }else if (indexPath.section == 4){
         //注销登录
        
-        [JumpKeyChain deleteKeychainDataForKey:@"userInfo"];//删除保存的账户密码
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"是否注销登录?" message:nil preferredStyle:UIAlertControllerStyleAlert];
         
-        JumpBaseTabBarViewController *vc = [[JumpBaseTabBarViewController alloc]init];
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            
+            [JumpKeyChain deleteKeychainDataForKey:@"userInfo"];//删除保存的账户密码
+            
+            JumpBaseTabBarViewController *vc = [[JumpBaseTabBarViewController alloc]init];
+            
+            AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            
+            appdelegate.window.rootViewController = vc;
+            
+        }];
         
-        AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                
-        appdelegate.window.rootViewController = vc;
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+        }];
+        
+        [alertController addAction:cancel];
+        [alertController addAction:ok];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+
     }
 }
 
@@ -190,11 +205,9 @@
 
 -(void)cleanRubbish{
     
-    L2CWeakSelf(self);
-
-    UIAlertController * alertController = [UIAlertController alertControllerWithTitle: @"确认清理缓存?" message: nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"确认清理缓存?" message:nil preferredStyle:UIAlertControllerStyleAlert];
     
-    [alertController addAction: [UIAlertAction actionWithTitle:@"确定" style: UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         
         //获得要删除的path
         NSString *path = [JRSandBoxPath getCachesDirectory];
@@ -217,11 +230,15 @@
         
         [SVPShow showSuccessWithMessage:@"清理缓存成功"];
         
-    }]];
+    }];
     
-    [alertController addAction: [UIAlertAction actionWithTitle:@"取消" style: UIAlertActionStyleCancel handler:nil]];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+    }];
     
-    [weakself presentViewController:alertController animated:YES completion:nil];
+    [alertController addAction:cancel];
+    [alertController addAction:ok];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
     
 }
 

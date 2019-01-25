@@ -76,20 +76,44 @@
 - (void)photo:(id)sender {
     
     L2CWeakSelf(self);
-    
-    [_codeManager presentPhotoLibraryWithRooter:self callback:^(NSString * _Nonnull code) {
-        
-        ChangePassWordViewController *vc = [[ChangePassWordViewController alloc]init];
-        
-        vc.type = @"1";
-        
-        vc.deviceStr = SafeString(code);
-        
-        vc.hidesBottomBarWhenPushed = YES;
-        
-        [weakself.navigationController pushViewController:vc animated:YES];
 
-    }];
+    //    检测用户是否开启了访问相册的权限
+    BOOL isopen = [JumpPublicAction isopenPhoto];
+    
+    if(isopen){
+        
+        [_codeManager presentPhotoLibraryWithRooter:self callback:^(NSString * _Nonnull code) {
+            
+            ChangePassWordViewController *vc = [[ChangePassWordViewController alloc]init];
+            
+            vc.type = @"1";
+            
+            vc.deviceStr = SafeString(code);
+            
+            vc.hidesBottomBarWhenPushed = YES;
+            
+            [weakself.navigationController pushViewController:vc animated:YES];
+            
+        }];
+        
+    }else{
+        
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"去开启访问相册权限?" message:nil preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            
+            [JumpPublicAction openfromSetting];
+            
+        }];
+        
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+        }];
+        
+        [alertController addAction:cancel];
+        [alertController addAction:ok];
+
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
 }
 
 

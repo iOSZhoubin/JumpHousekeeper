@@ -67,6 +67,7 @@
 		39FFD6D621FAB69500E71924 /* DeviceDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FFD6D521FAB69500E71924 /* DeviceDetailModel.m */; };
 		39FFD6DA21FAB95300E71924 /* SecurityThingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FFD6D821FAB95300E71924 /* SecurityThingsViewController.m */; };
 		39FFD6DB21FAB95300E71924 /* SecurityThingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39FFD6D921FAB95300E71924 /* SecurityThingsViewController.xib */; };
+		39FFD6DE21FADAD400E71924 /* JumpPublicAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FFD6DD21FADAD400E71924 /* JumpPublicAction.m */; };
 		4494B01E50976A44153903CA /* libPods-JumpHousekeeper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C7BF406B98F3C5CE93A51CB /* libPods-JumpHousekeeper.a */; };
 /* End PBXBuildFile section */
 
@@ -178,6 +179,8 @@
 		39FFD6D721FAB95300E71924 /* SecurityThingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecurityThingsViewController.h; sourceTree = "<group>"; };
 		39FFD6D821FAB95300E71924 /* SecurityThingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecurityThingsViewController.m; sourceTree = "<group>"; };
 		39FFD6D921FAB95300E71924 /* SecurityThingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecurityThingsViewController.xib; sourceTree = "<group>"; };
+		39FFD6DC21FADAD400E71924 /* JumpPublicAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JumpPublicAction.h; sourceTree = "<group>"; };
+		39FFD6DD21FADAD400E71924 /* JumpPublicAction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JumpPublicAction.m; sourceTree = "<group>"; };
 		546E89845DE27A75D0EA085C /* Pods-JumpHousekeeper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JumpHousekeeper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JumpHousekeeper/Pods-JumpHousekeeper.debug.xcconfig"; sourceTree = "<group>"; };
 		7F6BD521FED8EF3957FC5C09 /* Pods-JumpHousekeeper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JumpHousekeeper.release.xcconfig"; path = "Pods/Target Support Files/Pods-JumpHousekeeper/Pods-JumpHousekeeper.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -504,6 +507,8 @@
 				39A5D1CC21F1A50E002CBC0D /* UIView+UIViewExtension.m */,
 				39A5D1C221F1A216002CBC0D /* myWkWebView.h */,
 				39A5D1C121F1A216002CBC0D /* myWkWebView.m */,
+				39FFD6DC21FADAD400E71924 /* JumpPublicAction.h */,
+				39FFD6DD21FADAD400E71924 /* JumpPublicAction.m */,
 			);
 			path = Public;
 			sourceTree = "<group>";
@@ -661,6 +666,7 @@
 				397C637721F98B0300E566A3 /* ChangePassWordViewController.m in Sources */,
 				391701AA21F8633100D90AC0 /* AccountDetailTableViewCell.m in Sources */,
 				39FFD6DA21FAB95300E71924 /* SecurityThingsViewController.m in Sources */,
+				39FFD6DE21FADAD400E71924 /* JumpPublicAction.m in Sources */,
 				39FFD6CD21FA9DC800E71924 /* DeviceDetailEchartsViewController.m in Sources */,
 				39A5D19A21F16A2D002CBC0D /* AppDelegate.m in Sources */,
 				397C638721F9B27700E566A3 /* ScanningDeviceViewController.m in Sources */,
