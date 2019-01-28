@@ -53,13 +53,6 @@
     self.memoryLabel.layer.borderColor = Customershallow.CGColor;
     self.memoryLabel.text = @"80%";
     
-    //设置Echarts图
-    self.echartView.layer.cornerRadius = 8;
-    self.echartView.layer.masksToBounds = YES;
-    self.echartView.layer.borderWidth = 1;
-    self.echartView.layer.borderColor = CustomerLine.CGColor;
-    
-    
     WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
     config.selectionGranularity = WKSelectionGranularityDynamic;
     config.allowsInlineMediaPlayback = YES;
