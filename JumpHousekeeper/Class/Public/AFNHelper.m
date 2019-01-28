@@ -30,11 +30,20 @@
 
 
 //get请求
-+ (NSURLSessionDataTask *)get:(NSString *)url ipAddress:(NSString *)ipAddress port:(NSString *)port parameter:(id )parameters success:(void(^)(id responseObject))success faliure:(void(^)(id error))failure
++ (NSURLSessionDataTask *)get:(NSString *)url parameter:(id )parameters success:(void(^)(id responseObject))success faliure:(void(^)(id error))failure
 {
     
-    NSString *urlStr = [NSString stringWithFormat:@"http://%@:%@%@",ipAddress,port,url];
+    NSString *urlStr;
+    
+    if(url.length > 0){
+        
+        urlStr = [NSString stringWithFormat:@"%@%@",BaseUrl,url];
 
+    }else{
+        
+        urlStr = BaseUrl;
+    }
+    
     JumpLog(@"url=====%@",urlStr);
     
     JumpLog(@"parameters======%@",parameters);
@@ -69,9 +78,18 @@
 }
 
 //post请求
-+ (NSURLSessionDataTask *)post:(NSString *)url ipAddress:(NSString *)ipAddress port:(NSString *)port parameters:(id)parameters success:(void(^)(id responseObject))success faliure:(void(^)(id error))failure
++ (NSURLSessionDataTask *)post:(NSString *)url parameters:(id)parameters success:(void(^)(id responseObject))success faliure:(void(^)(id error))failure
 {
-    NSString *urlStr = [NSString stringWithFormat:@"http://%@:%@%@",ipAddress,port,url];
+    NSString *urlStr;
+    
+    if(url.length > 0){
+        
+        urlStr = [NSString stringWithFormat:@"%@%@",BaseUrl,url];
+        
+    }else{
+        
+        urlStr = BaseUrl;
+    }
     
     JumpLog(@"url=====%@",urlStr);
     

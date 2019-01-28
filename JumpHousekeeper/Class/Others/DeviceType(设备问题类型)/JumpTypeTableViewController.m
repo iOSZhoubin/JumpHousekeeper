@@ -22,6 +22,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+//    [RefreshHelper refreshHelperWithScrollView:self.tableView target:self loadNewData:@selector(loadNewData) loadMoreData:nil isBeginRefresh:YES];
+    
     [self setupUI];
     
 }
@@ -125,6 +127,50 @@
         self.block(self.selectDict);
         
         [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
+
+#pragma mark ---  获取类型
+
+-(void)loadNewData{
+    
+    if([self.type isEqualToString:@"1"]){
+        //设备类型
+        
+        NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+        
+        parameters[@"m"] = @"2";
+        parameters[@"t"] = @"5";
+        parameters[@"d"] = @"0";
+
+        [AFNHelper get:nil parameter:parameters success:^(id responseObject) {
+            
+            JumpLog(@"%@",responseObject);
+            
+        } faliure:^(id error) {
+            
+            JumpLog(@"%@",error);
+
+        }];
+        
+    }else{
+        //问题类型
+        NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+        
+        parameters[@"m"] = @"4";
+        parameters[@"t"] = @"0";
+        parameters[@"p"] = @"0";
+        
+        [AFNHelper get:BaseUrl parameter:parameters success:^(id responseObject) {
+            
+            JumpLog(@"%@",responseObject);
+            
+        } faliure:^(id error) {
+            
+            JumpLog(@"%@",error);
+            
+        }];
     }
 }
 

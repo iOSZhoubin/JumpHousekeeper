@@ -46,6 +46,43 @@
     return cell;
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return YES;
+}
+
+
+- (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    L2CWeakSelf(self);
+    
+    UITableViewRowAction *cancel = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"取消收藏" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+        
+        UIAlertController * alertController = [UIAlertController alertControllerWithTitle: @"确认取消收藏?" message: nil preferredStyle:UIAlertControllerStyleActionSheet];
+        
+        [alertController addAction: [UIAlertAction actionWithTitle:@"确认" style: UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+            
+            JumpLog(@"确认");
+            
+        }]];
+        
+        [alertController addAction: [UIAlertAction actionWithTitle:@"取消" style: UIAlertActionStyleCancel handler:nil]];
+        
+        [weakself presentViewController:alertController animated:YES completion:nil];
+        
+    }];
+    
+    //    UITableViewRowAction *editor = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"编辑" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+    //
+    //
+    //    }];
+    //
+    //    editor.backgroundColor = RGB(184, 215, 254, 1);
+    
+    return @[cancel];
+    
+}
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     [tableView deselectRowAtIndexPath:indexPath animated:NO];

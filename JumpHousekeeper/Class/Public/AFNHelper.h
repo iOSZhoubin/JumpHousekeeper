@@ -17,23 +17,22 @@
 /**
  *  get请求
  *
- *  @param ipAddress        接口ip地址
+ *  @param url        接口地址
  *  @param parameters 参数
  *  @param success    请求成功的block
  *  @param failure    请求失败的block
  */
-+ (NSURLSessionDataTask *)get:(NSString *)url ipAddress:(NSString *)ipAddress port:(NSString *)port parameter:(id )parameters success:(void(^)(id responseObject))success faliure:(void(^)(id error))failure;
++ (NSURLSessionDataTask *)get:(NSString *)url parameter:(id )parameters success:(void(^)(id responseObject))success faliure:(void(^)(id error))failure;
 
 /**
  *  post请求
  *
  *  @param url        接口地址
- *  @param ipAddress        接口ip基地址
  *  @param parameters 参数
  *  @param success    请求成功的block
  *  @param failure    请求失败的block
  */
-+ (NSURLSessionDataTask *)post:(NSString *)url ipAddress:(NSString *)ipAddress port:(NSString *)port parameters:(id)parameters success:(void(^)(id responseObject))success faliure:(void(^)(id error))failure;
++ (NSURLSessionDataTask *)post:(NSString *)url parameters:(id)parameters success:(void(^)(id responseObject))success faliure:(void(^)(id error))failure;
 
 
 /**
