@@ -229,6 +229,7 @@
         [cache setMemoryCapacity:0];
         
         [SVPShow showSuccessWithMessage:@"清理缓存成功"];
+
         
     }];
     

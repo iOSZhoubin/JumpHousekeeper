@@ -28,7 +28,7 @@
         
         _headView = [DeviceHeadView loadViewFromXib];
         
-        _headView.frame = CGRectMake(0, 0, kWidth, 0);
+        _headView.frame = CGRectMake(0, 0, kWidth, 400);
         
     }
     

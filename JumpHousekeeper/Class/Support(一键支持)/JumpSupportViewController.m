@@ -69,7 +69,7 @@
         
     }]];
     
-    [alertController addAction: [UIAlertAction actionWithTitle:@"发送邮箱:support@jump.net.cn" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    [alertController addAction: [UIAlertAction actionWithTitle:@"发送邮件:support@jump.net.cn" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         
        [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"mailto://support@jump.net.cn"]];
         
