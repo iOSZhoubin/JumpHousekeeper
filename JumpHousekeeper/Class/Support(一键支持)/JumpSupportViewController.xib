@@ -158,15 +158,27 @@
                         <constraint firstAttribute="bottom" secondItem="7ex-9U-HjE" secondAttribute="bottom" id="quF-ZC-Cb1"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ldI-Lo-6aR">
+                    <rect key="frame" x="0.0" y="20" width="375" height="300"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="300" id="dNN-s8-aAQ"/>
+                    </constraints>
+                    <connections>
+                        <action selector="callPhone:" destination="-1" eventType="touchUpInside" id="Kgk-Sy-wpV"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="rts-zK-bQA" secondAttribute="trailing" id="1Co-xq-qxF"/>
                 <constraint firstItem="htk-J0-PeN" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="Bu9-UE-6Wd"/>
                 <constraint firstItem="htk-J0-PeN" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="HZe-Jd-l2w"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="ldI-Lo-6aR" secondAttribute="trailing" id="JmH-ko-mmo"/>
                 <constraint firstItem="rts-zK-bQA" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="NnL-gD-UCp"/>
                 <constraint firstItem="rts-zK-bQA" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="PtF-eq-ELy"/>
                 <constraint firstItem="htk-J0-PeN" firstAttribute="top" secondItem="rts-zK-bQA" secondAttribute="bottom" constant="20" id="dGf-wg-ozg"/>
+                <constraint firstItem="ldI-Lo-6aR" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="hWa-Gr-s1W"/>
+                <constraint firstItem="ldI-Lo-6aR" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="rgs-2p-7eF"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <point key="canvasLocation" x="33.5" y="53.5"/>

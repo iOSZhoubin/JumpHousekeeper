@@ -24,8 +24,8 @@
 #define JumpPch_pch
 
 #define AppstoreID @"app@jump.net.cn"//开发者账号ID
-#define BaseUrl @"https://app.jump.net.cn:4430/app/iosapi.php"
-//#define BaseUrl @"http://app.jump.net.cn:8000/app"
+//#define BaseUrl @"https://app.jump.net.cn:4430/app/iosapi.php"
+#define BaseUrl @"http://app.jump.net.cn:8000/app/iosapi.php"
 
 //屏幕宽高
 #define kWidth  [UIScreen mainScreen].bounds.size.width

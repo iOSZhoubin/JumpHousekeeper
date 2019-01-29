@@ -135,6 +135,8 @@
 
 -(void)loadNewData{
     
+    L2CWeakSelf(self);
+    
     if([self.type isEqualToString:@"1"]){
         //设备类型
         
@@ -148,10 +150,12 @@
             
             JumpLog(@"%@",responseObject);
             
+            [weakself.tableView.mj_header endRefreshing];
+            
         } faliure:^(id error) {
             
             JumpLog(@"%@",error);
-
+            [weakself.tableView.mj_header endRefreshing];
         }];
         
     }else{
@@ -165,11 +169,13 @@
         [AFNHelper get:BaseUrl parameter:parameters success:^(id responseObject) {
             
             JumpLog(@"%@",responseObject);
-            
+            [weakself.tableView.mj_header endRefreshing];
+
         } faliure:^(id error) {
             
             JumpLog(@"%@",error);
-            
+            [weakself.tableView.mj_header endRefreshing];
+
         }];
     }
 }
