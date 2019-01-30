@@ -8,7 +8,7 @@
 
 #import "JumpBaseTableViewController.h"
 
-typedef void(^SureBlock)(NSMutableDictionary *selectDict);
+typedef void(^SureBlock)(NSDictionary *selectDict);
 
 @interface JumpTypeTableViewController : JumpBaseTableViewController
 

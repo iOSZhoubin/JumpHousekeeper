@@ -214,7 +214,7 @@
     
     vc.type = type;
     
-    vc.block = ^(NSMutableDictionary *selectDict) {
+    vc.block = ^(NSDictionary *selectDict) {
         
         if([type isEqualToString:@"1"]){
             

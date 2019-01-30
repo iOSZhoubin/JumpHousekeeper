@@ -43,6 +43,7 @@
 		397C638321F9B1A300E566A3 /* QiCodePreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 397C638021F9B1A300E566A3 /* QiCodePreviewView.m */; };
 		397C638421F9B1A300E566A3 /* QiCodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 397C638221F9B1A300E566A3 /* QiCodeManager.m */; };
 		397C638721F9B27700E566A3 /* ScanningDeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 397C638621F9B27700E566A3 /* ScanningDeviceViewController.m */; };
+		399E74822201407800D1063F /* JumpTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 399E74812201407800D1063F /* JumpTypeModel.m */; };
 		39A5D19A21F16A2D002CBC0D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A5D19921F16A2D002CBC0D /* AppDelegate.m */; };
 		39A5D1A321F16A2E002CBC0D /* JumpHousekeeper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 39A5D1A121F16A2E002CBC0D /* JumpHousekeeper.xcdatamodeld */; };
 		39A5D1A521F16A3C002CBC0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39A5D1A421F16A3C002CBC0D /* Assets.xcassets */; };
@@ -135,6 +136,8 @@
 		397C638221F9B1A300E566A3 /* QiCodeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiCodeManager.m; sourceTree = "<group>"; };
 		397C638521F9B27700E566A3 /* ScanningDeviceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScanningDeviceViewController.h; sourceTree = "<group>"; };
 		397C638621F9B27700E566A3 /* ScanningDeviceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScanningDeviceViewController.m; sourceTree = "<group>"; };
+		399E74802201407800D1063F /* JumpTypeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JumpTypeModel.h; sourceTree = "<group>"; };
+		399E74812201407800D1063F /* JumpTypeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JumpTypeModel.m; sourceTree = "<group>"; };
 		39A5D19521F16A2D002CBC0D /* JumpHousekeeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JumpHousekeeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39A5D19821F16A2D002CBC0D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		39A5D19921F16A2D002CBC0D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -376,6 +379,8 @@
 			children = (
 				397C637121F95CB000E566A3 /* JumpTypeTableViewController.h */,
 				397C637221F95CB000E566A3 /* JumpTypeTableViewController.m */,
+				399E74802201407800D1063F /* JumpTypeModel.h */,
+				399E74812201407800D1063F /* JumpTypeModel.m */,
 			);
 			path = "DeviceType(设备问题类型)";
 			sourceTree = "<group>";
@@ -701,6 +706,7 @@
 				39A5D1E621F1A711002CBC0D /* JumpBaseTableViewController.m in Sources */,
 				3917016321F80EB700D90AC0 /* JumpInformationViewController.m in Sources */,
 				39A5D1C321F1A216002CBC0D /* myWkWebView.m in Sources */,
+				399E74822201407800D1063F /* JumpTypeModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

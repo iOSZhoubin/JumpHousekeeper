@@ -7,13 +7,14 @@
 //
 
 #import "JumpTypeTableViewController.h"
+#import "JumpTypeModel.h"
 
 @interface JumpTypeTableViewController ()
 
 //数据源
 @property (strong,nonatomic) NSMutableArray *muArray;
 //选择的数据
-@property (copy,nonatomic) NSMutableDictionary *selectDict;
+@property (strong,nonatomic) NSDictionary *selectDict;
 
 @end
 
@@ -22,7 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    [RefreshHelper refreshHelperWithScrollView:self.tableView target:self loadNewData:@selector(loadNewData) loadMoreData:nil isBeginRefresh:YES];
+    [RefreshHelper refreshHelperWithScrollView:self.tableView target:self loadNewData:@selector(loadNewData) loadMoreData:nil isBeginRefresh:YES];
     
     [self setupUI];
     
@@ -47,15 +48,15 @@
     
     self.muArray = [NSMutableArray array];
     
-    for(NSInteger i=0;i<10;i++){
-        
-        NSString *str = [NSString stringWithFormat:@"类型标题%ld",i + 1];
-        NSString *strId = [NSString stringWithFormat:@"%ld",i];
-
-        NSDictionary *dict = @{@"title":str,@"id":strId};
-        
-        [self.muArray addObject:dict];
-    }
+//    for(NSInteger i=0;i<10;i++){
+//        
+//        NSString *str = [NSString stringWithFormat:@"类型标题%ld",i + 1];
+//        NSString *strId = [NSString stringWithFormat:@"%ld",i];
+//
+//        NSDictionary *dict = @{@"title":str,@"id":strId};
+//        
+//        [self.muArray addObject:dict];
+//    }
     
 }
 
@@ -75,7 +76,6 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-  
     static NSString *identifier = @"cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
@@ -85,14 +85,14 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     
-    NSString *title = SafeString(self.muArray[indexPath.row][@"title"]);
-    NSString *titleId = SafeString(self.muArray[indexPath.row][@"id"]);
-
-    cell.textLabel.text = title;
+    JumpTypeModel *model = self.muArray[indexPath.row];
+    JumpTypeModel *selectModel = [JumpTypeModel mj_objectWithKeyValues:self.selectDict];
+    
+    cell.textLabel.text = SafeString(model.fname);
     
     cell.textLabel.font = [UIFont systemFontOfSize:16];
     
-    if([titleId isEqualToString:SafeString(self.selectDict[@"id"])]){
+    if([SafeString(model.fid) isEqualToString:SafeString(selectModel.fid)]){
         
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
         
@@ -123,8 +123,15 @@
 -(void)sureAction:(UIBarButtonItem *)item{
     
     if(self.block){
+        
+        JumpTypeModel *selectModel = [JumpTypeModel mj_objectWithKeyValues:self.selectDict];
 
-        self.block(self.selectDict);
+        NSString *title = SafeString(selectModel.fname);
+        NSString *titleId = SafeString(selectModel.fid);
+        
+        NSDictionary *muDict = @{@"title":title,@"id":titleId};
+
+        self.block(muDict);
         
         [self.navigationController popViewControllerAnimated:YES];
     }
@@ -146,15 +153,20 @@
         parameters[@"t"] = @"5";
         parameters[@"d"] = @"0";
 
-        [AFNHelper get:nil parameter:parameters success:^(id responseObject) {
+        [AFNHelper get:BaseUrl parameter:parameters success:^(id responseObject) {
             
             JumpLog(@"%@",responseObject);
             
+            weakself.muArray = [JumpTypeModel mj_objectArrayWithKeyValuesArray:responseObject];
+            
             [weakself.tableView.mj_header endRefreshing];
+            
+            [weakself.tableView reloadData];
             
         } faliure:^(id error) {
             
             JumpLog(@"%@",error);
+            
             [weakself.tableView.mj_header endRefreshing];
         }];
         
@@ -169,11 +181,17 @@
         [AFNHelper get:BaseUrl parameter:parameters success:^(id responseObject) {
             
             JumpLog(@"%@",responseObject);
+            
+            weakself.muArray = [JumpTypeModel mj_objectArrayWithKeyValuesArray:responseObject];
+            
             [weakself.tableView.mj_header endRefreshing];
-
+            
+            [weakself.tableView reloadData];
+            
         } faliure:^(id error) {
             
             JumpLog(@"%@",error);
+            
             [weakself.tableView.mj_header endRefreshing];
 
         }];

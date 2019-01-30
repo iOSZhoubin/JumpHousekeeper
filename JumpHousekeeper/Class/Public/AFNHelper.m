@@ -32,30 +32,16 @@
 //get请求
 + (NSURLSessionDataTask *)get:(NSString *)url parameter:(id )parameters success:(void(^)(id responseObject))success faliure:(void(^)(id error))failure
 {
-    
-    NSString *urlStr;
-    
-    if(url.length > 0){
-        
-        urlStr = [NSString stringWithFormat:@"%@%@",BaseUrl,url];
-
-    }else{
-        
-        urlStr = BaseUrl;
-    }
-    
-    JumpLog(@"url=====%@",urlStr);
+    JumpLog(@"url=====%@",url);
     
     JumpLog(@"parameters======%@",parameters);
     
     
-    NSURLSessionDataTask *dataTask = [[AFNHelper sharedManager] GET:urlStr parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+    NSURLSessionDataTask *dataTask = [[AFNHelper sharedManager] GET:url parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
         
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
-        
-        JumpLog(@"%@",responseObject);
         
         NSData *data = responseObject;
         
@@ -65,6 +51,7 @@
 
         success(dict);
         
+        JumpLog(@"%@",dict);
 
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
@@ -80,23 +67,13 @@
 //post请求
 + (NSURLSessionDataTask *)post:(NSString *)url parameters:(id)parameters success:(void(^)(id responseObject))success faliure:(void(^)(id error))failure
 {
-    NSString *urlStr;
     
-    if(url.length > 0){
-        
-        urlStr = [NSString stringWithFormat:@"%@%@",BaseUrl,url];
-        
-    }else{
-        
-        urlStr = BaseUrl;
-    }
-    
-    JumpLog(@"url=====%@",urlStr);
+    JumpLog(@"url=====%@",url);
     
     JumpLog(@"parameters======%@",parameters);
 
         
-    NSURLSessionDataTask *dataTask = [[AFNHelper sharedManager] POST:urlStr parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
+    NSURLSessionDataTask *dataTask = [[AFNHelper sharedManager] POST:url parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         
         
         
