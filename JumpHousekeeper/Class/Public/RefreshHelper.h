@@ -17,6 +17,8 @@
  *  @param target       控制器
  *  @param loadNewData  下拉
  *  @param loadMoreData 上拉
+ *  @param beginRefreshing 是否进入页面就开始刷新
+
  */
 +(void)refreshHelperWithScrollView:(UIScrollView *)scrollView target:(id)target loadNewData:(SEL)loadNewData loadMoreData:(SEL)loadMoreData isBeginRefresh:(BOOL )beginRefreshing;
 

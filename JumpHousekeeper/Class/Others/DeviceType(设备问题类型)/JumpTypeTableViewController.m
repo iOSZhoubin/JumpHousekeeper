@@ -125,11 +125,8 @@
     if(self.block){
         
         JumpTypeModel *selectModel = [JumpTypeModel mj_objectWithKeyValues:self.selectDict];
-
-        NSString *title = SafeString(selectModel.fname);
-        NSString *titleId = SafeString(selectModel.fid);
         
-        NSDictionary *muDict = @{@"title":title,@"id":titleId};
+        NSDictionary *muDict = @{@"title":SafeString(selectModel.fname),@"id":SafeString(selectModel.fid)};
 
         self.block(muDict);
         
@@ -155,9 +152,16 @@
 
         [AFNHelper get:BaseUrl parameter:parameters success:^(id responseObject) {
             
-            JumpLog(@"%@",responseObject);
+            NSDictionary *dict = responseObject;
             
-            weakself.muArray = [JumpTypeModel mj_objectArrayWithKeyValuesArray:responseObject];
+            if([SafeString(dict[@"message"]) isEqualToString:@"error"]){
+                
+                [SVPShow showInfoWithMessage:@"当前设备未登录"];
+                
+            }else{
+                
+                weakself.muArray = [JumpTypeModel mj_objectArrayWithKeyValuesArray:dict];
+            }
             
             [weakself.tableView.mj_header endRefreshing];
             
@@ -182,7 +186,16 @@
             
             JumpLog(@"%@",responseObject);
             
-            weakself.muArray = [JumpTypeModel mj_objectArrayWithKeyValuesArray:responseObject];
+            NSDictionary *dict = responseObject;
+            
+            if([SafeString(dict[@"message"]) isEqualToString:@"error"]){
+                
+                [SVPShow showInfoWithMessage:@"当前设备未登录"];
+                
+            }else{
+                
+                weakself.muArray = [JumpTypeModel mj_objectArrayWithKeyValuesArray:responseObject];
+            }
             
             [weakself.tableView.mj_header endRefreshing];
             

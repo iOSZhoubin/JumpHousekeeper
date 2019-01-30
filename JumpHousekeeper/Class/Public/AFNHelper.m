@@ -42,13 +42,22 @@
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
-        
         NSData *data = responseObject;
         
         NSString *str = [data mj_JSONString];
         
-        NSDictionary *dict = [str mj_JSONObject];
+        NSDictionary *dict;
+        
+        if([str isEqualToString:@"error,no login"]){
+            
+            dict = @{@"message":@"error"};
 
+        }else{
+            
+            dict = [str mj_JSONObject];
+
+        }
+        
         success(dict);
         
         JumpLog(@"%@",dict);

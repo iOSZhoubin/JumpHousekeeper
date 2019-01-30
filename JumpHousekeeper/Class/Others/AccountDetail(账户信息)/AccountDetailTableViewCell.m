@@ -22,14 +22,13 @@
 
 @implementation AccountDetailTableViewCell
 
--(void)refreshWithModel:(JumpAccountDetailModel *)model indexPath:(NSIndexPath *)indexPath{
+-(void)refreshWithModel:(JumpAccountDetailModel *)model isEnabel:(NSString *)isEnabel indexPath:(NSIndexPath *)indexPath{
 
     NSArray *titleArray = @[@"昵称",@"账号",@"真实姓名",@"手机号",@"邮箱",@"详细地址"];
     
     self.titleName.text = titleArray[indexPath.row];
     
-    self.contentField.enabled = NO;
-    
+    //是否显示右侧箭头
     if(indexPath.row == 5){
         
         self.arrowImage.hidden = NO;
@@ -37,6 +36,24 @@
     }else{
         
         self.arrowImage.hidden = YES;
+    }
+    
+    
+    //是否可以编辑
+    if([isEnabel isEqualToString:@"1"]){
+        
+        if(indexPath.row == 1 || indexPath.row == 3 || indexPath.row == 5){
+            
+            self.contentField.enabled = NO;
+        
+        }else{
+            
+            self.contentField.enabled = YES;
+        }
+        
+    }else{
+        
+        self.contentField.enabled = NO;
     }
     
     switch (indexPath.row) {

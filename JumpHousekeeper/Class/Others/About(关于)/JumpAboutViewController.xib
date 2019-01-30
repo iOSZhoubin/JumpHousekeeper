@@ -35,8 +35,8 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="        本系统版权属于西安交大捷普网络科技邮箱公司所有，任何个人、机构未经西安交大捷普网络科技有限公司的书面授权许可，不得以任何方式复制或引用本系统的任何内容。" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MNW-9g-sqb">
-                    <rect key="frame" x="15" y="255" width="345" height="76.5"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="        捷普设备管家用于对西安交大捷普网络科技有限公司生产的网络安全产品进行管理，是捷普公司为用户提供及时，优质服务的桥梁。" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MNW-9g-sqb">
+                    <rect key="frame" x="15" y="255" width="345" height="57.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>

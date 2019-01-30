@@ -17,6 +17,8 @@
 @property (weak, nonatomic) IBOutlet UIView *headView;
 //tableView
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+//数据源
+@property (strong,nonatomic) NSMutableArray *dataArray;
 
 @end
 
@@ -37,7 +39,11 @@
     
     self.tableView.dataSource = self;
     
+    self.dataArray = [NSMutableArray array];
+    
     [self.tableView registerNib:[UINib nibWithNibName:@"JumpInfomationTableViewCell" bundle:nil] forCellReuseIdentifier:@"JumpInfomationTableViewCell"];
+    
+//    [RefreshHelper refreshHelperWithScrollView:self.tableView target:self loadNewData:@selector(loadList) loadMoreData:nil isBeginRefresh:YES];
     
 }
 
@@ -49,9 +55,11 @@
     SLBannerView *banner = [SLBannerView bannerViewXib];
 
     banner.frame = CGRectMake(0, 0, kWidth, 160);
-    
+
     //图片
     banner.slImages = @[@"photo1.png", @"photo2.png", @"photo3.png"];
+//    banner.slImages = @[@"http://img.zcool.cn/community/01c8c859f04db5a801202b0c544b28.jpg@2o.jpg", @"http://img.zcool.cn/community/01c8e3554473d80000019ae9961675.jpg", @"http://i0.hdslb.com/bfs/article/5e9cac17dcbb75d8b1af4e4435f53366f32a3e45.jpg"];
+
     //标题
     banner.slTitles = @[@"WAF是一个软硬件一体化架构的系统",@"WAF是一个软硬件一体化架构的系统",@"WAF是一个软硬件一体化架构的系统"];
     
@@ -112,6 +120,46 @@
 }
 
 
+
+#pragma mark --- 资讯列表
+
+-(void)loadList{
+    
+    L2CWeakSelf(self);
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    
+    parameters[@"m"] = @"1";
+    parameters[@"t"] = @"0";
+    parameters[@"id"] = @"0";
+    parameters[@"c"] = @"10";
+
+    [AFNHelper get:BaseUrl parameter:parameters success:^(id responseObject) {
+        
+        JumpLog(@"%@",responseObject);
+        
+        NSDictionary *dict = responseObject;
+        
+        if([SafeString(dict[@"message"]) isEqualToString:@"error"]){
+            
+            [SVPShow showInfoWithMessage:@"当前设备未登录"];
+            
+        }else{
+            
+
+        }
+        
+        [weakself.tableView.mj_header endRefreshing];
+        
+        [weakself.tableView reloadData];
+        
+    } faliure:^(id error) {
+        
+        JumpLog(@"%@",error);
+        
+        [weakself.tableView.mj_header endRefreshing];
+    }];
+}
 
 
 - (void)didReceiveMemoryWarning {

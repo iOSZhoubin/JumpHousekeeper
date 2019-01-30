@@ -13,6 +13,11 @@
 
 @interface JumpAccountDetailTableViewController ()
 
+//是否可以编辑
+@property (copy,nonatomic) NSString *isEnabel;
+//模型
+@property (strong,nonatomic) JumpAccountDetailModel *model;
+
 @end
 
 @implementation JumpAccountDetailTableViewController
@@ -22,8 +27,13 @@
     
     self.navigationItem.title = @"账户信息";
     
+    self.isEnabel = @"0"; //默认不可编辑
+    
     [self.tableView registerNib:[UINib nibWithNibName:@"AccountDetailTableViewCell" bundle:nil] forCellReuseIdentifier:@"AccountDetailTableViewCell"];
     
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"编辑" style:UIBarButtonItemStyleDone target:self action:@selector(enabel:)];
+    
+    [RefreshHelper refreshHelperWithScrollView:self.tableView target:self loadNewData:@selector(getAccountDetail) loadMoreData:nil isBeginRefresh:YES];
 }
 
 #pragma mark --- UITableViewDelegate And DataSource
@@ -47,7 +57,7 @@
     
     AccountDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AccountDetailTableViewCell" forIndexPath:indexPath];
     
-    [cell refreshWithModel:nil indexPath:indexPath];
+    [cell refreshWithModel:self.model isEnabel:self.isEnabel indexPath:indexPath];
     
     return cell;
 }
@@ -72,5 +82,85 @@
 }
 
 
+#pragma mark --- 编辑功能
+
+-(void)enabel:(UIBarButtonItem *)item{
+    
+    if([item.title isEqualToString:@"编辑"]){
+        
+        item.title = @"保存";
+        
+        self.isEnabel = @"1";
+        
+    }else{
+        
+        item.title = @"编辑";
+        
+        self.isEnabel = @"0";
+    }
+}
+
+#pragma mark --- cell的代理方法
+
+-(void)contentDetail:(NSString *)content andCell:(AccountDetailTableViewCell *)cell{
+    
+    if(SafeString(content).length > 0){
+        
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+        
+        switch (indexPath.row) {
+            case 0://昵称
+                
+                self.model.accountName = SafeString(content);
+                break;
+            case 2://真实姓名
+                self.model.userName = SafeString(content);
+                break;
+            case 4://邮箱
+                self.model.email = SafeString(content);
+                break;
+                
+            default:
+                break;
+        }
+
+    }
+}
+
+
+#pragma mark --- 获取账户信息详情
+
+-(void)getAccountDetail{
+    
+    L2CWeakSelf(self);
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+
+    parameters[@"m"] = @"4";
+    parameters[@"t"] = @"2";
+    
+    [AFNHelper get:BaseUrl parameter:parameters success:^(id responseObject) {
+        
+        NSDictionary *dict = responseObject;
+        
+        if([SafeString(dict[@"message"]) isEqualToString:@"error"]){
+            
+            [SVPShow showInfoWithMessage:@"当前设备未登录"];
+            
+        }else{
+            
+            weakself.model = [JumpAccountDetailModel mj_objectWithKeyValues:dict];
+        }
+        
+        [weakself.tableView.mj_header endRefreshing];
+        
+        [weakself.tableView reloadData];
+        
+    } faliure:^(id error) {
+        
+        [weakself.tableView.mj_header endRefreshing];
+
+    }];
+}
 
 @end

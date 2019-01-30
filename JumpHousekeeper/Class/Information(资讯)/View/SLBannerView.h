@@ -39,7 +39,5 @@
 + (instancetype)bannerViewXib;
 /** 代码快速构造方法 */
 + (instancetype)bannerView;
-/**
- 注：圆点页码控制，默认靠下居中
- */
+
 @end

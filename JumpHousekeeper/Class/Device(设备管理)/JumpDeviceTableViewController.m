@@ -13,7 +13,10 @@
 
 @interface JumpDeviceTableViewController ()
 
+//添加设备
 @property (strong,nonatomic) UIButton *toolBarBtn;
+//数据源
+@property (strong,nonatomic) NSMutableArray *dataArray;
 
 @end
 
@@ -71,13 +74,17 @@
     
     self.view.backgroundColor = BackGroundColor;
     
+    self.dataArray = [NSMutableArray array];
+    
+//    [RefreshHelper refreshHelperWithScrollView:self.tableView target:self loadNewData:@selector(getDeviceList) loadMoreData:nil isBeginRefresh:YES];
+    
 }
 
 #pragma mark --- UITableViewDelegate And DataSource
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 5;
+    return self.dataArray.count;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -150,6 +157,46 @@
     
     JumpLog(@"添加新设备");
 }
+
+
+
+#pragma mark --- 获取设备列表
+
+-(void)getDeviceList{
+    
+    L2CWeakSelf(self);
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    
+    parameters[@"m"] = @"2";
+    parameters[@"t"] = @"0";
+    
+    [AFNHelper get:BaseUrl parameter:parameters success:^(id responseObject) {
+        
+        JumpLog(@"%@",responseObject);
+        
+        NSDictionary *dict = responseObject;
+        
+        if([SafeString(dict[@"message"]) isEqualToString:@"error"]){
+            
+            [SVPShow showInfoWithMessage:@"当前设备未登录"];
+            
+        }else{
+            
+        }
+        
+        [weakself.tableView.mj_header endRefreshing];
+        
+        [weakself.tableView reloadData];
+        
+    } faliure:^(id error) {
+        
+        JumpLog(@"%@",error);
+        
+        [weakself.tableView.mj_header endRefreshing];
+    }];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

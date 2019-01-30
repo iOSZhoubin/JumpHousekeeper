@@ -27,8 +27,9 @@
  * 账户信息刷新方法
  * @indexPath 索引
  * @model 模型
+ * @isEnabel 是否可以编辑
  */
--(void)refreshWithModel:(JumpAccountDetailModel *)model indexPath:(NSIndexPath *)indexPath;
+-(void)refreshWithModel:(JumpAccountDetailModel *)model isEnabel:(NSString *)isEnabel indexPath:(NSIndexPath *)indexPath;
 
 
 /**

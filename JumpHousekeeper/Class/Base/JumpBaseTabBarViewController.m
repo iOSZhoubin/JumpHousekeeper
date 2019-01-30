@@ -76,13 +76,13 @@
         
         JumpMineTableViewController *vc4 = [[JumpMineTableViewController alloc]init];
         
-        [self setVc:vc4 title:@"我的" image:@"accountImage" selectImage:@"accountSelect"];
+        [self setVc:vc4 title:@"我的" image:@"Mine" selectImage:@"MineSelect"];
         
     }else{
         
         JumpLoginViewController *vc4 = [[JumpLoginViewController alloc]init];
 
-        [self setVc:vc4 title:@"我的" image:@"accountImage" selectImage:@"accountSelect"];
+        [self setVc:vc4 title:@"我的" image:@"Mine" selectImage:@"MineSelect"];
     }
 }
 
