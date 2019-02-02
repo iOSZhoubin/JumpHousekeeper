@@ -77,7 +77,7 @@
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
         
-        cell.textLabel.text = @"注销登录";
+        cell.textLabel.text = @"退出登录";
         
         cell.textLabel.font = [UIFont systemFontOfSize:16];
         
@@ -175,11 +175,9 @@
     }else if (indexPath.section == 4){
         //注销登录
        
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"是否注销登录?" message:nil preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"是否退出登录?" message:nil preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            
-            [JumpKeyChain deleteKeychainDataForKey:@"userInfo"];//删除保存的账户密码
             
             JumpBaseTabBarViewController *vc = [[JumpBaseTabBarViewController alloc]init];
             

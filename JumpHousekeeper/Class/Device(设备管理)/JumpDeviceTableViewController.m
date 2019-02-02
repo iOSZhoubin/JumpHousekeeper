@@ -76,7 +76,7 @@
     
     self.dataArray = [NSMutableArray array];
     
-//    [RefreshHelper refreshHelperWithScrollView:self.tableView target:self loadNewData:@selector(getDeviceList) loadMoreData:nil isBeginRefresh:YES];
+    [RefreshHelper refreshHelperWithScrollView:self.tableView target:self loadNewData:@selector(getDeviceList) loadMoreData:nil isBeginRefresh:YES];
     
 }
 
@@ -84,7 +84,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return self.dataArray.count;
+    return 7;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

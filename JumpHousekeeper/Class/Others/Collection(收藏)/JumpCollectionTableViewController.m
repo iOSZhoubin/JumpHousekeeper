@@ -22,6 +22,8 @@
     self.navigationItem.title = @"我的收藏";
     
     [self.tableView registerNib:[UINib nibWithNibName:@"JumpInfomationTableViewCell" bundle:nil] forCellReuseIdentifier:@"JumpInfomationTableViewCell"];
+    
+    [RefreshHelper refreshHelperWithScrollView:self.tableView target:self loadNewData:@selector(getCollectionList) loadMoreData:nil isBeginRefresh:YES];
 
 }
 
@@ -98,6 +100,46 @@
     vc.titleName = @"资讯详情";
     
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+
+
+#pragma mark --- 获取收藏列表
+
+-(void)getCollectionList{
+    
+    L2CWeakSelf(self);
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    
+    parameters[@"m"] = @"1";
+    parameters[@"t"] = @"3";
+    parameters[@"s"] = @"1";
+    parameters[@"id"] = @"0";
+    parameters[@"c"] = @"10";
+    
+    [AFNHelper get:BaseUrl parameter:parameters success:^(id responseObject) {
+        
+        NSDictionary *dict = responseObject;
+        
+        if([SafeString(dict[@"message"]) isEqualToString:@"error"]){
+            
+            [SVPShow showInfoWithMessage:@"当前设备未登录"];
+            
+        }else{
+            
+
+        }
+        
+        [weakself.tableView.mj_header endRefreshing];
+        
+        [weakself.tableView reloadData];
+        
+    } faliure:^(id error) {
+        
+        [weakself.tableView.mj_header endRefreshing];
+        
+    }];
 }
 
 @end
