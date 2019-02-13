@@ -82,11 +82,9 @@
 
 
 
--(void)refreshWithindexPath:(NSIndexPath *)indexPath{
-    
-    NSArray *titleArray = @[@"Web应用防火墙",@"入侵检测",@"入侵防御",@"漏洞扫描",@"防火墙",@"信息审计",@"服务器维护",@"数据库审计",@"SSLVPN",@"SOC"];
- 
-    self.titleName.text = titleArray[indexPath.row];
+-(void)refreshWithModel:(JumpTypeModel *)model{
+
+    self.titleName.text = SafeString(model.cname);
     
     self.contentField.enabled = NO;
 }

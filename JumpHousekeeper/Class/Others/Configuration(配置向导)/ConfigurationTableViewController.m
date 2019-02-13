@@ -9,8 +9,11 @@
 #import "ConfigurationTableViewController.h"
 #import "AccountDetailTableViewCell.h"
 #import "JumpAgreementViewController.h"
+#import "JumpTypeModel.h"
 
 @interface ConfigurationTableViewController ()
+
+@property (strong,nonatomic) NSMutableArray *dataArray;
 
 @end
 
@@ -20,6 +23,8 @@
     [super viewDidLoad];
 
     [self creatUI];
+    
+    [RefreshHelper refreshHelperWithScrollView:self.tableView target:self loadNewData:@selector(loadNewData) loadMoreData:nil isBeginRefresh:YES];
 }
 
 -(void)creatUI{
@@ -33,6 +38,8 @@
         self.navigationItem.title = @"常见问题";
     }
     
+    self.dataArray = [NSMutableArray array];
+    
     [self.tableView registerNib:[UINib nibWithNibName:@"AccountDetailTableViewCell" bundle:nil] forCellReuseIdentifier:@"AccountDetailTableViewCell"];
 }
 
@@ -42,7 +49,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 10;
+    return self.dataArray.count;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -59,7 +66,9 @@
     
     AccountDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AccountDetailTableViewCell" forIndexPath:indexPath];
     
-    [cell refreshWithindexPath:indexPath];
+    JumpTypeModel *model = self.dataArray[indexPath.row];
+    
+    [cell refreshWithModel:model];
     
     return cell;
 }
@@ -69,13 +78,13 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
-    NSArray *titleArray = @[@"Web应用防火墙",@"入侵检测",@"入侵防御",@"漏洞扫描",@"防火墙",@"信息审计",@"服务器维护",@"数据库审计",@"SSLVPN",@"SOC"];
+    JumpTypeModel *model = self.dataArray[indexPath.row];
 
     JumpAgreementViewController *vc = [[JumpAgreementViewController alloc]init];
     
     vc.url = @"https://www.baidu.com";
     
-    vc.titleName = titleArray[indexPath.row];
+    vc.titleName = model.cname;
 
     vc.isShow = NO;
     
@@ -86,5 +95,41 @@
 }
 
 
+#pragma mark --- 获取titleName
+
+-(void)loadNewData{
+    
+    L2CWeakSelf(self);
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    
+    parameters[@"m"] = @"2";
+    parameters[@"t"] = @"5";
+    parameters[@"d"] = @"0";
+    
+    [AFNHelper get:BaseUrl parameter:parameters success:^(id responseObject) {
+        
+        NSDictionary *dict = responseObject;
+        
+        if([SafeString(dict[@"message"]) isEqualToString:@"error"]){
+            
+            [SVPShow showInfoWithMessage:@"当前设备未登录"];
+            
+        }else{
+            
+            weakself.dataArray = [JumpTypeModel mj_objectArrayWithKeyValuesArray:dict[@"result"]];
+        }
+        
+        [weakself.tableView.mj_header endRefreshing];
+        
+        [weakself.tableView reloadData];
+        
+    } faliure:^(id error) {
+        
+        JumpLog(@"%@",error);
+        
+        [weakself.tableView.mj_header endRefreshing];
+    }];
+}
 
 @end

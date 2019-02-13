@@ -88,7 +88,7 @@
     JumpTypeModel *model = self.muArray[indexPath.row];
     JumpTypeModel *selectModel = [JumpTypeModel mj_objectWithKeyValues:self.selectDict];
     
-    cell.textLabel.text = SafeString(model.fname);
+    cell.textLabel.text = SafeString(model.cname);
     
     cell.textLabel.font = [UIFont systemFontOfSize:16];
     
@@ -160,7 +160,7 @@
                 
             }else{
                 
-                weakself.muArray = [JumpTypeModel mj_objectArrayWithKeyValuesArray:dict];
+                weakself.muArray = [JumpTypeModel mj_objectArrayWithKeyValuesArray:dict[@"result"]];
             }
             
             [weakself.tableView.mj_header endRefreshing];

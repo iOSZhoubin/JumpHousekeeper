@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "JumpAccountDetailModel.h"
 #import "DeviceDetailModel.h"
+#import "JumpTypeModel.h"
 
 @class AccountDetailTableViewCell;
 
@@ -36,7 +37,7 @@
  * 配置向导和常见问题刷新方法
  * @indexPath 索引
  */
--(void)refreshWithindexPath:(NSIndexPath *)indexPath;
+-(void)refreshWithModel:(JumpTypeModel *)model;
 
 
 /**

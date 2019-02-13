@@ -54,7 +54,9 @@
 
         }else{
             
-            dict = [str mj_JSONObject];
+            NSArray *array = [str mj_JSONObject];
+
+            dict = @{@"result":array};
 
         }
         
