@@ -103,7 +103,7 @@
     
     vc.isShow = YES;
     
-    vc.url = @"https://www.baidu.com";
+    vc.url = @"https://www.baidu.com"; //http://app.jump.net.cn:8000/app%@，indexPath.row[@"uri"]
     
     vc.titleName = @"资讯详情";
     
@@ -139,6 +139,9 @@
         JumpLog(@"%@",responseObject);
         
         NSDictionary *dict = responseObject;
+        
+//        responseObject[@"news"];
+//        responseObject[@"images"];
         
         if([SafeString(dict[@"message"]) isEqualToString:@"error"]){
             

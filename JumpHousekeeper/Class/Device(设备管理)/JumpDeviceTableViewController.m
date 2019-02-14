@@ -118,6 +118,11 @@
             
             JumpLog(@"删除");
             
+//            _fname = [indexPath.row][@"fname"];
+//            _fkey = [indexPath.row][@"fid"];
+            
+//            [weakself getDeviceCode:@"fname"];//删除设备
+            
         }]];
         
         [alertController addAction: [UIAlertAction actionWithTitle:@"取消" style: UIAlertActionStyleCancel handler:nil]];
@@ -156,6 +161,55 @@
 -(void)addAction:(UIButton *)sender{
     
     JumpLog(@"添加新设备");
+}
+
+
+#pragma mark --- 删除设备
+
+-(void)getDeviceCode:(NSString *)deviceName{
+    
+    L2CWeakSelf(self);
+    
+    NSMutableDictionary *parametets = [NSMutableDictionary dictionary];
+    
+    parametets[@"m"] = @"0";
+    parametets[@"t"] = @"7";
+    parametets[@"d"] = SafeString(deviceName);
+    
+    [SVPShow show];
+    
+    [AFNHelper get:BaseUrl parameter:parametets success:^(id responseObject) {
+        
+        NSString *code = SafeString(responseObject[@"result"]);
+        
+        [weakself deleteDevice:deviceName andCode:code];
+        
+    } faliure:^(id error) {
+        
+        [SVPShow showFailureWithMessage:@"删除失败"];
+
+    }];
+
+}
+
+-(void)deleteDevice:(NSString *)deviceName andCode:(NSString *)code{
+    
+    NSMutableDictionary *parametets = [NSMutableDictionary dictionary];
+    
+    parametets[@"m"] = @"0";
+    parametets[@"t"] = @"7";
+    parametets[@"d"] = SafeString(deviceName);
+    parametets[@"c"] = SafeString(code);
+
+    [AFNHelper get:BaseUrl parameter:parametets success:^(id responseObject) {
+        
+        [SVPShow showSuccessWithMessage:@"删除成功"];
+        
+    } faliure:^(id error) {
+        
+        [SVPShow showFailureWithMessage:@"删除失败"];
+
+    }];
 }
 
 

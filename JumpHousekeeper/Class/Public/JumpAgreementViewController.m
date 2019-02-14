@@ -47,14 +47,12 @@
     self.webView.UIDelegate = self;
     self.webView.navigationDelegate = self;
     
-    [self.view addSubview:self.webView];
-    
-    
     NSURLRequest *requ = [NSURLRequest requestWithURL:[NSURL URLWithString:self.url]];
     
     [self.webView loadRequest:requ];
     
-    
+    [self.view addSubview:self.webView];
+
     //添加进度条
     self.progressLine = [[UIView alloc] initWithFrame:CGRectMake(0, L2C_StatusBarAndNavigationBarHeight, 0, 2)];
     

@@ -82,8 +82,15 @@
 
     JumpAgreementViewController *vc = [[JumpAgreementViewController alloc]init];
     
-    vc.url = @"https://www.baidu.com";
-    
+    if([self.type isEqualToString:@"1"]){
+        
+        vc.url = [NSString stringWithFormat:@"http://app.jump.net.cn:8000/app/support/wizard%@.html",SafeString(model.fid)];
+  
+    }else{
+        
+        vc.url = [NSString stringWithFormat:@"http://app.jump.net.cn:8000/app/support/faq%@.html",SafeString(model.fid)];
+    }
+
     vc.titleName = model.cname;
 
     vc.isShow = NO;
