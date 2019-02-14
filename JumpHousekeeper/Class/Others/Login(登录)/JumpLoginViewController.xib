@@ -24,7 +24,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1GN-cd-WMG">
-                    <rect key="frame" x="10" y="80" width="355" height="140"/>
+                    <rect key="frame" x="10" y="120" width="355" height="140"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="用户名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j4w-9u-oYX">
                             <rect key="frame" x="30" y="10" width="60" height="30"/>
@@ -36,7 +36,7 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mQk-he-TSI">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入用户名" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mQk-he-TSI">
                             <rect key="frame" x="95" y="10" width="245" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="lK6-vr-grM"/>
@@ -55,7 +55,7 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZXt-aj-73G">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZXt-aj-73G">
                             <rect key="frame" x="95" y="80" width="245" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="ahQ-Ig-hpd"/>
@@ -107,7 +107,7 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WHb-23-4sn">
-                    <rect key="frame" x="50" y="250" width="275" height="40"/>
+                    <rect key="frame" x="50" y="290" width="275" height="40"/>
                     <color key="backgroundColor" red="0.0" green="0.47843137254901957" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="yM6-g4-BJ8"/>
@@ -149,7 +149,7 @@
             <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="WHb-23-4sn" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="50" id="7up-oc-a6q"/>
-                <constraint firstItem="1GN-cd-WMG" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="60" id="Gkg-Pn-tUb"/>
+                <constraint firstItem="1GN-cd-WMG" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="100" id="Gkg-Pn-tUb"/>
                 <constraint firstItem="WHb-23-4sn" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Goz-hp-xtj"/>
                 <constraint firstItem="YvN-Rf-djW" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="a4S-6R-oy5"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="WHb-23-4sn" secondAttribute="trailing" constant="50" id="aZI-bv-lho"/>

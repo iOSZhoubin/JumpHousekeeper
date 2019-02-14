@@ -43,7 +43,7 @@
     
     [self.tableView registerNib:[UINib nibWithNibName:@"JumpInfomationTableViewCell" bundle:nil] forCellReuseIdentifier:@"JumpInfomationTableViewCell"];
     
-//    [RefreshHelper refreshHelperWithScrollView:self.tableView target:self loadNewData:@selector(loadList) loadMoreData:nil isBeginRefresh:YES];
+    [RefreshHelper refreshHelperWithScrollView:self.tableView target:self loadNewData:@selector(loadList) loadMoreData:nil isBeginRefresh:YES];
     
 }
 

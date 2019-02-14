@@ -16,6 +16,7 @@
 #import "JumpFeedbackTableViewController.h"
 #import "ChangePassWordViewController.h"
 #import "JumpBaseTabBarViewController.h"
+#import "JumpLoginViewController.h"
 
 @interface JumpMineTableViewController ()
 
@@ -173,13 +174,23 @@
         [self.navigationController pushViewController:vc animated:YES];
         
     }else if (indexPath.section == 4){
-        //注销登录
+        //退出登录
        
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"是否退出登录?" message:nil preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             
-            JumpBaseTabBarViewController *vc = [[JumpBaseTabBarViewController alloc]init];
+            //退出登录后只保存账户名
+            NSDictionary *userDict = [JumpKeyChain getKeychainDataForKey:@"userInfo"];
+            
+            NSString *account = SafeString(userDict[@"account"]);
+            
+            NSDictionary *userInfo = @{@"account":account,@"password":@"",@"isLogin":@"0"};
+            
+            [JumpKeyChain addKeychainData:userInfo forKey:@"userInfo"];
+
+//            JumpBaseTabBarViewController *vc = [[JumpBaseTabBarViewController alloc]init];
+            JumpLoginViewController *vc = [[JumpLoginViewController alloc]init];
             
             AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
             

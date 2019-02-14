@@ -76,23 +76,23 @@
         return;
     }
 
-//    [self clickloginAction];//登录
+    [self clickloginAction];//登录
     
-    NSString *account = SafeString(self.account.text);
-    
-    NSString *password = SafeString(self.passWord.text);
-    
-    NSString *isLogin = @"1";
-    
-    NSDictionary *userInfo = @{@"account":account,@"password":password,@"isLogin":isLogin};
-    
-    [JumpKeyChain addKeychainData:userInfo forKey:@"userInfo"];
-    
-    JumpBaseTabBarViewController *vc = [[JumpBaseTabBarViewController alloc]init];
-    
-    AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        
-    appdelegate.window.rootViewController = vc;
+//    NSString *account = SafeString(self.account.text);
+//
+//    NSString *password = SafeString(self.passWord.text);
+//
+//    NSString *isLogin = @"1";
+//
+//    NSDictionary *userInfo = @{@"account":account,@"password":password,@"isLogin":isLogin};
+//
+//    [JumpKeyChain addKeychainData:userInfo forKey:@"userInfo"];
+//
+//    JumpBaseTabBarViewController *vc = [[JumpBaseTabBarViewController alloc]init];
+//
+//    AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//
+//    appdelegate.window.rootViewController = vc;
 }
 
 #pragma mark --- 忘记密码
@@ -168,25 +168,35 @@
         
         JumpLog(@"%@",responseObject);
         
-        [SVPShow showSuccessWithMessage:@"登录成功"];
+        NSDictionary *dict = responseObject;
         
-        NSString *account = SafeString(self.account.text);
+//        if([SafeString(dict[@"result"]) isEqualToString:@"1"]){
         
-        NSString *password = SafeString(self.passWord.text);
-        
-        NSString *isLogin = @"1";
-        
-        NSDictionary *userInfo = @{@"account":account,@"password":password,@"isLogin":isLogin};
-        
-        [JumpKeyChain addKeychainData:userInfo forKey:@"userInfo"];
-        
-        JumpBaseTabBarViewController *vc = [[JumpBaseTabBarViewController alloc]init];
-        
-        AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        
-        appdelegate.window.rootViewController = vc;
-
-        
+            [SVPShow showSuccessWithMessage:@"登录成功"];
+            
+            NSString *account = SafeString(self.account.text);
+            
+            NSString *password = SafeString(self.passWord.text);
+            
+            NSString *isLogin = @"1";
+            
+            NSDictionary *userInfo = @{@"account":account,@"password":password,@"isLogin":isLogin};
+            
+            [JumpKeyChain addKeychainData:userInfo forKey:@"userInfo"];
+            
+            JumpBaseTabBarViewController *vc = [[JumpBaseTabBarViewController alloc]init];
+            
+            AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            
+            appdelegate.window.rootViewController = vc;
+       
+//        }else{
+//
+//            NSString *messageStr = [NSString stringWithFormat:@"返回数据为:%@",SafeString(dict[@"result"])];
+//
+//            [SVPShow showInfoWithMessage:messageStr];
+//        }
+  
     } faliure:^(id error) {
         
         JumpLog(@"%@",error);

@@ -46,18 +46,21 @@
         
         NSString *str = [data mj_JSONString];
         
+        NSArray *array = [str mj_JSONObject];
+        
         NSDictionary *dict;
         
         if([str isEqualToString:@"error,no login"]){
             
             dict = @{@"message":@"error"};
 
-        }else{
+        }else if(array.count > 0){
             
-            NSArray *array = [str mj_JSONObject];
-
             dict = @{@"result":array};
 
+        }else{
+            
+            dict = @{@"result":str};
         }
         
         success(dict);

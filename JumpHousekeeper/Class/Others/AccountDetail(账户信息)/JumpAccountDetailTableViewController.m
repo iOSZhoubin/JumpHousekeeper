@@ -72,6 +72,19 @@
             
         ExperienceViewController *vc = [[ExperienceViewController alloc]init];
         
+        BOOL isEditor;
+        
+        if([self.isEnabel isEqualToString:@"1"]){
+            
+            isEditor = YES;
+            
+        }else{
+            
+            isEditor = NO;
+        }
+        
+        vc.isEnditor = isEditor;
+        
         vc.vcTitle = @"详细地址";
         
         vc.saveText = @"陕西省西安市高新技术产业开发区科技二路西安交大捷普网络科技有限公司";
@@ -98,6 +111,8 @@
         
         self.isEnabel = @"0";
     }
+    
+    [self.tableView reloadData];
 }
 
 #pragma mark --- cell的代理方法

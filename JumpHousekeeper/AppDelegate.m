@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "JumpBaseTabBarViewController.h"
+#import "JumpLoginViewController.h"
 
 @interface AppDelegate ()
 
@@ -26,8 +27,9 @@
     
     self.window.backgroundColor = [UIColor whiteColor];
     
-    JumpBaseTabBarViewController *vc = [[JumpBaseTabBarViewController alloc]init];
-    
+//    JumpBaseTabBarViewController *vc = [[JumpBaseTabBarViewController alloc]init];
+    JumpLoginViewController *vc = [[JumpLoginViewController alloc]init];
+
     self.window.rootViewController = vc;
     
     [self.window makeKeyAndVisible];

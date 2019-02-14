@@ -8,6 +8,7 @@
 
 #import "ChangePassWordViewController.h"
 #import "JumpBaseTabBarViewController.h"
+#import "JumpLoginViewController.h"
 
 @interface ChangePassWordViewController ()
 //设备号
@@ -237,7 +238,7 @@
         
         [JumpKeyChain deleteKeychainDataForKey:@"userInfo"];//删除保存的账户密码
         
-        JumpBaseTabBarViewController *vc = [[JumpBaseTabBarViewController alloc]init];
+        JumpLoginViewController *vc = [[JumpLoginViewController alloc]init];
         
         AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         
