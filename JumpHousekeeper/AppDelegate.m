@@ -28,9 +28,12 @@
     self.window.backgroundColor = [UIColor whiteColor];
     
 //    JumpBaseTabBarViewController *vc = [[JumpBaseTabBarViewController alloc]init];
+    
     JumpLoginViewController *vc = [[JumpLoginViewController alloc]init];
 
-    self.window.rootViewController = vc;
+    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vc];
+    
+    self.window.rootViewController = nav;
     
     [self.window makeKeyAndVisible];
     
@@ -137,11 +140,5 @@
         abort();
     }
 }
-
-- (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(nullable UIWindow *)window
-{
-    return UIInterfaceOrientationMaskPortrait;
-}
-
 
 @end

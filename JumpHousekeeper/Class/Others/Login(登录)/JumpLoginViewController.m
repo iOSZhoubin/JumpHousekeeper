@@ -24,6 +24,22 @@
 
 @implementation JumpLoginViewController
 
+-(void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    
+    //登录界面隐藏navigationBar
+    self.navigationController.navigationBarHidden = YES;
+    
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    
+    [super viewWillDisappear:animated];
+    
+    self.navigationController.navigationBarHidden = NO;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -102,9 +118,7 @@
     ChangePassWordViewController *vc = [[ChangePassWordViewController alloc]init];
     
     vc.type = @"3";
-    
-    vc.hidesBottomBarWhenPushed = YES;
-    
+        
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -163,6 +177,8 @@
     parameters[@"t"] = @"1";
     parameters[@"u"] = SafeString(self.account.text);
     parameters[@"p"] = SafeString(self.passWord.text);
+    
+    [SVPShow show];
 
     [AFNHelper get:BaseUrl parameter:parameters success:^(id responseObject) {
         
@@ -200,6 +216,8 @@
     } faliure:^(id error) {
         
         JumpLog(@"%@",error);
+        
+        [SVPShow showFailureWithMessage:@"登录失败"];
         
     }];
 }

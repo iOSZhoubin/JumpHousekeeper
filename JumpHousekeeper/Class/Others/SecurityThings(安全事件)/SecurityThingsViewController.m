@@ -74,9 +74,9 @@
     
     NSDictionary *grid = @{@"left":@"3%",@"right":@"4%",@"bottom":@"3%",@"containLabel":@true};
 
-    NSDictionary *xAxis = @{@"axisTick":@{@"alignWithLabel":@true},@"type":@"category",@"data":array};
+    NSDictionary *xAxis = @{@"axisTick":@{@"alignWithLabel":@true},@"type":@"category",@"data":array,@"triggerEvent":@true};
     
-    NSDictionary *yAxis = @{@"type":@"value"};
+    NSDictionary *yAxis = @{@"type":@"value",@"triggerEvent":@true};
     
     NSArray *series = @[@{
                             @"data":data,
