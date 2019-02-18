@@ -30,6 +30,11 @@
 }
 
 
+-(void)refreshWithDeviceModel:(JumpDeviceModel *)model{
+    
+    self.titleName.text = SafeString(model.fname);
+}
+
 
 - (IBAction)switchAction:(UISwitch *)sender {
     

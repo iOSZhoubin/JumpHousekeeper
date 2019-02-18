@@ -62,6 +62,7 @@
 		39A5D1E621F1A711002CBC0D /* JumpBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A5D1E421F1A710002CBC0D /* JumpBaseTableViewController.m */; };
 		39A5D1EE21F1AC18002CBC0D /* echarts.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 39A5D1ED21F1AC18002CBC0D /* echarts.min.js */; };
 		39A5D1F521F1B9ED002CBC0D /* JumpEcharts.html in Resources */ = {isa = PBXBuildFile; fileRef = 39A5D1F421F1B9ED002CBC0D /* JumpEcharts.html */; };
+		39E5EBCE221AA45C002566DB /* JumpDeviceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 39E5EBCD221AA45C002566DB /* JumpDeviceModel.m */; };
 		39FFD6CD21FA9DC800E71924 /* DeviceDetailEchartsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FFD6CB21FA9DC800E71924 /* DeviceDetailEchartsViewController.m */; };
 		39FFD6D121FAAA0B00E71924 /* DeviceHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FFD6D021FAAA0B00E71924 /* DeviceHeadView.m */; };
 		39FFD6D321FAAA1200E71924 /* DeviceHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39FFD6D221FAAA1200E71924 /* DeviceHeadView.xib */; };
@@ -172,6 +173,8 @@
 		39A5D1E421F1A710002CBC0D /* JumpBaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JumpBaseTableViewController.m; sourceTree = "<group>"; };
 		39A5D1ED21F1AC18002CBC0D /* echarts.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = echarts.min.js; sourceTree = "<group>"; };
 		39A5D1F421F1B9ED002CBC0D /* JumpEcharts.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = JumpEcharts.html; sourceTree = "<group>"; };
+		39E5EBCC221AA45C002566DB /* JumpDeviceModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JumpDeviceModel.h; sourceTree = "<group>"; };
+		39E5EBCD221AA45C002566DB /* JumpDeviceModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JumpDeviceModel.m; sourceTree = "<group>"; };
 		39FFD6CA21FA9DC800E71924 /* DeviceDetailEchartsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceDetailEchartsViewController.h; sourceTree = "<group>"; };
 		39FFD6CB21FA9DC800E71924 /* DeviceDetailEchartsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceDetailEchartsViewController.m; sourceTree = "<group>"; };
 		39FFD6CF21FAAA0B00E71924 /* DeviceHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceHeadView.h; sourceTree = "<group>"; };
@@ -316,6 +319,8 @@
 				3917019A21F854FC00D90AC0 /* SwitchDeviceTableViewCell.h */,
 				3917019B21F854FC00D90AC0 /* SwitchDeviceTableViewCell.m */,
 				3917019C21F854FC00D90AC0 /* SwitchDeviceTableViewCell.xib */,
+				39E5EBCC221AA45C002566DB /* JumpDeviceModel.h */,
+				39E5EBCD221AA45C002566DB /* JumpDeviceModel.m */,
 			);
 			path = "Device(设备管理)";
 			sourceTree = "<group>";
@@ -685,6 +690,7 @@
 				3917018321F8470C00D90AC0 /* SLBannerView.m in Sources */,
 				39A5D1DA21F1A510002CBC0D /* UIView+UIViewExtension.m in Sources */,
 				39A5D1D921F1A510002CBC0D /* SVPShow.m in Sources */,
+				39E5EBCE221AA45C002566DB /* JumpDeviceModel.m in Sources */,
 				3917019D21F854FC00D90AC0 /* SwitchDeviceTableViewCell.m in Sources */,
 				397C638321F9B1A300E566A3 /* QiCodePreviewView.m in Sources */,
 				397C636F21F9500100E566A3 /* JumpFeedbackTableViewController.m in Sources */,

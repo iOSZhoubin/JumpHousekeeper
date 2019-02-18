@@ -7,16 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JumpInformationModel.h"
 
 @interface JumpInfomationTableViewCell : UITableViewCell
 
-
 /**
  * 刷新视图
- * @titleName  名称
- * @contentStr 内容
- * @image  图片
+ * @model  模型
  */
--(void)refreshTitle:(NSString *)titleName contentStr:(NSString *)contentStr image:(NSString *)image;
+-(void)refreshWithModel:(JumpInformationModel *)model;
 
 @end

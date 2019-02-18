@@ -173,10 +173,12 @@
     
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     
+    NSString *password = [JumpPublicAction md5:SafeString(self.passWord.text)];
+    
     parameters[@"m"] = @"0";
     parameters[@"t"] = @"1";
     parameters[@"u"] = SafeString(self.account.text);
-    parameters[@"p"] = SafeString(self.passWord.text);
+    parameters[@"p"] = password;
     
     [SVPShow show];
 
@@ -186,7 +188,7 @@
         
         NSDictionary *dict = responseObject;
         
-//        if([SafeString(dict[@"result"]) isEqualToString:@"1"]){
+        if([SafeString(dict[@"result"]) isEqualToString:@"1"]){
         
             [SVPShow showSuccessWithMessage:@"登录成功"];
             
@@ -206,12 +208,12 @@
             
             appdelegate.window.rootViewController = vc;
        
-//        }else{
-//
-//            NSString *messageStr = [NSString stringWithFormat:@"返回数据为:%@",SafeString(dict[@"result"])];
-//
-//            [SVPShow showInfoWithMessage:messageStr];
-//        }
+        }else{
+
+            NSString *messageStr = [NSString stringWithFormat:@"返回数据为:%@",SafeString(dict[@"result"])];
+
+            [SVPShow showInfoWithMessage:messageStr];
+        }
   
     } faliure:^(id error) {
         

@@ -23,4 +23,7 @@
 //去设置界面开启权限
 +(void)openfromSetting;
 
+//密码转为MD5
++(NSString *)md5:(NSString *)string;
+
 @end

@@ -16,7 +16,7 @@
 //是否可以编辑
 @property (copy,nonatomic) NSString *isEnabel;
 //模型
-@property (strong,nonatomic) JumpAccountDetailModel *model;
+@property (strong,nonatomic) NSMutableArray *dataArray;
 
 @end
 
@@ -28,6 +28,8 @@
     self.navigationItem.title = @"账户信息";
     
     self.isEnabel = @"0"; //默认不可编辑
+    
+    self.dataArray = [NSMutableArray array];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"AccountDetailTableViewCell" bundle:nil] forCellReuseIdentifier:@"AccountDetailTableViewCell"];
     
@@ -57,7 +59,16 @@
     
     AccountDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AccountDetailTableViewCell" forIndexPath:indexPath];
     
-    [cell refreshWithModel:self.model isEnabel:self.isEnabel indexPath:indexPath];
+    if(self.dataArray.count > 0){
+     
+        JumpAccountDetailModel *model = self.dataArray[0];
+        
+        [cell refreshWithModel:model isEnabel:self.isEnabel indexPath:indexPath];
+        
+    }else{
+        
+        [cell refreshWithModel:nil isEnabel:self.isEnabel indexPath:indexPath];
+    }
     
     return cell;
 }
@@ -83,11 +94,13 @@
             isEditor = NO;
         }
         
+        JumpAccountDetailModel *model = self.dataArray[0];
+
         vc.isEnditor = isEditor;
         
         vc.vcTitle = @"详细地址";
         
-        vc.saveText = @"陕西省西安市高新技术产业开发区科技二路西安交大捷普网络科技有限公司";
+        vc.saveText = model.address;
         
         [self.navigationController pushViewController:vc animated:YES];
 
@@ -123,16 +136,17 @@
         
         NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
         
+        JumpAccountDetailModel *model = self.dataArray[0];
+        
         switch (indexPath.row) {
             case 0://昵称
-                
-                self.model.accountName = SafeString(content);
+                model.nickname = SafeString(content);
                 break;
             case 2://真实姓名
-                self.model.userName = SafeString(content);
+                model.truename = SafeString(content);
                 break;
             case 4://邮箱
-                self.model.email = SafeString(content);
+                model.mailnum = SafeString(content);
                 break;
                 
             default:
@@ -164,7 +178,7 @@
             
         }else{
             
-            weakself.model = [JumpAccountDetailModel mj_objectWithKeyValues:dict];
+            weakself.dataArray = [JumpAccountDetailModel mj_objectArrayWithKeyValuesArray:responseObject[@"result"]];
         }
         
         [weakself.tableView.mj_header endRefreshing];

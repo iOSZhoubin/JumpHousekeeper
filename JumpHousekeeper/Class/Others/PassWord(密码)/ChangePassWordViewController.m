@@ -29,6 +29,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *code;
 //验证码按钮
 @property (weak, nonatomic) IBOutlet UIButton *codeBtn;
+//授权码
+@property (weak, nonatomic) IBOutlet UITextField *authorizationCode;
 //验证码发送间隔
 @property (assign,nonatomic) NSInteger timerNum;
 //定时器
@@ -57,7 +59,7 @@
         
         self.passWordTitle.text = @"密码";
         
-        self.topH.constant = 100;
+        self.topH.constant = 130;
         
         self.deviceView.hidden = NO;
         

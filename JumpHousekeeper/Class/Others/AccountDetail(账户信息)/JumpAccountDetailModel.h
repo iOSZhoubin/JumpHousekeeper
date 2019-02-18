@@ -11,16 +11,27 @@
 @interface JumpAccountDetailModel : NSObject
 
 //昵称
-@property (copy,nonatomic) NSString *accountName;
+@property (copy,nonatomic) NSString *nickname;
 //账号
 @property (copy,nonatomic) NSString *account;
 //真实姓名
-@property (copy,nonatomic) NSString *userName;
+@property (copy,nonatomic) NSString *truename;
 //手机号
-@property (copy,nonatomic) NSString *phoneNumber;
+@property (copy,nonatomic) NSString *phonenum;
 //邮箱
-@property (copy,nonatomic) NSString *email;
+@property (copy,nonatomic) NSString *mailnum;
 //详细地址
 @property (copy,nonatomic) NSString *address;
+//设备id
+@property (copy,nonatomic) NSString *deviceid;
+//
+@property (copy,nonatomic) NSString *fdesc;
+//
+@property (copy,nonatomic) NSString *fid;
+//
+@property (copy,nonatomic) NSString *loginid;
+
+
+
 
 @end

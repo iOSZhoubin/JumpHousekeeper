@@ -26,6 +26,12 @@
 
     NSArray *titleArray = @[@"昵称",@"账号",@"真实姓名",@"手机号",@"邮箱",@"详细地址"];
     
+    NSDictionary *userInfo = [JumpKeyChain getKeychainDataForKey:@"userInfo"];
+
+    NSString *account = SafeString(userInfo[@"account"]);
+    
+    model.account = account;
+    
     self.titleName.text = titleArray[indexPath.row];
     
     //是否显示右侧箭头
@@ -58,19 +64,19 @@
     
     switch (indexPath.row) {
         case 0:
-            self.contentField.text = model.accountName;
+            self.contentField.text = model.nickname;
             break;
         case 1:
             self.contentField.text = model.account;
             break;
         case 2:
-            self.contentField.text = model.userName;
+            self.contentField.text = model.truename;
             break;
         case 3:
-            self.contentField.text = model.phoneNumber;
+            self.contentField.text = model.phonenum;
             break;
         case 4:
-            self.contentField.text = model.email;
+            self.contentField.text = model.mailnum;
             break;
         case 5:
             self.contentField.text = model.address;

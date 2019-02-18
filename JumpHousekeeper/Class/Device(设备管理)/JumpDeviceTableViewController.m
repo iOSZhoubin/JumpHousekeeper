@@ -10,6 +10,7 @@
 #import "SwitchDeviceTableViewCell.h"
 #import "ScanningDeviceViewController.h"
 #import "DeviceDetailEchartsViewController.h"
+#import "JumpDeviceModel.h"
 
 @interface JumpDeviceTableViewController ()
 
@@ -84,7 +85,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 7;
+    return self.dataArray.count;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -96,6 +97,10 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     SwitchDeviceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SwitchDeviceTableViewCell" forIndexPath:indexPath];
+    
+    JumpDeviceModel *model = self.dataArray[indexPath.row];
+    
+    [cell refreshWithDeviceModel:model];
     
     return cell;
 }
@@ -118,10 +123,12 @@
             
             JumpLog(@"删除");
             
+            JumpDeviceModel *model = self.dataArray[indexPath.row];
+            
 //            _fname = [indexPath.row][@"fname"];
 //            _fkey = [indexPath.row][@"fid"];
             
-//            [weakself getDeviceCode:@"fname"];//删除设备
+            [weakself getDeviceCode:model.fname];//删除设备
             
         }]];
         
@@ -237,6 +244,7 @@
             
         }else{
             
+            weakself.dataArray = [JumpDeviceModel mj_objectArrayWithKeyValuesArray:responseObject[@"result"]];
         }
         
         [weakself.tableView.mj_header endRefreshing];

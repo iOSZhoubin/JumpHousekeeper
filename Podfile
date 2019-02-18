@@ -8,4 +8,6 @@ pod 'SVProgressHUD'
 
 pod 'MJRefresh'
 
+pod 'SDWebImage'
+
 end

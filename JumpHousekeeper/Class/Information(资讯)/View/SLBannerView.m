@@ -204,7 +204,7 @@ static int imagesCount = 3;
     //重写pageCtrl的布局，默认居中，可根据项目需求修改位置
     CGFloat pageCtrlW = 50;
     CGFloat pageCtrlH = 40;
-    CGFloat pageCtrlX = (SLBannerViewWidth - pageCtrlW) - 10;
+    CGFloat pageCtrlX = (SLBannerViewWidth - pageCtrlW) - 20;
     CGFloat pageCtrlY = SLBannerViewHeight - pageCtrlH;
     self.pageCtrl.frame = CGRectMake(pageCtrlX, pageCtrlY, pageCtrlW, pageCtrlH);
     

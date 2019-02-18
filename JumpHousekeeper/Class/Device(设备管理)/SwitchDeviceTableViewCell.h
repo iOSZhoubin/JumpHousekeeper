@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JumpDeviceModel.h"
+
 
 @interface SwitchDeviceTableViewCell : UITableViewCell
+
+//刷新设备列表
+-(void)refreshWithDeviceModel:(JumpDeviceModel *)model;
 
 @end

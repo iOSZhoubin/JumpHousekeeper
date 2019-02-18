@@ -7,6 +7,7 @@
 //
 
 #import "JumpInfomationTableViewCell.h"
+#import "UIImageView+WebCache.h"
 
 @interface JumpInfomationTableViewCell()
 //名称
@@ -27,12 +28,21 @@
 }
 
 
--(void)refreshTitle:(NSString *)titleName contentStr:(NSString *)contentStr image:(NSString *)image{
+
+
+
+-(void)refreshWithModel:(JumpInformationModel *)model{
     
-    self.titleName.text = SafeString(titleName);
-    self.content.text = SafeString(contentStr);
-    self.photoView.image = [UIImage imageNamed:image];
+    self.titleName.text = SafeString(model.title);
     
+    self.content.text = @"西安交大捷普网络科技有限公司";
+    
+    [self.photoView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",ImageBaseUrl,model.img]]
+                      placeholderImage:[UIImage imageNamed:@"photo3"]
+                             completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                                 
+                             }];
+ 
 }
 
 

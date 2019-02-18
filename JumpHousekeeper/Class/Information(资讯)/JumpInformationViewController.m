@@ -10,6 +10,7 @@
 #import "JumpInfomationTableViewCell.h"
 #import "JumpAgreementViewController.h"
 #import "SLBannerView.h"
+#import "JumpInformationModel.h"
 
 @interface JumpInformationViewController ()<SLBannerViewDelegate,UITableViewDelegate,UITableViewDataSource>
 
@@ -17,8 +18,10 @@
 @property (weak, nonatomic) IBOutlet UIView *headView;
 //tableView
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-//数据源
+//数据源(底部信息)
 @property (strong,nonatomic) NSMutableArray *dataArray;
+//数据源(轮播图)
+@property (strong,nonatomic) NSMutableArray *newsArray;
 
 @end
 
@@ -33,8 +36,6 @@
 
 -(void)setupUI{
     
-    [self figurePicture];
-
     self.tableView.delegate = self;
     
     self.tableView.dataSource = self;
@@ -56,12 +57,26 @@
 
     banner.frame = CGRectMake(0, 0, kWidth, 160);
 
-    //图片
-    banner.slImages = @[@"photo1.png", @"photo2.png", @"photo3.png"];
-//    banner.slImages = @[@"http://img.zcool.cn/community/01c8c859f04db5a801202b0c544b28.jpg@2o.jpg", @"http://img.zcool.cn/community/01c8e3554473d80000019ae9961675.jpg", @"http://i0.hdslb.com/bfs/article/5e9cac17dcbb75d8b1af4e4435f53366f32a3e45.jpg"];
+    NSMutableArray *cycleImageArray = [NSMutableArray array];
+    NSMutableArray *cycleTitleArray = [NSMutableArray array];
+    
+    for (JumpInformationModel *model in self.dataArray) {
+        
+        NSString *imageUrl = [NSString stringWithFormat:@"%@%@",ImageBaseUrl,SafeString(model.img)];
+        
+        [cycleImageArray addObject:imageUrl];
+        [cycleTitleArray addObject:SafeString(model.title)];
+    }
 
+    banner.slImages =  cycleImageArray;
+    banner.slTitles =  cycleTitleArray;
+
+    //图片
+//    banner.slImages = @[@"photo1.png", @"photo2.png", @"photo3.png"];
+//    banner.slImages = @[@"http://img.zcool.cn/community/01c8c859f04db5a801202b0c544b28.jpg@2o.jpg", @"http://img.zcool.cn/community/01c8e3554473d80000019ae9961675.jpg", @"http://i0.hdslb.com/bfs/article/5e9cac17dcbb75d8b1af4e4435f53366f32a3e45.jpg"];
+//
     //标题
-    banner.slTitles = @[@"WAF是一个软硬件一体化架构的系统",@"WAF是一个软硬件一体化架构的系统",@"WAF是一个软硬件一体化架构的系统"];
+//    banner.slTitles = @[@"WAF是一个软硬件一体化架构的系统",@"WAF是一个软硬件一体化架构的系统",@"WAF是一个软硬件一体化架构的系统"];
     
     //监听设置代理
     banner.delegate = self;
@@ -83,12 +98,16 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 5;
+    return self.newsArray.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     JumpInfomationTableViewCell *cell =[tableView dequeueReusableCellWithIdentifier:@"JumpInfomationTableViewCell" forIndexPath:indexPath];
+    
+    JumpInformationModel *model = self.newsArray[indexPath.row];
+    
+    [cell refreshWithModel:model];
     
     return cell;
 }
@@ -97,13 +116,15 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
+    JumpInformationModel *model = self.newsArray[indexPath.row];
+    
     JumpAgreementViewController *vc = [[JumpAgreementViewController alloc]init];
     
     vc.hidesBottomBarWhenPushed = YES;
     
     vc.isShow = YES;
     
-    vc.url = @"https://www.baidu.com"; //http://app.jump.net.cn:8000/app%@，indexPath.row[@"uri"]
+    vc.url = [NSString stringWithFormat:@"%@%@",ImageBaseUrl,model.uri];
     
     vc.titleName = @"资讯详情";
     
@@ -117,6 +138,20 @@
 - (void)bannerView:(SLBannerView *)banner didClickImagesAtIndex:(NSInteger)index{
     
     JumpLog(@"点击了第%ld张图片",index);
+    
+    JumpInformationModel *model = self.newsArray[index];
+    
+    JumpAgreementViewController *vc = [[JumpAgreementViewController alloc]init];
+    
+    vc.hidesBottomBarWhenPushed = YES;
+    
+    vc.isShow = YES;
+    
+    vc.url = [NSString stringWithFormat:@"%@%@",ImageBaseUrl,model.uri];
+    
+    vc.titleName = @"资讯详情";
+    
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 
@@ -130,7 +165,7 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     
     parameters[@"m"] = @"1";
-    parameters[@"t"] = @"0";
+    parameters[@"t"] = @"1";
     parameters[@"id"] = @"0";
     parameters[@"c"] = @"10";
 
@@ -139,16 +174,18 @@
         JumpLog(@"%@",responseObject);
         
         NSDictionary *dict = responseObject;
-        
-//        responseObject[@"news"];
-//        responseObject[@"images"];
-        
+  
         if([SafeString(dict[@"message"]) isEqualToString:@"error"]){
             
             [SVPShow showInfoWithMessage:@"当前设备未登录"];
             
         }else{
             
+            weakself.dataArray = [JumpInformationModel mj_objectArrayWithKeyValuesArray:responseObject[@"result"][@"images"]];
+
+            weakself.newsArray = [JumpInformationModel mj_objectArrayWithKeyValuesArray:responseObject[@"result"][@"news"]];
+            
+            [self figurePicture];
 
         }
         
