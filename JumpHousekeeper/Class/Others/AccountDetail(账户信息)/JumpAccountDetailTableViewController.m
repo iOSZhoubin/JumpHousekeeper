@@ -11,12 +11,14 @@
 #import "JumpAccountDetailModel.h"
 #import "ExperienceViewController.h"
 
-@interface JumpAccountDetailTableViewController ()
+@interface JumpAccountDetailTableViewController ()<OpinionTextDelegate>
 
 //是否可以编辑
 @property (copy,nonatomic) NSString *isEnabel;
 //模型
 @property (strong,nonatomic) NSMutableArray *dataArray;
+
+@property (strong,nonatomic) JumpAccountDetailModel *model;
 
 @end
 
@@ -25,7 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"账户信息";
+    self.navigationItem.title = @"帐户信息";
     
     self.isEnabel = @"0"; //默认不可编辑
     
@@ -35,7 +37,13 @@
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"编辑" style:UIBarButtonItemStyleDone target:self action:@selector(enabel:)];
     
+    [self refresh];
+}
+
+-(void)refresh{
+    
     [RefreshHelper refreshHelperWithScrollView:self.tableView target:self loadNewData:@selector(getAccountDetail) loadMoreData:nil isBeginRefresh:YES];
+
 }
 
 #pragma mark --- UITableViewDelegate And DataSource
@@ -59,11 +67,13 @@
     
     AccountDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AccountDetailTableViewCell" forIndexPath:indexPath];
     
+    cell.delegate = self;
+    
     if(self.dataArray.count > 0){
      
-        JumpAccountDetailModel *model = self.dataArray[0];
+        self.model = self.dataArray[0];
         
-        [cell refreshWithModel:model isEnabel:self.isEnabel indexPath:indexPath];
+        [cell refreshWithModel:self.model isEnabel:self.isEnabel indexPath:indexPath];
         
     }else{
         
@@ -77,6 +87,8 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    
+    L2CWeakSelf(self);
     
     if(indexPath.row == 5){
         //详细地址
@@ -94,13 +106,20 @@
             isEditor = NO;
         }
         
-        JumpAccountDetailModel *model = self.dataArray[0];
+        self.model = self.dataArray[0];
 
         vc.isEnditor = isEditor;
         
         vc.vcTitle = @"详细地址";
         
-        vc.saveText = model.address;
+        vc.saveText = self.model.address;
+        
+        vc.block = ^(NSString *backstr) {
+            
+            weakself.model.address = backstr;
+            
+            [weakself.tableView reloadData];
+        };
         
         [self.navigationController pushViewController:vc animated:YES];
 
@@ -123,9 +142,53 @@
         item.title = @"编辑";
         
         self.isEnabel = @"0";
+        
+        [self saveAction];
     }
     
     [self.tableView reloadData];
+}
+
+
+#pragma mark --- 保存方法
+
+-(void)saveAction{
+    
+    L2CWeakSelf(self);
+    
+    [self.view endEditing:YES];
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    
+    parameters[@"nickname"] = SafeString(self.model.nickname);
+    parameters[@"truename"] = SafeString(self.model.truename);
+    parameters[@"phonenum"] = SafeString(self.model.phonenum);
+    parameters[@"mailnum"] = SafeString(self.model.mailnum);
+    parameters[@"address"] = SafeString(self.model.address);
+
+    [SVPShow show];
+    
+    NSString *url = [NSString stringWithFormat:@"%@?m=4&t=3",BaseUrl];
+ 
+    [AFNHelper post:url parameters:parameters success:^(id responseObject) {
+        
+        if([SafeString(responseObject[@"result"]) isEqualToString:@"1"]){
+            
+            [SVPShow showSuccessWithMessage:@"保存成功"];
+
+            [weakself refresh];
+
+        }else{
+            
+            [SVPShow showFailureWithMessage:@"保存失败"];
+        }
+        
+        
+    } faliure:^(id error) {
+        
+        [SVPShow showFailureWithMessage:@"保存失败"];
+    }];
+
 }
 
 #pragma mark --- cell的代理方法
@@ -136,17 +199,15 @@
         
         NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
         
-        JumpAccountDetailModel *model = self.dataArray[0];
-        
         switch (indexPath.row) {
             case 0://昵称
-                model.nickname = SafeString(content);
+                self.model.nickname = SafeString(content);
                 break;
             case 2://真实姓名
-                model.truename = SafeString(content);
+                self.model.truename = SafeString(content);
                 break;
             case 4://邮箱
-                model.mailnum = SafeString(content);
+                self.model.mailnum = SafeString(content);
                 break;
                 
             default:
@@ -179,6 +240,8 @@
         }else{
             
             weakself.dataArray = [JumpAccountDetailModel mj_objectArrayWithKeyValuesArray:responseObject[@"result"]];
+            
+            weakself.model = weakself.dataArray[0];
         }
         
         [weakself.tableView.mj_header endRefreshing];

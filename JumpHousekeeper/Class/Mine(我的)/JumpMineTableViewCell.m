@@ -27,7 +27,7 @@
 
 -(void)refreshWithIndexPath:(NSIndexPath *)indexPath{
     
-    NSArray *array1 = @[@{@"title":@"账户信息",@"image":@"accountImage"}];
+    NSArray *array1 = @[@{@"title":@"帐户信息",@"image":@"accountImage"}];
     NSArray *array2 = @[
                           @{@"title":@"我的收藏",@"image":@"collectionImage"},
                           @{@"title":@"关于我们",@"image":@"aboutimage"},

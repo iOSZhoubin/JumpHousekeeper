@@ -125,9 +125,6 @@
             
             JumpDeviceModel *model = self.dataArray[indexPath.row];
             
-//            _fname = [indexPath.row][@"fname"];
-//            _fkey = [indexPath.row][@"fid"];
-            
             [weakself getDeviceCode:model.fname];//删除设备
             
         }]];
@@ -139,12 +136,6 @@
         
     }];
     
-//    UITableViewRowAction *editor = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"编辑" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
-//
-//
-//    }];
-//
-//    editor.backgroundColor = RGB(184, 215, 254, 1);
     
     return @[delete];
 
@@ -155,7 +146,11 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
+    JumpDeviceModel *model = self.dataArray[indexPath.row];
+    
     DeviceDetailEchartsViewController *vc = [[DeviceDetailEchartsViewController alloc]init];
+    
+    vc.deviceId = SafeString(model.fid);
     
     vc.hidesBottomBarWhenPushed = YES;
     

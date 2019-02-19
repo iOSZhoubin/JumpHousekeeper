@@ -10,4 +10,7 @@
 
 @interface DeviceDetailEchartsViewController : JumpBaseTableViewController
 
+//设备id
+@property (copy,nonatomic) NSString *deviceId;
+
 @end

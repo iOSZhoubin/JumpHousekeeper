@@ -93,16 +93,30 @@
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
-
         NSData *data = responseObject;
         
         NSString *str = [data mj_JSONString];
         
-        NSDictionary *dict = [str mj_JSONObject];
+        NSArray *array = [str mj_JSONObject];
+        
+        NSDictionary *dict;
+        
+        if([str isEqualToString:@"error,no login"]){
+            
+            dict = @{@"message":@"error"};
+            
+        }else if(array.count > 0){
+            
+            dict = @{@"result":array};
+            
+        }else{
+            
+            dict = @{@"result":str};
+        }
+        
+        success(dict);
         
         JumpLog(@"%@",dict);
-
-        success(dict);
       
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         

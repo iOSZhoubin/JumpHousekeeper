@@ -123,7 +123,7 @@
     
     if(indexPath.section == 0){
         
-        //账户信息
+        //帐户信息
         JumpAccountDetailTableViewController *vc = [[JumpAccountDetailTableViewController alloc]init];
         
         vc.hidesBottomBarWhenPushed = YES;

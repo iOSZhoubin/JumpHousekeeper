@@ -34,6 +34,8 @@
     
     self.titleName.text = titleArray[indexPath.row];
     
+    self.contentField.delegate = self;
+    
     //是否显示右侧箭头
     if(indexPath.row == 5){
         

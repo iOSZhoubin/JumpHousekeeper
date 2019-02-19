@@ -22,6 +22,9 @@
 //内存
 @property (weak, nonatomic) IBOutlet UILabel *memoryLabel;
 
+@property (strong,nonatomic) NSMutableArray *xArray;
+@property (strong,nonatomic) NSMutableArray *yArray;
+
 @end
 
 @implementation DeviceHeadView
@@ -31,8 +34,6 @@
     [super awakeFromNib];
     
     self.autoresizingMask = UIViewAutoresizingNone;
-    
-    [self creatUI];
 }
 
 
@@ -82,30 +83,36 @@
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
     
     [self getview:self.echartView];
-    
-    
 }
 
 
 -(void)getview:(myWkWebView *)wkwebView{
     
-    
-    NSArray *array = @[@"Mon",@"Tue",@"Wed",@"Thu",@"Fri",@"Sat",@"Sun"];
-    NSArray *data = @[@"820",@"932",@"901",@"934",@"1290",@"1330",@"1320"];
+    NSArray *array = self.xArray;
+    NSArray *data = self.yArray;
     
     NSDictionary *xAxis = @{@"boundaryGap":@false,@"type":@"category",@"data":array};
     
-    NSDictionary *yAxis = @{@"type":@"value"};
+    NSDictionary *yAxis = @{@"type":@"value",@"min":@1400000000,@"max":@1600000000,@"splitNumber":@3};
+    
+    NSArray *dataZoom = @[@{@"startValue":@"00:00"},@{@"type":@"inside"}];
+    
+    NSDictionary *tooltip = @{@"show":@true};
     
     NSArray *series = @[@{
                             @"data":data,
                             @"type":@"line"
                             }];
     
+    
+    
     NSDictionary *option = @{
                              @"xAxis":xAxis,
                              @"yAxis":yAxis,
-                             @"series":series
+                             @"series":series,
+                             @"tooltip":tooltip,
+                             @"dataZoom":dataZoom
+                             
                              };
     
     [wkwebView evaluateJavaScript:[NSString stringWithFormat:@"setOP(%@)",option.mj_JSONString] completionHandler:nil];
@@ -122,6 +129,45 @@
         
         [webView reload];
     }
+}
+
+
+#pragma mark --- 设备详情
+
+-(void)deviceDetailWitdId:(NSString *)deviceId{
+    
+    L2CWeakSelf(self);
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    
+    parameters[@"m"] = @"2";
+    parameters[@"t"] = @"8";
+    parameters[@"d"] = SafeString(deviceId);
+    
+    [AFNHelper get:BaseUrl parameter:parameters success:^(id responseObject) {
+        
+        [weakself creatUI];
+
+        NSArray *array = responseObject[@"result"];
+        
+        self.xArray = [NSMutableArray array];
+        self.yArray = [NSMutableArray array];
+        
+        for (NSDictionary *dict in array) {
+            
+            NSString *xStr = dict[@"t"];
+            NSString *yStr = dict[@"t2"];
+            [self.xArray addObject:xStr];
+            [self.yArray addObject:yStr];
+        }
+        
+        [self.echartView reload];
+        
+    } faliure:^(id error) {
+       
+        [SVPShow showFailureWithMessage:@"图表获取失败"];
+        
+    }];
 }
 
 @end

@@ -10,4 +10,6 @@
 
 @interface DeviceHeadView : UIView
 
+-(void)deviceDetailWitdId:(NSString *)deviceId;
+
 @end

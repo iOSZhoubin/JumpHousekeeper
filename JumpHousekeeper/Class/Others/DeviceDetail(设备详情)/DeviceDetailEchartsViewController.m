@@ -28,7 +28,9 @@
         
         _headView = [DeviceHeadView loadViewFromXib];
         
-        _headView.frame = CGRectMake(0, 0, kWidth, 400);
+        [_headView deviceDetailWitdId:self.deviceId];
+        
+        _headView.frame = CGRectMake(0, 0, kWidth, 430);
         
     }
     
@@ -43,14 +45,14 @@
     self.navigationItem.title = @"设备详情";
     
     [self.tableView registerNib:[UINib nibWithNibName:@"AccountDetailTableViewCell" bundle:nil] forCellReuseIdentifier:@"AccountDetailTableViewCell"];
-    
+        
 }
 
 #pragma mark --- UITableView And DataSource
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     
-    return 400;
+    return 430;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
@@ -89,5 +91,8 @@
         [self.navigationController pushViewController:vc animated:YES];
     }
 }
+
+
+
 
 @end

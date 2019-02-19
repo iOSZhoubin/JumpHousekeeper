@@ -141,7 +141,7 @@
     }
     
     
-    self.block(self.textView.text);
+    self.block(SafeString(self.textView.text));
     
     [_textView resignFirstResponder];
 
