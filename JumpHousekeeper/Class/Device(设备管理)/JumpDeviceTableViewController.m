@@ -96,11 +96,24 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    SwitchDeviceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SwitchDeviceTableViewCell" forIndexPath:indexPath];
-    
+//    SwitchDeviceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SwitchDeviceTableViewCell" forIndexPath:indexPath];
+//
     JumpDeviceModel *model = self.dataArray[indexPath.row];
+//
+//    [cell refreshWithDeviceModel:model];
+//
+//    return cell;
     
-    [cell refreshWithDeviceModel:model];
+    static NSString *identifier = @"cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    
+    if (!cell) {
+        
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    
+    cell.textLabel.text = model.fname;
     
     return cell;
 }

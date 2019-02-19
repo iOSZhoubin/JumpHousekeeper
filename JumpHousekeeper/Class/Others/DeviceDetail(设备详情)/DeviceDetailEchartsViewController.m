@@ -45,18 +45,11 @@
     self.navigationItem.title = @"设备详情";
     
     [self.tableView registerNib:[UINib nibWithNibName:@"AccountDetailTableViewCell" bundle:nil] forCellReuseIdentifier:@"AccountDetailTableViewCell"];
-    
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"刷新" style:UIBarButtonItemStyleDone target:self action:@selector(refresh)];
-    
+
     [self loadData];
 }
 
-//-(void)refresh{
-//    
-//    [_headView deviceDetailWitdId:self.deviceId];//刷新折线图
-//
-//    [self loadData];//刷新设备详情
-//}
+
 
 #pragma mark --- UITableView And DataSource
 

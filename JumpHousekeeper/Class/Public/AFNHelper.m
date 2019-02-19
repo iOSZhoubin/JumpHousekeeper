@@ -17,11 +17,16 @@
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
+        
+//        AFSecurityPolicy *securityPolicy = [AFSecurityPolicy defaultPolicy];
+//        securityPolicy.validatesDomainName = NO;
+//        securityPolicy.allowInvalidCertificates = YES;
+//        handle.securityPolicy = securityPolicy;
+        
         handle = [AFNHelper manager];
         handle.responseSerializer = [AFHTTPResponseSerializer serializer];
         handle.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/plain",@"application/json",@"text/json",@"text/javascript",@"text/html",nil];
-        
-        
+
     });
     
     return handle;

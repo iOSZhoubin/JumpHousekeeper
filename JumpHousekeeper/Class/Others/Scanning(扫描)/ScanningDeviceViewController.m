@@ -50,9 +50,9 @@
     
     self.navigationItem.title = @"扫描";
     
-    UIBarButtonItem *photoItem = [[UIBarButtonItem alloc] initWithTitle:@"相册" style:UIBarButtonItemStylePlain target:self action:@selector(photo:)];
-    
-    self.navigationItem.rightBarButtonItem = photoItem;
+//    UIBarButtonItem *photoItem = [[UIBarButtonItem alloc] initWithTitle:@"相册" style:UIBarButtonItemStylePlain target:self action:@selector(photo:)];
+//
+//    self.navigationItem.rightBarButtonItem = photoItem;
 
     //二维码界面
     _previewView = [[QiCodePreviewView alloc] initWithFrame:self.view.bounds];
@@ -125,17 +125,51 @@
     
     [_codeManager startScanningWithCallback:^(NSString * _Nonnull code) {
         
-        ChangePassWordViewController *vc = [[ChangePassWordViewController alloc]init];
-        
-        vc.deviceStr = SafeString(code);
-        
-        vc.type = @"1";
-        
-        vc.hidesBottomBarWhenPushed = YES;
-        
-        [weakself.navigationController pushViewController:vc animated:YES];
-        
+        [weakself scanning:SafeString(code)];
+   
     } autoStop:YES];
 }
+
+
+//http://app.jump.net.cn:8000/app/iosapi.php ?m=0&t=3&d=
+
+#pragma mark --- 扫描二维码获取设备状态
+
+-(void)scanning:(NSString *)code{
+    
+    L2CWeakSelf(self);
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    
+    parameters[@"m"] = @"0";
+    parameters[@"t"] = @"3";
+    parameters[@"d"] = code;
+    
+    [AFNHelper get:BaseUrl parameter:parameters success:^(id responseObject) {
+        
+        if([responseObject[@"result"] isEqualToString:@"0"]){
+            
+            [SVPShow showInfoWithMessage:@"未找到匹配的设备"];
+
+        }else{
+            
+            //1-注册管理员 2-注册用户
+            ChangePassWordViewController *vc = [[ChangePassWordViewController alloc]init];
+            
+            vc.deviceStr = SafeString(code);
+            
+            vc.type = @"1";
+            
+            vc.hidesBottomBarWhenPushed = YES;
+            
+            [weakself.navigationController pushViewController:vc animated:YES];
+        }
+    
+    } faliure:^(id error) {
+       
+        [SVPShow showFailureWithMessage:@"获取设备码失败"];
+    }];
+}
+
 
 @end

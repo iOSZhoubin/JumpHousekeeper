@@ -126,12 +126,11 @@
         //修改密码
         [self getCodeLogin];
         
-    }else if ([self.type isEqualToString:@"3"]){
-        //忘记密码
-        [self getcodeUnlogin];
-        
     }else{
         
+        //忘记密码和注册都为未登录情况
+        [self getcodeUnlogin];
+
     }
     
     
@@ -179,8 +178,6 @@
 #pragma mark --- 确认
 
 - (IBAction)sureAction:(UIButton *)sender {
-
-    L2CWeakSelf(self);
     
     [self.view endEditing:YES];
     
@@ -227,13 +224,7 @@
         
         JumpLog(@"注册");
         
-        for (UIViewController *vc in weakself.navigationController.viewControllers) {
-            
-            if ([NSStringFromClass([vc class]) isEqualToString:@"JumpDeviceTableViewController"]) {
-                
-                [weakself.navigationController popToViewController:vc animated:YES];
-            }
-        }
+        [self newUser];
         
     }else{
         
@@ -263,9 +254,6 @@
         }else if ([self.type isEqualToString:@"3"]){
             //忘记密码
             [weakself changePasswordUnLogin];
-            
-        }else{
-            
         }
 
     }];
@@ -409,6 +397,52 @@
     } faliure:^(id error) {
         
         [SVPShow showFailureWithMessage:@"密码修改失败"];
+    }];
+}
+
+#pragma mark --- 注册提交
+
+-(void)newUser{
+    //发送手机号、设备号、密码、验证码(管理员)、验证码(用户)
+    
+    //@/iosapi.php?m=0&t=3&l=%@&d=%@&p=%@&o=%@&c=%@
+    
+    L2CWeakSelf(self);
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    
+    parameters[@"m"] = @"0";
+    parameters[@"t"] = @"3";
+    parameters[@"l"] = SafeString(self.phoneNumber.text); //手机号
+    parameters[@"d"] = SafeString(self.deviceStr);      //设备号
+    parameters[@"p"] = SafeString(self.passWord.text);//密码
+    parameters[@"o"] = SafeString(self.authorizationCode.text);//验证码(管理员)
+    parameters[@"c"] = SafeString(self.code.text);//验证码(用户)
+
+    [SVPShow show];
+    
+    [AFNHelper get:BaseUrl parameter:parameters success:^(id responseObject) {
+        
+        if([responseObject[@"result"] isEqualToString:@"1"]){
+            
+            [SVPShow showSuccessWithMessage:@"注册成功"];
+            
+            for (UIViewController *vc in weakself.navigationController.viewControllers) {
+                
+                if ([NSStringFromClass([vc class]) isEqualToString:@"JumpDeviceTableViewController"]) {
+                    
+                    [weakself.navigationController popToViewController:vc animated:YES];
+                }
+            }
+            
+        }else{
+            
+            [SVPShow showFailureWithMessage:@"注册失败"];
+        }
+        
+    } faliure:^(id error) {
+        
+        [SVPShow showFailureWithMessage:@"注册失败"];
     }];
 }
 
