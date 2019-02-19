@@ -150,7 +150,9 @@
         if([responseObject[@"result"] isEqualToString:@"0"]){
             
             [SVPShow showInfoWithMessage:@"未找到匹配的设备"];
-
+            
+            [weakself startScanning];
+            
         }else{
             
             //1-注册管理员 2-注册用户
@@ -168,6 +170,8 @@
     } faliure:^(id error) {
        
         [SVPShow showFailureWithMessage:@"获取设备码失败"];
+        
+        [weakself startScanning];
     }];
 }
 

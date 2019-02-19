@@ -233,7 +233,66 @@
     
     JumpLog(@"发送");
     
+    L2CWeakSelf(self);
+    
     [self.view endEditing:YES];
+    
+    if([self.contentDict[@"problemType"] isEqualToString:@"其他"]){
+        
+        self.contentDict[@"problemTypeId"] = @"-1";
+    }
+    
+    NSString *str1 = SafeString(self.contentDict[@"deviceTypeId"]);
+    NSString *str2 = SafeString(self.contentDict[@"problemTypeId"]);
+    NSString *str3 = SafeString(self.contentDict[@"contactNumber"]);
+
+    if(str1.length < 1){
+        
+        [SVPShow showInfoWithMessage:@"请选择设备类型"];
+        return;
+        
+    }else if (str2.length < 1){
+        
+        [SVPShow showInfoWithMessage:@"请选择问题类型"];
+        return;
+        
+    }else if (str3.length < 1){
+        
+        [SVPShow showInfoWithMessage:@"请填写联系人电话"];
+        return;
+    }
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    
+    parameters[@"devid"] = str1;
+    parameters[@"ftype"] = str2;
+    parameters[@"fdesc"] = SafeString(self.contentDict[@"remark"]);
+    parameters[@"contact"] = SafeString(self.contentDict[@"contactName"]);
+    parameters[@"phone"] = str3;
+    parameters[@"m"] = @"4";
+    parameters[@"t"] = @"1";
+    
+    [SVPShow show];
+
+    [AFNHelper get:BaseUrl parameter:parameters success:^(id responseObject) {
+        
+        if([responseObject[@"result"] isEqualToString:@"1"]){
+            
+            [SVPShow showSuccessWithMessage:@"反馈意见已发送"];
+            
+            [weakself backAction];
+            
+        }else{
+            
+            [SVPShow showFailureWithMessage:@"发送失败"];
+
+        }
+        
+    } faliure:^(id error) {
+        
+        [SVPShow showFailureWithMessage:@"发送失败"];
+
+    }];
 }
 
 
