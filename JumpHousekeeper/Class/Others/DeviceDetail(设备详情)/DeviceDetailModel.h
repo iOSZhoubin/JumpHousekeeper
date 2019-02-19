@@ -10,21 +10,31 @@
 
 @interface DeviceDetailModel : NSObject
 
-//设备状态
-@property (copy,nonatomic) NSString *status;
-//最新安全事件
-@property (copy,nonatomic) NSString *news;
-//设备版本信息
-@property (copy,nonatomic) NSString *version;
-//设备安全补丁
-@property (copy,nonatomic) NSString *patch;
-//设备升级信息
-@property (copy,nonatomic) NSString *upgrade;
-//设备许可信息
+//
+@property (copy,nonatomic) NSString *ftype;
+//
+@property (copy,nonatomic) NSString *fw_virus;
+//
+@property (copy,nonatomic) NSString *fid;
+//2019-01-22 00:00:00
+@property (copy,nonatomic) NSString *fupdate;
+//无限期
 @property (copy,nonatomic) NSString *license;
+//20190118-20190118
+@property (copy,nonatomic) NSString *rulever;
+//设备ID
+@property (copy,nonatomic) NSString *devid;
+//设备版本信息
+@property (copy,nonatomic) NSString *ver;
 //设备IP地址
 @property (copy,nonatomic) NSString *ip;
-//设备ID
-@property (copy,nonatomic) NSString *deviceId;
+//
+@property (copy,nonatomic) NSString *fw_appver;
+//
+@property (copy,nonatomic) NSString *fw_ips;
+//漏洞扫描-NVAS
+@property (copy,nonatomic) NSString *fname;
+//
+@property (copy,nonatomic) NSString *fw_mailrule;
 
 @end

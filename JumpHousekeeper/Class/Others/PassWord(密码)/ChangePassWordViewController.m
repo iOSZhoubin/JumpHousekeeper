@@ -122,6 +122,19 @@
         return;
     }
     
+    if([self.type isEqualToString:@"2"]){
+        //修改密码
+        [self getCodeLogin];
+        
+    }else if ([self.type isEqualToString:@"3"]){
+        //忘记密码
+        [self getcodeUnlogin];
+        
+    }else{
+        
+    }
+    
+    
     self.codeBtn.enabled = NO;
     
     [self.codeBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
@@ -200,6 +213,15 @@
     }
     
     
+    BOOL password = [JumpPublicAction checkPassWord:self.passWord.text];
+    
+    if(password == NO){
+        
+        [SVPShow showInfoWithMessage:@"密码过于简单,请重新设置"];
+        
+        return;
+    }
+    
     
     if([self.type isEqualToString:@"1"]){
         
@@ -212,12 +234,6 @@
                 [weakself.navigationController popToViewController:vc animated:YES];
             }
         }
-        
-    }else if ([self.type isEqualToString:@"2"]){
-        
-        JumpLog(@"修改密码");
-
-        [self defaultLogin];
         
     }else{
         
@@ -234,18 +250,24 @@
 
 -(void)defaultLogin{
     
+    L2CWeakSelf(self);
+    
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"更改密码后需要重新登录,确认更改?" message:nil preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        
-        [JumpKeyChain deleteKeychainDataForKey:@"userInfo"];//删除保存的账户密码
-        
-        JumpLoginViewController *vc = [[JumpLoginViewController alloc]init];
-        
-        AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        
-        appdelegate.window.rootViewController = vc;
-        
+   
+        if([self.type isEqualToString:@"2"]){
+            //修改密码
+            [weakself changePasswordLogin];
+            
+        }else if ([self.type isEqualToString:@"3"]){
+            //忘记密码
+            [weakself changePasswordUnLogin];
+            
+        }else{
+            
+        }
+
     }];
     
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
@@ -255,6 +277,139 @@
     [alertController addAction:ok];
     
     [self presentViewController:alertController animated:YES completion:nil];
+}
+
+
+#pragma mark --- 未登录情况下获取验证码（忘记密码）
+
+-(void)getcodeUnlogin{
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    
+    parameters[@"m"] = @"0";
+    parameters[@"t"] = @"5";
+    parameters[@"l"] = SafeString(self.phoneNumber.text);
+    
+    [SVPShow show];
+
+    [AFNHelper get:BaseUrl parameter:parameters success:^(id responseObject) {
+        
+        if([responseObject[@"result"] isEqualToString:@"1"]){
+            
+            [SVPShow showSuccessWithMessage:@"验证码发送成功"];
+            
+        }else{
+            
+            [SVPShow showFailureWithMessage:@"验证码发送失败"];
+        }
+        
+    } faliure:^(id error) {
+        
+        [SVPShow showFailureWithMessage:@"验证码发送失败"];
+    }];
+}
+
+#pragma mark --- 获取验证码(已登录)
+
+-(void)getCodeLogin{
+
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    
+    parameters[@"m"] = @"0";
+    parameters[@"t"] = @"4";
+    
+    [AFNHelper get:BaseUrl parameter:parameters success:^(id responseObject) {
+        
+        if([responseObject[@"result"] isEqualToString:@"1"]){
+            
+            [SVPShow showSuccessWithMessage:@"验证码发送成功"];
+
+        }else{
+            
+            [SVPShow showFailureWithMessage:@"验证码发送失败"];
+        }
+        
+    } faliure:^(id error) {
+        
+        [SVPShow showFailureWithMessage:@"验证码发送失败"];
+    }];
+}
+
+#pragma mark --- 修改密码（已登录）
+
+-(void)changePasswordLogin{
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    
+    parameters[@"m"] = @"0";
+    parameters[@"t"] = @"4";
+    parameters[@"c"] = SafeString(self.code.text);
+    parameters[@"p"] = SafeString(self.passWord.text);
+
+    [SVPShow show];
+    
+    [AFNHelper get:BaseUrl parameter:parameters success:^(id responseObject) {
+        
+        if([responseObject[@"result"] isEqualToString:@"1"]){
+            
+            [SVPShow showSuccessWithMessage:@"密码修改成功"];
+            
+            [JumpKeyChain deleteKeychainDataForKey:@"userInfo"];//删除保存的账户密码
+            
+            JumpLoginViewController *vc = [[JumpLoginViewController alloc]init];
+            
+            UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vc];
+            
+            AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            
+            appdelegate.window.rootViewController = nav;
+            
+        }else{
+            
+            [SVPShow showFailureWithMessage:@"密码修改失败"];
+        }
+        
+    } faliure:^(id error) {
+        
+        [SVPShow showFailureWithMessage:@"密码修改失败"];
+    }];
+}
+
+#pragma mark --- 修改密码（未登录）
+
+-(void)changePasswordUnLogin{
+    
+    L2CWeakSelf(self);
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+
+    parameters[@"m"] = @"0";
+    parameters[@"t"] = @"5";
+    parameters[@"c"] = SafeString(self.code.text);
+    parameters[@"p"] = SafeString(self.passWord.text);
+    parameters[@"l"] = SafeString(self.phoneNumber.text);
+
+    [SVPShow show];
+    
+    [AFNHelper get:BaseUrl parameter:parameters success:^(id responseObject) {
+        
+        if([responseObject[@"result"] isEqualToString:@"1"]){
+            
+            [SVPShow showSuccessWithMessage:@"密码修改成功"];
+            
+            [JumpKeyChain deleteKeychainDataForKey:@"userInfo"];//删除保存的账户密码
+            
+            [weakself.navigationController popViewControllerAnimated:YES];
+            
+        }else{
+            
+            [SVPShow showFailureWithMessage:@"密码修改失败"];
+        }
+        
+    } faliure:^(id error) {
+        
+        [SVPShow showFailureWithMessage:@"密码修改失败"];
+    }];
 }
 
 @end

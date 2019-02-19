@@ -189,12 +189,13 @@
             
             [JumpKeyChain addKeychainData:userInfo forKey:@"userInfo"];
 
-//            JumpBaseTabBarViewController *vc = [[JumpBaseTabBarViewController alloc]init];
             JumpLoginViewController *vc = [[JumpLoginViewController alloc]init];
+            
+            UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vc];
             
             AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
             
-            appdelegate.window.rootViewController = vc;
+            appdelegate.window.rootViewController = nav;
             
         }];
         

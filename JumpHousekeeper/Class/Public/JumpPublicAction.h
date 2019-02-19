@@ -26,4 +26,8 @@
 //密码转为MD5
 +(NSString *)md5:(NSString *)string;
 
+//验证密码强度
++(BOOL)checkPassWord:(NSString *)passWord;
+
+
 @end

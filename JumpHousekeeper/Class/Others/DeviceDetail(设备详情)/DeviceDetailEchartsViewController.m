@@ -30,7 +30,7 @@
         
         [_headView deviceDetailWitdId:self.deviceId];
         
-        _headView.frame = CGRectMake(0, 0, kWidth, 430);
+        _headView.frame = CGRectMake(0, 0, kWidth, 330);
         
     }
     
@@ -45,14 +45,24 @@
     self.navigationItem.title = @"设备详情";
     
     [self.tableView registerNib:[UINib nibWithNibName:@"AccountDetailTableViewCell" bundle:nil] forCellReuseIdentifier:@"AccountDetailTableViewCell"];
-        
+    
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"刷新" style:UIBarButtonItemStyleDone target:self action:@selector(refresh)];
+    
+    [self loadData];
 }
+
+//-(void)refresh{
+//    
+//    [_headView deviceDetailWitdId:self.deviceId];//刷新折线图
+//
+//    [self loadData];//刷新设备详情
+//}
 
 #pragma mark --- UITableView And DataSource
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     
-    return 430;
+    return 330;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
@@ -91,6 +101,34 @@
         [self.navigationController pushViewController:vc animated:YES];
     }
 }
+
+
+#pragma mark ---- 设备详情
+
+-(void)loadData{
+    
+    L2CWeakSelf(self);
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    
+    parameters[@"m"] = @"2";
+    parameters[@"t"] = @"3";
+    parameters[@"d"] = self.deviceId;
+
+    [AFNHelper get:BaseUrl parameter:parameters success:^(id responseObject) {
+        
+        weakself.model = [DeviceDetailModel mj_objectWithKeyValues:responseObject[@"result"]];
+
+        [weakself.tableView reloadData];
+        
+    } faliure:^(id error) {
+        
+        [SVPShow showFailureWithMessage:@"设备详情获取失败"];
+        
+    }];
+}
+
+
 
 
 

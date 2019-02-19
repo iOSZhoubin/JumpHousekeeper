@@ -184,22 +184,18 @@
  
     switch (indexPath.row) {
         case 0:
-            self.contentField.text = SafeString(model.status);
-            break;
-        case 1:
-            self.contentField.text = SafeString(model.news);
-
+            self.contentField.text = SafeString(model.ftype);
             break;
         case 2:
-            self.contentField.text = SafeString(model.version);
+            self.contentField.text = SafeString(model.ver);
 
             break;
         case 3:
-            self.contentField.text = SafeString(model.patch);
+            self.contentField.text = SafeString(model.fw_virus);
 
             break;
         case 4:
-            self.contentField.text = SafeString(model.upgrade);
+            self.contentField.text = SafeString(model.fw_appver);
 
             break;
         case 5:
@@ -211,7 +207,7 @@
 
             break;
         case 7:
-            self.contentField.text = SafeString(model.deviceId);
+            self.contentField.text = SafeString(model.devid);
 
             break;
         default:

@@ -130,4 +130,14 @@
     return ret;
 }
 
+
+
+// 密码验证
++(BOOL)checkPassWord:(NSString *)passWord{
+    NSString *regular = @"^(?![0-9~!@#$%^&*,._-]+$)(?![a-zA-Z~!@#$%^&*,._-]+$)[a-zA-Z0-9~!@#$%^&*,._-]{6,20}";
+    NSPredicate *Predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",regular];
+    BOOL isRight = [Predicate evaluateWithObject:passWord];
+    return isRight;
+}
+
 @end
