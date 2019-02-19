@@ -1,15 +1,15 @@
 //
-//  JumpTypeTableViewController.m
+//  JumpquestionTypeTableViewController.m
 //  JumpHousekeeper
 //
-//  Created by jumpapp1 on 2019/1/24.
+//  Created by jumpapp1 on 2019/2/19.
 //  Copyright © 2019年 zhoubin. All rights reserved.
 //
 
-#import "JumpTypeTableViewController.h"
+#import "JumpquestionTypeTableViewController.h"
 #import "JumpTypeModel.h"
 
-@interface JumpTypeTableViewController ()
+@interface JumpquestionTypeTableViewController ()
 
 //数据源
 @property (strong,nonatomic) NSMutableArray *muArray;
@@ -18,7 +18,7 @@
 
 @end
 
-@implementation JumpTypeTableViewController
+@implementation JumpquestionTypeTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,9 +32,9 @@
 
 
 -(void)setupUI{
- 
-    self.navigationItem.title = @"设备类型";
 
+    self.navigationItem.title = @"问题类型";
+    
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"确定" style:UIBarButtonItemStyleDone target:self action:@selector(sureAction:)];
     
     self.navigationItem.rightBarButtonItem.enabled = NO;
@@ -46,7 +46,7 @@
 #pragma mark --- UITableViewDelegate And DataSource
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-
+    
     return self.muArray.count;
 }
 
@@ -61,7 +61,7 @@
     static NSString *identifier = @"cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-        
+    
     if (!cell) {
         
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
@@ -70,11 +70,11 @@
     JumpTypeModel *model = self.muArray[indexPath.row];
     JumpTypeModel *selectModel = [JumpTypeModel mj_objectWithKeyValues:self.selectDict];
     
-    cell.textLabel.text = SafeString(model.cname);
+    cell.textLabel.text = SafeString(model.v);
     
     cell.textLabel.font = [UIFont systemFontOfSize:16];
     
-    if([SafeString(model.fid) isEqualToString:SafeString(selectModel.fid)]){
+    if([SafeString(model.uid) isEqualToString:SafeString(selectModel.uid)]){
         
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
         
@@ -108,8 +108,8 @@
         
         JumpTypeModel *selectModel = [JumpTypeModel mj_objectWithKeyValues:self.selectDict];
         
-        NSDictionary *muDict = @{@"title":SafeString(selectModel.fname),@"id":SafeString(selectModel.fid)};
-
+        NSDictionary *muDict = @{@"title":SafeString(selectModel.v),@"id":SafeString(selectModel.uid)};
+        
         self.block(muDict);
         
         [self.navigationController popViewControllerAnimated:YES];
@@ -123,15 +123,16 @@
     
     L2CWeakSelf(self);
     
-    //设备类型
-    
+    //问题类型
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     
-    parameters[@"m"] = @"2";
-    parameters[@"t"] = @"5";
-    parameters[@"d"] = @"0";
-
+    parameters[@"m"] = @"4";
+    parameters[@"t"] = @"0";
+    parameters[@"p"] = @"0";
+    
     [AFNHelper get:BaseUrl parameter:parameters success:^(id responseObject) {
+        
+        JumpLog(@"%@",responseObject);
         
         NSDictionary *dict = responseObject;
         
@@ -141,7 +142,7 @@
             
         }else{
             
-            weakself.muArray = [JumpTypeModel mj_objectArrayWithKeyValuesArray:dict[@"result"]];
+            weakself.muArray = [JumpTypeModel mj_objectArrayWithKeyValuesArray:responseObject[@"result"]];
         }
         
         [weakself.tableView.mj_header endRefreshing];
@@ -153,6 +154,7 @@
         JumpLog(@"%@",error);
         
         [weakself.tableView.mj_header endRefreshing];
+        
     }];
 }
 

@@ -96,6 +96,32 @@
 -(void)collectionAction:(UIBarButtonItem *)item{
     
     JumpLog(@"收藏");
+    
+    NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
+    
+    parameter[@"m"] = @"1";
+    parameter[@"t"] = @"3";
+    parameter[@"s"] = @"2";
+    parameter[@"id"] = SafeString(self.informationId);
+    
+    [SVPShow show];
+    
+    [AFNHelper get:BaseUrl parameter:parameter success:^(id responseObject) {
+        
+        if([responseObject[@"result"] isEqualToString:@"1"]){
+            
+            [SVPShow showSuccessWithMessage:@"收藏成功"];
+            
+        }else{
+            
+            [SVPShow showFailureWithMessage:@"收藏失败"];
+        }
+        
+    } faliure:^(id error) {
+       
+        [SVPShow showFailureWithMessage:@"收藏失败"];
+
+    }];
 }
 
 

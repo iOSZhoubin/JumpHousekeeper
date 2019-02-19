@@ -10,4 +10,9 @@
 
 @implementation JumpTypeModel
 
++ (NSDictionary *)mj_replacedKeyFromPropertyName {
+    
+    return @{@"uid":@"id"};
+}
+
 @end

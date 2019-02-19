@@ -120,13 +120,15 @@
     
     JumpAgreementViewController *vc = [[JumpAgreementViewController alloc]init];
     
-    vc.hidesBottomBarWhenPushed = YES;
-    
     vc.isShow = YES;
     
     vc.url = [NSString stringWithFormat:@"%@%@",ImageBaseUrl,model.uri];
     
     vc.titleName = @"资讯详情";
+    
+    vc.informationId = model.fid;
+    
+    vc.hidesBottomBarWhenPushed = YES;
     
     [self.navigationController pushViewController:vc animated:YES];
 }

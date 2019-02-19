@@ -1,8 +1,8 @@
 //
-//  JumpTypeTableViewController.h
+//  JumpquestionTypeTableViewController.h
 //  JumpHousekeeper
 //
-//  Created by jumpapp1 on 2019/1/24.
+//  Created by jumpapp1 on 2019/2/19.
 //  Copyright © 2019年 zhoubin. All rights reserved.
 //
 
@@ -10,7 +10,10 @@
 
 typedef void(^SureBlock)(NSDictionary *selectDict);
 
-@interface JumpTypeTableViewController : JumpBaseTableViewController
+@interface JumpquestionTypeTableViewController : JumpBaseTableViewController
+
+//1-设备类型 2-问题类型
+@property (copy,nonatomic) NSString *type;
 
 /** 回调 block */
 @property (copy,nonatomic) SureBlock block;

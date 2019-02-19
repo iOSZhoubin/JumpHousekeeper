@@ -19,4 +19,7 @@
 //收否有收藏功能
 @property (assign,nonatomic) BOOL isShow;
 
+//资讯id
+@property (copy,nonatomic) NSString *informationId;
+
 @end

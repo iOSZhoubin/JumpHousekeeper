@@ -9,8 +9,11 @@
 #import "JumpCollectionTableViewController.h"
 #import "JumpAgreementViewController.h"
 #import "JumpInfomationTableViewCell.h"
+#import "JumpInformationModel.h"
 
 @interface JumpCollectionTableViewController ()
+
+@property (strong,nonatomic) NSMutableArray *dataArray;
 
 @end
 
@@ -23,10 +26,14 @@
     
     [self.tableView registerNib:[UINib nibWithNibName:@"JumpInfomationTableViewCell" bundle:nil] forCellReuseIdentifier:@"JumpInfomationTableViewCell"];
     
+    [self refresh];
+}
+
+-(void)refresh{
+    
     [RefreshHelper refreshHelperWithScrollView:self.tableView target:self loadNewData:@selector(getCollectionList) loadMoreData:nil isBeginRefresh:YES];
 
 }
-
 
 
 #pragma mark --- UItableView数据源和代理
@@ -38,12 +45,16 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 5;
+    return self.dataArray.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     JumpInfomationTableViewCell *cell =[tableView dequeueReusableCellWithIdentifier:@"JumpInfomationTableViewCell" forIndexPath:indexPath];
+    
+    JumpInformationModel *model = self.dataArray[indexPath.row];
+    
+    [cell refreshWithModel:model];
     
     return cell;
 }
@@ -58,6 +69,8 @@
     
     L2CWeakSelf(self);
     
+    JumpInformationModel *model = self.dataArray[indexPath.row];
+    
     UITableViewRowAction *cancel = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"取消收藏" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
         
         UIAlertController * alertController = [UIAlertController alertControllerWithTitle: @"确认取消收藏?" message: nil preferredStyle:UIAlertControllerStyleActionSheet];
@@ -65,6 +78,7 @@
         [alertController addAction: [UIAlertAction actionWithTitle:@"确认" style: UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
             
             JumpLog(@"确认");
+            [weakself deleteAction:SafeString(model.fid)];
             
         }]];
         
@@ -74,13 +88,6 @@
         
     }];
     
-    //    UITableViewRowAction *editor = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"编辑" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
-    //
-    //
-    //    }];
-    //
-    //    editor.backgroundColor = RGB(184, 215, 254, 1);
-    
     return @[cancel];
     
 }
@@ -89,15 +96,17 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
+    JumpInformationModel *model = self.dataArray[indexPath.row];
+    
     JumpAgreementViewController *vc = [[JumpAgreementViewController alloc]init];
     
     vc.hidesBottomBarWhenPushed = YES;
     
     vc.isShow = NO;
     
-    vc.url = @"https://www.baidu.com";
+    vc.url = [NSString stringWithFormat:@"%@%@",ImageBaseUrl,model.uri];
     
-    vc.titleName = @"资讯详情";
+    vc.titleName = SafeString(model.title);
     
     [self.navigationController pushViewController:vc animated:YES];
 }
@@ -128,16 +137,51 @@
             
         }else{
             
+            weakself.dataArray = [JumpInformationModel mj_objectArrayWithKeyValuesArray:responseObject[@"result"]];
+
+            
+            [weakself.tableView reloadData];
 
         }
         
         [weakself.tableView.mj_header endRefreshing];
         
-        [weakself.tableView reloadData];
-        
     } faliure:^(id error) {
         
         [weakself.tableView.mj_header endRefreshing];
+        
+    }];
+}
+
+#pragma mark -- 删除收藏信息
+
+-(void)deleteAction:(NSString *)collectionId{
+    
+    L2CWeakSelf(self);
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    
+    parameters[@"m"] = @"1";
+    parameters[@"t"] = @"3";
+    parameters[@"s"] = @"3";
+    parameters[@"id"] = collectionId;
+
+    [AFNHelper get:BaseUrl parameter:parameters success:^(id responseObject) {
+        
+        if([responseObject[@"result"] isEqualToString:@"1"]){
+            
+            [SVPShow showSuccessWithMessage:@"删除成功"];
+        
+            [weakself refresh];
+            
+        }else{
+            
+            [SVPShow showSuccessWithMessage:@"删除失败"];
+        }
+        
+    } faliure:^(id error) {
+        
+        [SVPShow showSuccessWithMessage:@"删除失败"];
         
     }];
 }
