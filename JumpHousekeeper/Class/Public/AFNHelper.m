@@ -126,7 +126,7 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
         JumpLog(@"%@",error);
-      
+       
         failure(error);
         
     }];

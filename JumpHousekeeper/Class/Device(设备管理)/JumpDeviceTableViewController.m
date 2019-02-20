@@ -176,6 +176,38 @@
 -(void)addAction:(UIButton *)sender{
     
     JumpLog(@"添加新设备");
+//    %@/iosapi.php?m=0&t=6&d=%@", __BASE_URL__,equipmentNum]
+    
+    BOOL isopen = [JumpPublicAction isopenCamera];
+    
+    if(isopen){
+        
+        ScanningDeviceViewController *vc = [[ScanningDeviceViewController alloc]init];
+        
+        vc.type = @"2";
+        
+        vc.hidesBottomBarWhenPushed = YES;
+        
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    }else{
+        
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"去开启访问相机权限?" message:nil preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            
+            [JumpPublicAction openfromSetting];
+            
+        }];
+        
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+        }];
+        
+        [alertController addAction:cancel];
+        [alertController addAction:ok];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
 }
 
 

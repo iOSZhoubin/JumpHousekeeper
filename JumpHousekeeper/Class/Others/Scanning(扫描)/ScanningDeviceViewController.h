@@ -10,4 +10,7 @@
 
 @interface ScanningDeviceViewController : JumpBaseViewController
 
+//1-注册  2-添加新设备
+@property (copy,nonatomic) NSString *type;
+
 @end

@@ -133,6 +133,8 @@
         
         ScanningDeviceViewController *vc = [[ScanningDeviceViewController alloc]init];
         
+        vc.type = @"1";
+        
         vc.hidesBottomBarWhenPushed = YES;
         
         [self.navigationController pushViewController:vc animated:YES];
