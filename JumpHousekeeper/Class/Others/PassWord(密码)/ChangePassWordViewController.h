@@ -13,7 +13,11 @@
 //1-注册  2-修改密码 3-忘记密码
 @property (copy,nonatomic) NSString *type;
 
-//注册为1时   扫描后的字符串
+//type为1时必传   扫描后的字符串
 @property (copy,nonatomic) NSString *deviceStr;
+
+//type为1时必传   1-注册管理员  2-注册用户
+@property (copy,nonatomic) NSString *resultType;
+
 
 @end

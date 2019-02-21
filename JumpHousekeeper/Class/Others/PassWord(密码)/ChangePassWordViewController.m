@@ -11,6 +11,8 @@
 #import "JumpLoginViewController.h"
 
 @interface ChangePassWordViewController ()
+//头部视图高度
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewH;
 //设备号
 @property (weak, nonatomic) IBOutlet UILabel *deviceCode;
 //设备View
@@ -31,10 +33,14 @@
 @property (weak, nonatomic) IBOutlet UIButton *codeBtn;
 //授权码
 @property (weak, nonatomic) IBOutlet UITextField *authorizationCode;
+//授权码Title
+@property (weak, nonatomic) IBOutlet UILabel *authorTitle;
 //验证码发送间隔
 @property (assign,nonatomic) NSInteger timerNum;
 //定时器
 @property (strong,nonatomic) NSTimer *timer;
+@property (weak, nonatomic) IBOutlet UILabel *line;
+
 @end
 
 @implementation ChangePassWordViewController
@@ -59,7 +65,14 @@
         
         self.passWordTitle.text = @"密码";
         
-        self.topH.constant = 130;
+        if([self.resultType isEqualToString:@"2"]){
+            
+            self.topH.constant = 100;
+
+        }else{
+            
+            self.topH.constant = 130;
+        }
         
         self.deviceView.hidden = NO;
         
@@ -92,6 +105,28 @@
     }
     
     [self.passWord setSecureTextEntry:YES];//密文
+    
+    
+    if([self.resultType isEqualToString:@"2"]){
+        
+        self.authorTitle.hidden = YES;
+        
+        self.authorizationCode.hidden = YES;
+        
+        self.line.hidden = YES;
+        
+        self.viewH.constant = 41;
+        
+    }else{
+        
+        self.authorTitle.hidden = NO;
+        
+        self.authorizationCode.hidden = NO;
+        
+        self.line.hidden = NO;
+        
+        self.viewH.constant = 82;
+    }
     
     //设置键盘类型
     self.phoneNumber.keyboardType = UIKeyboardTypePhonePad;
@@ -404,8 +439,6 @@
 
 -(void)newUser{
     //发送手机号、设备号、密码、验证码(管理员)、验证码(用户)
-    
-    //@/iosapi.php?m=0&t=3&l=%@&d=%@&p=%@&o=%@&c=%@
     
     L2CWeakSelf(self);
     

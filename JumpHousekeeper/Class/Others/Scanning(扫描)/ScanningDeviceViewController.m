@@ -84,16 +84,8 @@
         
         [_codeManager presentPhotoLibraryWithRooter:self callback:^(NSString * _Nonnull code) {
             
-            ChangePassWordViewController *vc = [[ChangePassWordViewController alloc]init];
-            
-            vc.type = @"1";
-            
-            vc.deviceStr = SafeString(code);
-            
-            vc.hidesBottomBarWhenPushed = YES;
-            
-            [weakself.navigationController pushViewController:vc animated:YES];
-            
+            [weakself scanning:SafeString(code)];
+
         }];
         
     }else{
@@ -153,53 +145,39 @@
     
     [AFNHelper get:BaseUrl parameter:parameters success:^(id responseObject) {
         
-        if([self.type isEqualToString:@"1"]){
-            //注册进来的
-            if([responseObject[@"result"] isEqualToString:@"0"]){
-                
-                [SVPShow showInfoWithMessage:@"未找到匹配的设备"];
-                
-                [weakself startScanning];
-                
-            }else{
-                
-                //1-注册管理员 2-注册用户
-                ChangePassWordViewController *vc = [[ChangePassWordViewController alloc]init];
-                
-                vc.deviceStr = SafeString(code);
-                
-                vc.type = @"1";
-                
-                vc.hidesBottomBarWhenPushed = YES;
-                
-                [weakself.navigationController pushViewController:vc animated:YES];
-            }
+        if([responseObject[@"result"] isEqualToString:@"0"]){
             
+            [SVPShow showInfoWithMessage:@"未找到匹配的设备"];
+            
+            [weakself startScanning];
+            
+        }else if([responseObject[@"result"] isEqualToString:@"1"] || [responseObject[@"result"] isEqualToString:@"2"]){
+            
+            //1-注册管理员 2-注册用户
+            ChangePassWordViewController *vc = [[ChangePassWordViewController alloc]init];
+            
+            vc.deviceStr = SafeString(code);
+            
+            vc.type = @"1";
+            
+            vc.resultType = SafeString(responseObject[@"result"]);
+            
+            vc.hidesBottomBarWhenPushed = YES;
+            
+            [weakself.navigationController pushViewController:vc animated:YES];
+        
+        }else if ([responseObject[@"result"] isEqualToString:@"3"]){
+            
+            [SVPShow showInfoWithMessage:@"用户已绑定设备"];
+
+            [weakself startScanning];
+
         }else{
-            //添加新设备
-            if([responseObject[@"result"] isEqualToString:@"0"]){
-                
-                [SVPShow showInfoWithMessage:@"未找到匹配的设备"];
-                
-                [weakself startScanning];
-                
-            }else if ([responseObject[@"result"] isEqualToString:@"1"] || [responseObject[@"result"] isEqualToString:@"2"]){
-                
-                //1-注册管理员 2-注册用户
-                ChangePassWordViewController *vc = [[ChangePassWordViewController alloc]init];
-                
-                vc.deviceStr = SafeString(code);
-                
-                vc.type = @"1";
-                
-                vc.hidesBottomBarWhenPushed = YES;
-                
-                [weakself.navigationController pushViewController:vc animated:YES];
-                
-            }else if ([responseObject[@"result"] isEqualToString:@"3"]){
-                
-                [SVPShow showInfoWithMessage:@"用户已绑定设备"];
-            }
+            
+            [SVPShow showFailureWithMessage:@"获取设备码失败"];
+
+            [weakself startScanning];
+
         }
 
     } faliure:^(id error) {

@@ -17,5 +17,7 @@
 
 - (void)saveContext;
 
+@property (nonatomic,assign)NSInteger allowRotate;
+
 @end
 
