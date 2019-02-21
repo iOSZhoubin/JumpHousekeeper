@@ -93,7 +93,7 @@
     
     NSDictionary *xAxis = @{@"boundaryGap":@false,@"type":@"category",@"data":array};
     
-    NSDictionary *yAxis = @{@"type":@"value",@"min":@1400000000,@"max":@1600000000,@"splitNumber":@3};
+    NSDictionary *yAxis = @{@"type":@"value",@"splitNumber":@3};
     
     NSArray *dataZoom = @[@{@"startValue":@"00:00"},@{@"type":@"inside"}];
     

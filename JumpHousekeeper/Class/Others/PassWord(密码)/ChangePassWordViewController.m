@@ -35,13 +35,29 @@
 @property (weak, nonatomic) IBOutlet UITextField *authorizationCode;
 //授权码Title
 @property (weak, nonatomic) IBOutlet UILabel *authorTitle;
+//设备码里面的分割线
+@property (weak, nonatomic) IBOutlet UILabel *line;
+//密码栏整体View的高度
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *passH;
+//密码栏的分割线
+@property (weak, nonatomic) IBOutlet UILabel *line2;
+//密码栏分割线距上的高度
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *line2H;
 //验证码发送间隔
 @property (assign,nonatomic) NSInteger timerNum;
 //定时器
 @property (strong,nonatomic) NSTimer *timer;
-@property (weak, nonatomic) IBOutlet UILabel *line;
 
 @end
+
+/**
+ *
+ * 当type为1主要判断的是页面的展示：显不显示设备码（其他不显示设备码）
+ *
+ * resultType主要判断的是显不显示：授权码
+ *
+ * fromeType 主要判断的是显不显示： 输入密码（添加设备不需要输入密码）
+ */
 
 @implementation ChangePassWordViewController
 
@@ -60,23 +76,42 @@
     if([self.type isEqualToString:@"1"]){
         
         self.deviceCode.text = self.deviceStr;
-        
-        self.navigationItem.title = @"注册";
-        
+    
         self.passWordTitle.text = @"密码";
         
         if([self.resultType isEqualToString:@"1"]){
-            
+            //注册管理员
             self.topH.constant = 100;
 
         }else{
-            
+            //注册用户
             self.topH.constant = 130;
+
+        }
+        
+        if([self.fromeType isEqualToString:@"2"]){
+
+            self.navigationItem.title = @"添加设备";
+            [self.sureBtn setTitle:@"确认" forState:UIControlStateNormal];
+            self.passWord.hidden = YES;
+            self.passWordTitle.hidden = YES;
+            self.passH.constant = 90;
+            self.line2.hidden = YES;
+            self.line2H.constant = 0;
+
+        }else{
+
+            self.navigationItem.title = @"注册";
+            [self.sureBtn setTitle:@"注册" forState:UIControlStateNormal];
+            self.passWord.hidden = NO;
+            self.passWordTitle.hidden = NO;
+            self.line2.hidden = NO;
+            self.passH.constant = 130;
+            self.line2H.constant = 42;
         }
         
         self.deviceView.hidden = NO;
         
-        [self.sureBtn setTitle:@"注册" forState:UIControlStateNormal];
         
     }else if ([self.type isEqualToString:@"2"]){
         
@@ -87,6 +122,10 @@
         self.topH.constant = 40;
         
         self.deviceView.hidden = YES;
+        
+        self.passWord.hidden = NO;
+        
+        self.passWordTitle.hidden = NO;
         
         [self.sureBtn setTitle:@"确认修改" forState:UIControlStateNormal];
 
@@ -99,6 +138,10 @@
         self.topH.constant = 40;
         
         self.deviceView.hidden = YES;
+        
+        self.passWord.hidden = NO;
+        
+        self.passWordTitle.hidden = NO;
         
         [self.sureBtn setTitle:@"确认提交" forState:UIControlStateNormal];
 
@@ -258,7 +301,18 @@
         
         JumpLog(@"注册");
         
-        [self newUser];
+        if([self.fromeType isEqualToString:@"1"]){
+            //从登录下进来注册新用户
+
+            [self newUser];
+
+        }else{
+            
+            //从添加设备下进来
+
+            [self addDevice];
+
+        }
         
     }else{
         
@@ -309,7 +363,7 @@
  
     if([self.type isEqualToString:@"1"]){//注册下
         
-        if([self.fromeType isEqualToString:@"1"]){
+        if([self.fromeType isEqualToString:@"2"]){
             //添加设备下进来获取验证码
             parameters[@"m"] = @"0";
             parameters[@"t"] = @"6";
@@ -460,7 +514,7 @@
 
 -(void)newUser{
     //发送手机号、设备号、密码、验证码(管理员)、验证码(用户)
-    
+
     L2CWeakSelf(self);
     
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
@@ -501,5 +555,55 @@
         [SVPShow showFailureWithMessage:@"注册失败"];
     }];
 }
+
+
+#pragma mark --- 添加设备
+
+-(void)addDevice{
+    
+    L2CWeakSelf(self);
+    
+    //    @"%@/iosapi.php?m=0&t=6&c=%@（管理员验证码）&o=%@当前用户验证码）&d=%@（设备号）", __BASE_URL__,adminCode,userCode,equipmentNum]    添加设备
+    
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+        
+    parameters[@"m"] = @"0";
+    parameters[@"t"] = @"6";
+    parameters[@"d"] = SafeString(self.deviceStr);      //设备号
+    parameters[@"o"] = SafeString(self.code.text);//验证码(用户)
+    parameters[@"c"] = SafeString(self.authorizationCode.text);//验证码(管理员)
+    
+    [SVPShow show];
+    
+    [AFNHelper get:BaseUrl parameter:parameters success:^(id responseObject) {
+        
+        if([responseObject[@"result"] isEqualToString:@"1"]){
+            
+            [SVPShow showSuccessWithMessage:@"添加成功"];
+            
+            for (UIViewController *vc in weakself.navigationController.viewControllers) {
+                
+                if ([NSStringFromClass([vc class]) isEqualToString:@"JumpDeviceTableViewController"]) {
+                    
+                    [weakself.navigationController popToViewController:vc animated:YES];
+                }
+            }
+            
+            [KNotification postNotificationName:@"JumpDeviceTableViewController" object:nil userInfo:nil];
+            
+        }else{
+            
+            [SVPShow showFailureWithMessage:@"添加失败"];
+        }
+        
+    } faliure:^(id error) {
+        
+        [SVPShow showFailureWithMessage:@"添加失败"];
+    }];
+}
+
+
+
 
 @end

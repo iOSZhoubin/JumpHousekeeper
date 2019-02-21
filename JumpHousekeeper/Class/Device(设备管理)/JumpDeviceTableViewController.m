@@ -64,8 +64,16 @@
     [super viewDidLoad];
 
     [self setupUI];
+    
+    [KNotification addObserver:self selector:@selector(notifi:) name:@"JumpDeviceTableViewController" object:nil];
+
 }
 
+
+- (void)notifi:(NSNotification *)note{
+
+    [self refresh];
+}
 
 -(void)setupUI{
     
@@ -311,6 +319,11 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+-(void)dealloc{
+    
+    [KNotification removeObserver:self];
 }
 
 

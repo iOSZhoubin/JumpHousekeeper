@@ -184,7 +184,7 @@
  
     switch (indexPath.row) {
         case 0:
-            self.contentField.text = SafeString(model.ftype);
+            self.contentField.text = @"";
             break;
         case 2:
             self.contentField.text = SafeString(model.ver);
