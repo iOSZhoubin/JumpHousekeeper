@@ -77,8 +77,13 @@
     
     self.dataArray = [NSMutableArray array];
     
-    [RefreshHelper refreshHelperWithScrollView:self.tableView target:self loadNewData:@selector(getDeviceList) loadMoreData:nil isBeginRefresh:YES];
+    [self refresh];
+}
+
+-(void)refresh{
     
+    [RefreshHelper refreshHelperWithScrollView:self.tableView target:self loadNewData:@selector(getDeviceList) loadMoreData:nil isBeginRefresh:YES];
+
 }
 
 #pragma mark --- UITableViewDelegate And DataSource
@@ -103,7 +108,7 @@
 //    [cell refreshWithDeviceModel:model];
 //
 //    return cell;
-    
+
     static NSString *identifier = @"cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
@@ -167,11 +172,7 @@
     
     vc.hidesBottomBarWhenPushed = YES;
     
-//    [self.navigationController pushViewController:vc animated:YES];
-    
-    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vc];
-    
-    [self presentViewController:nav animated:YES completion:nil];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 
@@ -245,6 +246,8 @@
 
 -(void)deleteDevice:(NSString *)deviceName andCode:(NSString *)code{
     
+    L2CWeakSelf(self);
+    
     NSMutableDictionary *parametets = [NSMutableDictionary dictionary];
     
     parametets[@"m"] = @"0";
@@ -255,6 +258,8 @@
     [AFNHelper get:BaseUrl parameter:parametets success:^(id responseObject) {
         
         [SVPShow showSuccessWithMessage:@"删除成功"];
+        
+        [weakself refresh];
         
     } faliure:^(id error) {
         

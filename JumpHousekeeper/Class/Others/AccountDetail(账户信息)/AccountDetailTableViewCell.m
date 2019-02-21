@@ -191,11 +191,11 @@
 
             break;
         case 3:
-            self.contentField.text = SafeString(model.fw_virus);
+            self.contentField.text = SafeString(model.rulever);
 
             break;
         case 4:
-            self.contentField.text = SafeString(model.fw_appver);
+            self.contentField.text = SafeString(model.fupdate);
 
             break;
         case 5:

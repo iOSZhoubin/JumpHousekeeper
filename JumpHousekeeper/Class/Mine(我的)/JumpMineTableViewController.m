@@ -180,23 +180,8 @@
         
         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             
-            //退出登录后只保存账户名
-            NSDictionary *userDict = [JumpKeyChain getKeychainDataForKey:@"userInfo"];
-            
-            NSString *account = SafeString(userDict[@"account"]);
-            
-            NSDictionary *userInfo = @{@"account":account,@"password":@"",@"isLogin":@"0"};
-            
-            [JumpKeyChain addKeychainData:userInfo forKey:@"userInfo"];
-
-            JumpLoginViewController *vc = [[JumpLoginViewController alloc]init];
-            
-            UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vc];
-            
-            AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-            
-            appdelegate.window.rootViewController = nav;
-            
+            [self exitLogin];
+   
         }];
         
         UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
@@ -251,6 +236,50 @@
     
     [self presentViewController:alertController animated:YES completion:nil];
     
+}
+
+
+#pragma mark --- 退出登录
+
+-(void)exitLogin{
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    
+    parameters[@"m"] = @"0";
+    parameters[@"t"] = @"2";
+
+    [AFNHelper get:BaseUrl parameter:parameters success:^(id responseObject) {
+        
+        if([SafeString(responseObject[@"result"]) isEqualToString:@"1"]){
+            
+            //退出登录后只保存账户名
+            NSDictionary *userDict = [JumpKeyChain getKeychainDataForKey:@"userInfo"];
+            
+            NSString *account = SafeString(userDict[@"account"]);
+            
+            NSDictionary *userInfo = @{@"account":account,@"password":@"",@"isLogin":@"0"};
+            
+            [JumpKeyChain addKeychainData:userInfo forKey:@"userInfo"];
+            
+            JumpLoginViewController *vc = [[JumpLoginViewController alloc]init];
+            
+            UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vc];
+            
+            AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            
+            appdelegate.window.rootViewController = nav;
+            
+        }else{
+            
+            [SVPShow showFailureWithMessage:@"退出登录失败"];
+
+        }
+        
+    } faliure:^(id error) {
+        
+        [SVPShow showFailureWithMessage:@"退出登录失败"];
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

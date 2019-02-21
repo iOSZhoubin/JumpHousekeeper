@@ -65,7 +65,7 @@
         
         self.passWordTitle.text = @"密码";
         
-        if([self.resultType isEqualToString:@"2"]){
+        if([self.resultType isEqualToString:@"1"]){
             
             self.topH.constant = 100;
 
@@ -107,7 +107,7 @@
     [self.passWord setSecureTextEntry:YES];//密文
     
     
-    if([self.resultType isEqualToString:@"2"]){
+    if([self.resultType isEqualToString:@"1"]){
         
         self.authorTitle.hidden = YES;
         
@@ -163,9 +163,8 @@
         
     }else{
         
-        //忘记密码和注册都为未登录情况
+        //忘记密码和注册
         [self getcodeUnlogin];
-
     }
     
     
@@ -173,7 +172,7 @@
     
     [self.codeBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
     
-    self.timerNum = 60;
+    self.timerNum = 10;
     
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f  //间隔时间
                                                   target:self
@@ -267,8 +266,6 @@
         
         [self defaultLogin];
     }
-    
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
@@ -303,16 +300,36 @@
 }
 
 
-#pragma mark --- 未登录情况下获取验证码（忘记密码）
+#pragma mark --- 未登录情况下获取验证码（忘记密码，注册，添加设备）
 
 -(void)getcodeUnlogin{
-    
+
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     
-    parameters[@"m"] = @"0";
-    parameters[@"t"] = @"5";
-    parameters[@"l"] = SafeString(self.phoneNumber.text);
-    
+ 
+    if([self.type isEqualToString:@"1"]){//注册下
+        
+        if([self.fromeType isEqualToString:@"1"]){
+            //添加设备下进来获取验证码
+            parameters[@"m"] = @"0";
+            parameters[@"t"] = @"6";
+            parameters[@"d"] = SafeString(self.deviceStr);
+            
+        }else{
+            //登录界面注册下获取验证码
+            parameters[@"m"] = @"0";
+            parameters[@"t"] = @"3";
+            parameters[@"d"] = SafeString(self.deviceStr);
+            parameters[@"l"] = SafeString(self.phoneNumber.text);
+        }
+
+    }else{
+        //忘记密码下
+        parameters[@"m"] = @"0";
+        parameters[@"t"] = @"5";
+        parameters[@"l"] = SafeString(self.phoneNumber.text);
+    }
+
     [SVPShow show];
 
     [AFNHelper get:BaseUrl parameter:parameters success:^(id responseObject) {
@@ -364,10 +381,12 @@
     
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     
+    NSString *password = [JumpPublicAction md5:SafeString(self.passWord.text)];
+
     parameters[@"m"] = @"0";
     parameters[@"t"] = @"4";
     parameters[@"c"] = SafeString(self.code.text);
-    parameters[@"p"] = SafeString(self.passWord.text);
+    parameters[@"p"] = password;
 
     [SVPShow show];
     
@@ -406,10 +425,12 @@
     
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
 
+    NSString *password = [JumpPublicAction md5:SafeString(self.passWord.text)];
+
     parameters[@"m"] = @"0";
     parameters[@"t"] = @"5";
     parameters[@"c"] = SafeString(self.code.text);
-    parameters[@"p"] = SafeString(self.passWord.text);
+    parameters[@"p"] = password;
     parameters[@"l"] = SafeString(self.phoneNumber.text);
 
     [SVPShow show];
@@ -444,13 +465,15 @@
     
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     
+    NSString *password = [JumpPublicAction md5:SafeString(self.passWord.text)];
+    
     parameters[@"m"] = @"0";
     parameters[@"t"] = @"3";
     parameters[@"l"] = SafeString(self.phoneNumber.text); //手机号
     parameters[@"d"] = SafeString(self.deviceStr);      //设备号
-    parameters[@"p"] = SafeString(self.passWord.text);//密码
-    parameters[@"o"] = SafeString(self.authorizationCode.text);//验证码(管理员)
-    parameters[@"c"] = SafeString(self.code.text);//验证码(用户)
+    parameters[@"p"] = password;//密码
+    parameters[@"o"] = SafeString(self.code.text);//验证码(用户)
+    parameters[@"c"] = SafeString(self.authorizationCode.text);//验证码(管理员)
 
     [SVPShow show];
     

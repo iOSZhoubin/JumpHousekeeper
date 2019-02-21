@@ -174,55 +174,55 @@
 -(void)clickloginAction{
     
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    
+
     NSString *password = [JumpPublicAction md5:SafeString(self.passWord.text)];
-    
+
     parameters[@"m"] = @"0";
     parameters[@"t"] = @"1";
     parameters[@"u"] = SafeString(self.account.text);
     parameters[@"p"] = password;
-    
+
     [SVPShow show];
 
     [AFNHelper get:BaseUrl parameter:parameters success:^(id responseObject) {
-        
+
         JumpLog(@"%@",responseObject);
-        
+
         NSDictionary *dict = responseObject;
-        
+
         if([SafeString(dict[@"result"]) isEqualToString:@"1"]){
-        
+
             [SVPShow showSuccessWithMessage:@"登录成功"];
-            
+
             NSString *account = SafeString(self.account.text);
-            
+
             NSString *password = SafeString(self.passWord.text);
-            
+
             NSString *isLogin = @"1";
-            
+
             NSDictionary *userInfo = @{@"account":account,@"password":password,@"isLogin":isLogin};
-            
+
             [JumpKeyChain addKeychainData:userInfo forKey:@"userInfo"];
-            
+
             JumpBaseTabBarViewController *vc = [[JumpBaseTabBarViewController alloc]init];
-            
+
             AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-            
+
             appdelegate.window.rootViewController = vc;
-       
+
         }else{
 
             NSString *messageStr = [NSString stringWithFormat:@"返回数据为:%@",SafeString(dict[@"result"])];
 
             [SVPShow showInfoWithMessage:messageStr];
         }
-  
+
     } faliure:^(id error) {
-        
+
         JumpLog(@"%@",error);
-        
+
         [SVPShow showFailureWithMessage:@"登录失败"];
-        
+
     }];
 }
 
