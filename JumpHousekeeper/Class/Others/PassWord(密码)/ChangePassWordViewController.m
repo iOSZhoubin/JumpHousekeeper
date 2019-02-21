@@ -51,12 +51,9 @@
 @end
 
 /**
- *
- * 当type为1主要判断的是页面的展示：显不显示设备码（其他不显示设备码）
+ * 当type为1主要判断的是页面的展示：显不显示设备码（其他不显示设备码）显不显示输入密码（添加设备不需要输入密码）
  *
  * resultType主要判断的是显不显示：授权码
- *
- * fromeType 主要判断的是显不显示： 输入密码（添加设备不需要输入密码）
  */
 
 @implementation ChangePassWordViewController
@@ -73,7 +70,7 @@
     
     self.sureBtn.layer.cornerRadius = 5;
 
-    if([self.type isEqualToString:@"1"]){
+    if([self.type isEqualToString:@"1"] || [self.type isEqualToString:@"4"]){
         
         self.deviceCode.text = self.deviceStr;
     
@@ -89,7 +86,7 @@
 
         }
         
-        if([self.fromeType isEqualToString:@"2"]){
+        if([self.type isEqualToString:@"4"]){
 
             self.navigationItem.title = @"添加设备";
             [self.sureBtn setTitle:@"确认" forState:UIControlStateNormal];
@@ -296,23 +293,17 @@
         return;
     }
     
-    
     if([self.type isEqualToString:@"1"]){
         
         JumpLog(@"注册");
+       
+        [self newUser];
         
-        if([self.fromeType isEqualToString:@"1"]){
-            //从登录下进来注册新用户
+    }else if ([self.type isEqualToString:@"4"]){
 
-            [self newUser];
+        JumpLog(@"添加设备");
 
-        }else{
-            
-            //从添加设备下进来
-
-            [self addDevice];
-
-        }
+        [self addDevice];
         
     }else{
         
@@ -360,23 +351,21 @@
 
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     
- 
     if([self.type isEqualToString:@"1"]){//注册下
         
-        if([self.fromeType isEqualToString:@"2"]){
-            //添加设备下进来获取验证码
-            parameters[@"m"] = @"0";
-            parameters[@"t"] = @"6";
-            parameters[@"d"] = SafeString(self.deviceStr);
-            
-        }else{
-            //登录界面注册下获取验证码
-            parameters[@"m"] = @"0";
-            parameters[@"t"] = @"3";
-            parameters[@"d"] = SafeString(self.deviceStr);
-            parameters[@"l"] = SafeString(self.phoneNumber.text);
-        }
+        //登录界面注册下获取验证码
+        parameters[@"m"] = @"0";
+        parameters[@"t"] = @"3";
+        parameters[@"d"] = SafeString(self.deviceStr);
+        parameters[@"l"] = SafeString(self.phoneNumber.text);
 
+    }else if ([self.type isEqualToString:@"4"]){
+        
+        //添加设备下进来获取验证码
+        parameters[@"m"] = @"0";
+        parameters[@"t"] = @"6";
+        parameters[@"d"] = SafeString(self.deviceStr);
+        
     }else{
         //忘记密码下
         parameters[@"m"] = @"0";

@@ -197,7 +197,7 @@
         
         ScanningDeviceViewController *vc = [[ScanningDeviceViewController alloc]init];
         
-        vc.type = @"2";
+        vc.type = @"4";
         
         vc.hidesBottomBarWhenPushed = YES;
         

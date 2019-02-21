@@ -130,9 +130,7 @@
     
     vc.deviceStr = SafeString(code);
     
-    vc.type = @"1";
-    
-    vc.fromeType = self.type;
+    vc.type = self.type;
     
     vc.resultType = @"1";
     
@@ -172,9 +170,7 @@
 //
 //            vc.deviceStr = SafeString(code);
 //
-//            vc.type = @"1";
-//
-//            vc.fromeType = self.type;
+//            vc.type = self.type;
 //
 //            vc.resultType = SafeString(responseObject[@"result"]);
 //
