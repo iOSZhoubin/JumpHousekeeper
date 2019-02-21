@@ -551,10 +551,7 @@
 -(void)addDevice{
     
     L2CWeakSelf(self);
-    
-    //    @"%@/iosapi.php?m=0&t=6&c=%@（管理员验证码）&o=%@当前用户验证码）&d=%@（设备号）", __BASE_URL__,adminCode,userCode,equipmentNum]    添加设备
-    
-    
+     
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
         
     parameters[@"m"] = @"0";

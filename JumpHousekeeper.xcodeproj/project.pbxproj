@@ -22,8 +22,6 @@
 		3917018F21F84C5A00D90AC0 /* JumpAgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3917018E21F84C5A00D90AC0 /* JumpAgreementViewController.m */; };
 		3917019821F851AD00D90AC0 /* JumpMineTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3917019521F851AC00D90AC0 /* JumpMineTableViewCell.m */; };
 		3917019921F851AD00D90AC0 /* JumpMineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3917019621F851AD00D90AC0 /* JumpMineTableViewCell.xib */; };
-		3917019D21F854FC00D90AC0 /* SwitchDeviceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3917019B21F854FC00D90AC0 /* SwitchDeviceTableViewCell.m */; };
-		3917019E21F854FC00D90AC0 /* SwitchDeviceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3917019C21F854FC00D90AC0 /* SwitchDeviceTableViewCell.xib */; };
 		391701A221F860A700D90AC0 /* JumpAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 391701A021F860A700D90AC0 /* JumpAboutViewController.m */; };
 		391701A321F860A700D90AC0 /* JumpAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 391701A121F860A700D90AC0 /* JumpAboutViewController.xib */; };
 		391701A621F862C200D90AC0 /* JumpAccountDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 391701A521F862C200D90AC0 /* JumpAccountDetailTableViewController.m */; };
@@ -31,6 +29,8 @@
 		391701AB21F8633100D90AC0 /* AccountDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 391701A921F8633100D90AC0 /* AccountDetailTableViewCell.xib */; };
 		391701AE21F8656A00D90AC0 /* JumpAccountDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 391701AD21F8656A00D90AC0 /* JumpAccountDetailModel.m */; };
 		391701B121F868CE00D90AC0 /* JumpCollectionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 391701B021F868CE00D90AC0 /* JumpCollectionTableViewController.m */; };
+		3966F9C1221EB01500AAC1BF /* JumpDeleteDeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3966F9BF221EB01500AAC1BF /* JumpDeleteDeviceViewController.m */; };
+		3966F9C2221EB01500AAC1BF /* JumpDeleteDeviceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3966F9C0221EB01500AAC1BF /* JumpDeleteDeviceViewController.xib */; };
 		397C636321F9456B00E566A3 /* JRSandBoxPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 397C635F21F9456B00E566A3 /* JRSandBoxPath.m */; };
 		397C636421F9456B00E566A3 /* CleanCaches.m in Sources */ = {isa = PBXBuildFile; fileRef = 397C636221F9456B00E566A3 /* CleanCaches.m */; };
 		397C636921F946EC00E566A3 /* ConfigurationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 397C636821F946EC00E566A3 /* ConfigurationTableViewController.m */; };
@@ -101,9 +101,6 @@
 		3917019521F851AC00D90AC0 /* JumpMineTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JumpMineTableViewCell.m; sourceTree = "<group>"; };
 		3917019621F851AD00D90AC0 /* JumpMineTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JumpMineTableViewCell.xib; sourceTree = "<group>"; };
 		3917019721F851AD00D90AC0 /* JumpMineTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JumpMineTableViewCell.h; sourceTree = "<group>"; };
-		3917019A21F854FC00D90AC0 /* SwitchDeviceTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwitchDeviceTableViewCell.h; sourceTree = "<group>"; };
-		3917019B21F854FC00D90AC0 /* SwitchDeviceTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SwitchDeviceTableViewCell.m; sourceTree = "<group>"; };
-		3917019C21F854FC00D90AC0 /* SwitchDeviceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SwitchDeviceTableViewCell.xib; sourceTree = "<group>"; };
 		3917019F21F860A700D90AC0 /* JumpAboutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JumpAboutViewController.h; sourceTree = "<group>"; };
 		391701A021F860A700D90AC0 /* JumpAboutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JumpAboutViewController.m; sourceTree = "<group>"; };
 		391701A121F860A700D90AC0 /* JumpAboutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JumpAboutViewController.xib; sourceTree = "<group>"; };
@@ -116,6 +113,9 @@
 		391701AD21F8656A00D90AC0 /* JumpAccountDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JumpAccountDetailModel.m; sourceTree = "<group>"; };
 		391701AF21F868CE00D90AC0 /* JumpCollectionTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JumpCollectionTableViewController.h; sourceTree = "<group>"; };
 		391701B021F868CE00D90AC0 /* JumpCollectionTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JumpCollectionTableViewController.m; sourceTree = "<group>"; };
+		3966F9BE221EB01500AAC1BF /* JumpDeleteDeviceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JumpDeleteDeviceViewController.h; sourceTree = "<group>"; };
+		3966F9BF221EB01500AAC1BF /* JumpDeleteDeviceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JumpDeleteDeviceViewController.m; sourceTree = "<group>"; };
+		3966F9C0221EB01500AAC1BF /* JumpDeleteDeviceViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JumpDeleteDeviceViewController.xib; sourceTree = "<group>"; };
 		397C635F21F9456B00E566A3 /* JRSandBoxPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JRSandBoxPath.m; sourceTree = "<group>"; };
 		397C636021F9456B00E566A3 /* CleanCaches.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CleanCaches.h; sourceTree = "<group>"; };
 		397C636121F9456B00E566A3 /* JRSandBoxPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JRSandBoxPath.h; sourceTree = "<group>"; };
@@ -319,11 +319,11 @@
 			children = (
 				3917016521F80EDC00D90AC0 /* JumpDeviceTableViewController.h */,
 				3917016621F80EDC00D90AC0 /* JumpDeviceTableViewController.m */,
-				3917019A21F854FC00D90AC0 /* SwitchDeviceTableViewCell.h */,
-				3917019B21F854FC00D90AC0 /* SwitchDeviceTableViewCell.m */,
-				3917019C21F854FC00D90AC0 /* SwitchDeviceTableViewCell.xib */,
 				39E5EBCC221AA45C002566DB /* JumpDeviceModel.h */,
 				39E5EBCD221AA45C002566DB /* JumpDeviceModel.m */,
+				3966F9BE221EB01500AAC1BF /* JumpDeleteDeviceViewController.h */,
+				3966F9BF221EB01500AAC1BF /* JumpDeleteDeviceViewController.m */,
+				3966F9C0221EB01500AAC1BF /* JumpDeleteDeviceViewController.xib */,
 			);
 			path = "Device(设备管理)";
 			sourceTree = "<group>";
@@ -609,7 +609,7 @@
 				39A5D1F521F1B9ED002CBC0D /* JumpEcharts.html in Resources */,
 				397C637D21F98B5400E566A3 /* JumpLoginViewController.xib in Resources */,
 				39A5D1EE21F1AC18002CBC0D /* echarts.min.js in Resources */,
-				3917019E21F854FC00D90AC0 /* SwitchDeviceTableViewCell.xib in Resources */,
+				3966F9C2221EB01500AAC1BF /* JumpDeleteDeviceViewController.xib in Resources */,
 				3917016421F80EB700D90AC0 /* JumpInformationViewController.xib in Resources */,
 				39A5D1A821F16A3C002CBC0D /* LaunchScreen.storyboard in Resources */,
 				391701AB21F8633100D90AC0 /* AccountDetailTableViewCell.xib in Resources */,
@@ -696,7 +696,6 @@
 				39A5D1DA21F1A510002CBC0D /* UIView+UIViewExtension.m in Sources */,
 				39A5D1D921F1A510002CBC0D /* SVPShow.m in Sources */,
 				39E5EBCE221AA45C002566DB /* JumpDeviceModel.m in Sources */,
-				3917019D21F854FC00D90AC0 /* SwitchDeviceTableViewCell.m in Sources */,
 				397C638321F9B1A300E566A3 /* QiCodePreviewView.m in Sources */,
 				397C636F21F9500100E566A3 /* JumpFeedbackTableViewController.m in Sources */,
 				39A5D1DC21F1A510002CBC0D /* SecurityNSString.m in Sources */,
@@ -706,6 +705,7 @@
 				397C638421F9B1A300E566A3 /* QiCodeManager.m in Sources */,
 				391701A221F860A700D90AC0 /* JumpAboutViewController.m in Sources */,
 				397C636421F9456B00E566A3 /* CleanCaches.m in Sources */,
+				3966F9C1221EB01500AAC1BF /* JumpDeleteDeviceViewController.m in Sources */,
 				3917019821F851AD00D90AC0 /* JumpMineTableViewCell.m in Sources */,
 				3917018721F8472200D90AC0 /* JumpInformationModel.m in Sources */,
 				3917016721F80EDC00D90AC0 /* JumpDeviceTableViewController.m in Sources */,
