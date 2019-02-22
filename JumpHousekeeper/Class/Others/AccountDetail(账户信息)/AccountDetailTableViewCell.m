@@ -167,46 +167,47 @@
 
 -(void)refreshDeviceWithModel:(DeviceDetailModel *)model indexPath:(NSIndexPath *)indexPath{
 
-    NSArray *titleArray = @[@"设备状态",@"最新安全事件",@"设备版本信息",@"设备安全补丁",@"设备升级信息",@"设备许可信息",@"设备IP地址",@"设备ID"];
+    NSArray *titleArray = @[@"设备状态",@"设备版本信息",@"设备安全补丁",@"设备升级信息",@"设备许可信息",@"设备IP地址",@"设备ID"];
     
     self.titleName.text = titleArray[indexPath.row];
     
     self.contentField.enabled = NO;
     
-    if(indexPath.row == 1){
-        
-        self.arrowImage.hidden = NO;
-        
-    }else{
-        
-        self.arrowImage.hidden = YES;
-    }
- 
+//    if(indexPath.row == 1){
+//
+//        self.arrowImage.hidden = NO;
+//
+//    }else{
+//
+//        self.arrowImage.hidden = YES;
+//    }
+    self.arrowImage.hidden = YES;
+
     switch (indexPath.row) {
         case 0:
             self.contentField.text = @"";
             break;
-        case 2:
+        case 1:
             self.contentField.text = SafeString(model.ver);
 
             break;
-        case 3:
+        case 2:
             self.contentField.text = SafeString(model.rulever);
 
             break;
-        case 4:
+        case 3:
             self.contentField.text = SafeString(model.fupdate);
 
             break;
-        case 5:
+        case 4:
             self.contentField.text = SafeString(model.license);
 
             break;
-        case 6:
+        case 5:
             self.contentField.text = SafeString(model.ip);
 
             break;
-        case 7:
+        case 6:
             self.contentField.text = SafeString(model.devid);
 
             break;

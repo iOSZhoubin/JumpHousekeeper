@@ -70,7 +70,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 8;
+    return 7;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -87,12 +87,12 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
-    if(indexPath.row == 1){
-        
-        SecurityThingsViewController *vc = [[SecurityThingsViewController alloc]init];
-        
-        [self.navigationController pushViewController:vc animated:YES];
-    }
+//    if(indexPath.row == 1){
+//        
+//        SecurityThingsViewController *vc = [[SecurityThingsViewController alloc]init];
+//        
+//        [self.navigationController pushViewController:vc animated:YES];
+//    }
 }
 
 

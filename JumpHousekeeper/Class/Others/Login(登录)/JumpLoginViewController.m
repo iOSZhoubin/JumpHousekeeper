@@ -93,22 +93,6 @@
     }
 
     [self clickloginAction];//登录
-    
-//    NSString *account = SafeString(self.account.text);
-//
-//    NSString *password = SafeString(self.passWord.text);
-//
-//    NSString *isLogin = @"1";
-//
-//    NSDictionary *userInfo = @{@"account":account,@"password":password,@"isLogin":isLogin};
-//
-//    [JumpKeyChain addKeychainData:userInfo forKey:@"userInfo"];
-//
-//    JumpBaseTabBarViewController *vc = [[JumpBaseTabBarViewController alloc]init];
-//
-//    AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-//
-//    appdelegate.window.rootViewController = vc;
 }
 
 #pragma mark --- 忘记密码
@@ -212,9 +196,12 @@
 
         }else{
 
-            NSString *messageStr = [NSString stringWithFormat:@"返回数据为:%@",SafeString(dict[@"result"])];
+//            NSString *messageStr = [NSString stringWithFormat:@"返回数据为:%@",SafeString(dict[@"result"])];
+//
+//            [SVPShow showInfoWithMessage:messageStr];
+            
+            [SVPShow showFailureWithMessage:@"登录失败"];
 
-            [SVPShow showInfoWithMessage:messageStr];
         }
 
     } faliure:^(id error) {
