@@ -127,7 +127,7 @@
     parameters[@"m"] = @"0";
     parameters[@"t"] = @"7";
     parameters[@"d"] = SafeString(self.deviceId);
-    parameters[@"c"] = @"验证码";
+    parameters[@"c"] = SafeString(self.codeField.text);
     
     [AFNHelper get:BaseUrl parameter:parameters success:^(id responseObject) {
         

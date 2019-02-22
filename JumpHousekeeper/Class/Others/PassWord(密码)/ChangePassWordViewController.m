@@ -261,18 +261,39 @@
         
         return;
    
-    }else if (SafeString(self.passWord.text).length < 1){
-        
-        [SVPShow showInfoWithMessage:@"密码不能为空"];
-        
-        return;
-        
     }else if (SafeString(self.code.text).length < 1){
         
         [SVPShow showInfoWithMessage:@"验证码不能为空"];
         
         return;
     }
+    
+    if(![self.type isEqualToString:@"4"]){
+        
+        BOOL password = [JumpPublicAction checkPassWord:self.passWord.text];
+
+        if(SafeString(self.passWord.text).length < 1){
+            
+            [SVPShow showInfoWithMessage:@"密码不能为空"];
+            
+            return;
+            
+        }else if(password == NO){
+            
+            [SVPShow showInfoWithMessage:@"密码过于简单,请重新设置"];
+            
+            return;
+        }
+    }
+    
+    
+    if([self.type isEqualToString:@"1"] && [self.resultType isEqualToString:@"2"]){
+        
+        [SVPShow showInfoWithMessage:@"授权码不能为空"];
+        
+        return;
+    }
+    
     
     BOOL isPhoneNum =   [JumpPublicAction isTruePhoneNumber:SafeString(self.phoneNumber.text)] ;
 
@@ -284,14 +305,7 @@
     }
     
     
-    BOOL password = [JumpPublicAction checkPassWord:self.passWord.text];
-    
-    if(password == NO){
-        
-        [SVPShow showInfoWithMessage:@"密码过于简单,请重新设置"];
-        
-        return;
-    }
+
     
     if([self.type isEqualToString:@"1"]){
         
