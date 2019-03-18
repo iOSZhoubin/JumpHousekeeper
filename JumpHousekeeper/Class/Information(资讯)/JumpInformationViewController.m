@@ -19,7 +19,7 @@
 //tableView
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 //数据源(底部信息)
-@property (strong,nonatomic) NSMutableArray *dataArray;
+@property (strong,nonatomic) NSMutableArray *imageListArray;
 //数据源(轮播图)
 @property (strong,nonatomic) NSMutableArray *newsArray;
 
@@ -40,7 +40,7 @@
     
     self.tableView.dataSource = self;
     
-    self.dataArray = [NSMutableArray array];
+    self.imageListArray = [NSMutableArray array];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"JumpInfomationTableViewCell" bundle:nil] forCellReuseIdentifier:@"JumpInfomationTableViewCell"];
     
@@ -60,7 +60,7 @@
     NSMutableArray *cycleImageArray = [NSMutableArray array];
     NSMutableArray *cycleTitleArray = [NSMutableArray array];
     
-    for (JumpInformationModel *model in self.dataArray) {
+    for (JumpInformationModel *model in self.imageListArray) {
         
         NSString *imageUrl = [NSString stringWithFormat:@"%@%@",ImageBaseUrl,SafeString(model.img)];
         
@@ -68,8 +68,16 @@
         [cycleTitleArray addObject:SafeString(model.title)];
     }
 
-    banner.slImages =  cycleImageArray;
-    banner.slTitles =  cycleTitleArray;
+    if(self.imageListArray.count > 0){
+        
+        banner.slImages =  cycleImageArray;
+        banner.slTitles =  cycleTitleArray;
+        
+    }else{
+        
+        banner.slImages =  @[@"JumpBackImage.png"];
+        banner.slTitles =  @[@"暂无滚动新闻"];
+    }
 
     //图片
 //    banner.slImages = @[@"photo1.png", @"photo2.png", @"photo3.png"];
@@ -80,11 +88,13 @@
     
     //监听设置代理
     banner.delegate = self;
-    //banner添加到UI上
-    [self.headView addSubview:banner];
     //自定义动画时间，建议动画持续时间小于停留时间
     banner.durTimeInterval = 0.2;
     banner.imgStayTimeInterval = 2.5;
+    
+    //banner添加到UI上
+    [self.headView addSubview:banner];
+
 }
 
 
@@ -141,19 +151,22 @@
     
     JumpLog(@"点击了第%ld张图片",index);
     
-    JumpInformationModel *model = self.newsArray[index];
-    
-    JumpAgreementViewController *vc = [[JumpAgreementViewController alloc]init];
-    
-    vc.hidesBottomBarWhenPushed = YES;
-    
-    vc.isShow = YES;
-    
-    vc.url = [NSString stringWithFormat:@"%@%@",ImageBaseUrl,model.uri];
-    
-    vc.titleName = @"资讯详情";
-    
-    [self.navigationController pushViewController:vc animated:YES];
+    if(self.imageListArray.count > 0){
+        
+        JumpInformationModel *model = self.imageListArray[index];
+        
+        JumpAgreementViewController *vc = [[JumpAgreementViewController alloc]init];
+        
+        vc.hidesBottomBarWhenPushed = YES;
+        
+        vc.isShow = YES;
+        
+        vc.url = [NSString stringWithFormat:@"%@%@",ImageBaseUrl,model.uri];
+        
+        vc.titleName = @"资讯详情";
+        
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 
@@ -183,12 +196,12 @@
             
         }else{
             
-            weakself.dataArray = [JumpInformationModel mj_objectArrayWithKeyValuesArray:responseObject[@"result"][@"images"]];
+            weakself.imageListArray = [JumpInformationModel mj_objectArrayWithKeyValuesArray:responseObject[@"result"][@"images"]];
 
             weakself.newsArray = [JumpInformationModel mj_objectArrayWithKeyValuesArray:responseObject[@"result"][@"news"]];
             
             [self figurePicture];
-
+            
         }
         
         [weakself.tableView.mj_header endRefreshing];
