@@ -7,16 +7,18 @@
 //
 
 #import "DeviceDetailEchartsViewController.h"
-#import "SecurityThingsViewController.h"
 #import "DeviceHeadView.h"
 #import "AccountDetailTableViewCell.h"
 #import "DeviceDetailModel.h"
+#import "SafeThingsTableViewController.h"
 
 @interface DeviceDetailEchartsViewController ()
 
 @property (strong,nonatomic) DeviceHeadView *headView;
 
 @property (strong,nonatomic) DeviceDetailModel *model;
+
+@property (strong,nonatomic) NSMutableDictionary *dict;
 
 @end
 
@@ -30,7 +32,7 @@
         
         [_headView deviceDetailWitdId:self.deviceId];
         
-        _headView.frame = CGRectMake(0, 0, kWidth, 330);
+        _headView.frame = CGRectMake(0, 0, kWidth, 480);
         
     }
     
@@ -47,6 +49,9 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"AccountDetailTableViewCell" bundle:nil] forCellReuseIdentifier:@"AccountDetailTableViewCell"];
 
     [self loadData];
+    
+    [self infoStatus];
+    
 }
 
 
@@ -55,7 +60,16 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     
-    return 330;
+    NSString *status = [NSString stringWithFormat:@"%@",self.dict[@"online"]];
+
+    if([status isEqualToString:@"1"]){
+
+        return 480;
+
+    }else{
+        
+        return 150;
+    }
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
@@ -70,14 +84,16 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 7;
+    return 8;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     AccountDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AccountDetailTableViewCell" forIndexPath:indexPath];
     
-    [cell refreshDeviceWithModel:self.model indexPath:indexPath];
+    NSString *status = [NSString stringWithFormat:@"%@",self.dict[@"online"]];
+    
+    [cell refreshDeviceWithModel:self.model status:SafeString(status) indexPath:indexPath];
     
     return cell;
     
@@ -87,12 +103,14 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
-//    if(indexPath.row == 1){
-//        
-//        SecurityThingsViewController *vc = [[SecurityThingsViewController alloc]init];
-//        
-//        [self.navigationController pushViewController:vc animated:YES];
-//    }
+    if(indexPath.row == 7){
+        
+        SafeThingsTableViewController *vc = [[SafeThingsTableViewController alloc]init];
+        
+        vc.deviceId = self.deviceId;
+        
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 
@@ -122,6 +140,38 @@
 }
 
 
+#pragma mark --- 获取CPU，内存和设备状态
+
+-(void)infoStatus{
+    
+    L2CWeakSelf(self);
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    
+    parameters[@"m"] = @"2";
+    parameters[@"t"] = @"1";
+    parameters[@"d"] = self.deviceId;
+    parameters[@"p"] = @"1";
+
+    [AFNHelper get:BaseUrl parameter:parameters success:^(id responseObject) {
+        
+        JumpLog(@"设备信息：====%@",responseObject);
+        
+        weakself.dict = responseObject[@"result"];
+        
+        NSString *status = [NSString stringWithFormat:@"%@",weakself.dict[@"online"]];
+        
+        [weakself.headView refreshCpu:SafeString(weakself.dict[@"cpu"]) memory:SafeString(weakself.dict[@"mem"]) andStatus:status];
+        
+        [weakself.tableView reloadData];
+        
+    } faliure:^(id error) {
+        
+        [SVPShow showInfoWithMessage:@"请求服务器失败"];
+        
+    }];
+    
+}
 
 
 

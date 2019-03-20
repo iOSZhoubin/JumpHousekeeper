@@ -36,5 +36,11 @@
 @property (copy,nonatomic) NSString *fname;
 //
 @property (copy,nonatomic) NSString *fw_mailrule;
+//CPU
+@property (copy,nonatomic) NSString *cpu;
+//内存
+@property (copy,nonatomic) NSString *mem;
+//设备状态 0-离线 1-在线
+@property (copy,nonatomic) NSString *online;
 
 @end

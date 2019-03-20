@@ -521,9 +521,9 @@
     L2CWeakSelf(self);
     
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    
+
     NSString *password = [JumpPublicAction md5:SafeString(self.passWord.text)];
-    
+
     parameters[@"m"] = @"0";
     parameters[@"t"] = @"3";
     parameters[@"l"] = SafeString(self.phoneNumber.text); //手机号
@@ -533,28 +533,28 @@
     parameters[@"c"] = SafeString(self.authorizationCode.text);//验证码(管理员)
 
     [SVPShow show];
-    
+
     [AFNHelper get:BaseUrl parameter:parameters success:^(id responseObject) {
-        
+
         if([responseObject[@"result"] isEqualToString:@"1"]){
-            
+
             [SVPShow showSuccessWithMessage:@"注册成功"];
-            
+
             for (UIViewController *vc in weakself.navigationController.viewControllers) {
-                
-                if ([NSStringFromClass([vc class]) isEqualToString:@"JumpDeviceTableViewController"]) {
-                    
+
+                if ([NSStringFromClass([vc class]) isEqualToString:@"JumpLoginViewController"]) {
+
                     [weakself.navigationController popToViewController:vc animated:YES];
                 }
             }
-            
+
         }else{
-            
+
             [SVPShow showFailureWithMessage:@"注册失败"];
         }
-        
+
     } faliure:^(id error) {
-        
+
         [SVPShow showFailureWithMessage:@"注册失败"];
     }];
 }

@@ -165,27 +165,38 @@
 }
 
 
--(void)refreshDeviceWithModel:(DeviceDetailModel *)model indexPath:(NSIndexPath *)indexPath{
+-(void)refreshDeviceWithModel:(DeviceDetailModel *)model status:(NSString *)status indexPath:(NSIndexPath *)indexPath{
 
-    NSArray *titleArray = @[@"设备状态",@"设备版本信息",@"设备安全补丁",@"设备升级信息",@"设备许可信息",@"设备IP地址",@"设备ID"];
+    NSArray *titleArray = @[@"设备状态",@"设备版本信息",@"设备安全补丁",@"设备升级信息",@"设备许可信息",@"设备IP地址",@"设备ID",@"最新安全事件"];
     
     self.titleName.text = titleArray[indexPath.row];
     
     self.contentField.enabled = NO;
     
-//    if(indexPath.row == 1){
-//
-//        self.arrowImage.hidden = NO;
-//
-//    }else{
-//
-//        self.arrowImage.hidden = YES;
-//    }
-    self.arrowImage.hidden = YES;
+    NSString *stautus;
+    
+    if([status isEqualToString:@"1"]){
+
+        stautus = @"在线";
+        
+    }else{
+
+        stautus = @"离线";
+    }
+    
+    if(indexPath.row == 7){
+        
+        self.arrowImage.hidden = NO;
+
+    }else{
+        
+        self.arrowImage.hidden = YES;
+    }
+    
 
     switch (indexPath.row) {
         case 0:
-            self.contentField.text = @"";
+            self.contentField.text = stautus;
             break;
         case 1:
             self.contentField.text = SafeString(model.ver);
@@ -209,7 +220,12 @@
             break;
         case 6:
             self.contentField.text = SafeString(model.devid);
-
+            
+            break;
+            
+        case 7:
+            self.contentField.text = @"";
+            
             break;
         default:
             break;

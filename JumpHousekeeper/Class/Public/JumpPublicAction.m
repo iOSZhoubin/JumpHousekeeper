@@ -95,9 +95,9 @@
     
     /**
      20         * 中国电信：China Telecom
-     21         * 133,1349,153,177,180,189
+     21         * 133,1349,153,177,180,181,189
      22         */
-    NSString * CT = @"^1((33|53|77|8[09])[0-9]|349)\\d{7}$";
+    NSString * CT = @"^1((33|53|77|8[019])[0-9]|349)\\d{7}$";
     
     
     NSPredicate *regextestmobile = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", MOBILE];

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="117" id="KGk-i7-Jjw" customClass="SafeThingsTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="350" height="120"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="350" height="119.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2019年3月20日" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dkd-gs-W19">
+                        <rect key="frame" x="15" y="10" width="325" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="O1l-Gi-kWd"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="其他事件:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TTe-Wx-HEm">
+                        <rect key="frame" x="15" y="39" width="325" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="Jbi-7q-228"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="服务器219.150.13.31遭到来自7的删除WEB-MISC跨站点脚本尝试0次" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXx-yb-J1l">
+                        <rect key="frame" x="15" y="62" width="325" height="49.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="Dkd-gs-W19" secondAttribute="trailing" constant="10" id="1xZ-ud-RMD"/>
+                    <constraint firstItem="Dkd-gs-W19" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="2Ar-5A-V3t"/>
+                    <constraint firstItem="TTe-Wx-HEm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="B8h-gH-ptl"/>
+                    <constraint firstAttribute="trailing" secondItem="TTe-Wx-HEm" secondAttribute="trailing" constant="10" id="Bzg-Hr-ToR"/>
+                    <constraint firstItem="fXx-yb-J1l" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="GLc-fu-RDk"/>
+                    <constraint firstAttribute="bottom" secondItem="fXx-yb-J1l" secondAttribute="bottom" constant="8" id="KQ2-rK-qLI"/>
+                    <constraint firstItem="TTe-Wx-HEm" firstAttribute="top" secondItem="Dkd-gs-W19" secondAttribute="bottom" constant="8" id="NUR-YE-m0J"/>
+                    <constraint firstItem="fXx-yb-J1l" firstAttribute="top" secondItem="TTe-Wx-HEm" secondAttribute="bottom" constant="2" id="bqL-ui-C2h"/>
+                    <constraint firstItem="Dkd-gs-W19" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="dK4-uw-J3e"/>
+                    <constraint firstAttribute="trailing" secondItem="fXx-yb-J1l" secondAttribute="trailing" constant="10" id="fpY-EA-5dk"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="remarkL" destination="fXx-yb-J1l" id="UHt-09-APN"/>
+                <outlet property="timeL" destination="Dkd-gs-W19" id="g0j-jp-GDA"/>
+                <outlet property="titleL" destination="TTe-Wx-HEm" id="uGt-No-a1W"/>
+            </connections>
+            <point key="canvasLocation" x="-121.59999999999999" y="176.76161919040482"/>
+        </tableViewCell>
+    </objects>
+</document>

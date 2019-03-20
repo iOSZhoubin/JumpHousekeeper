@@ -209,13 +209,6 @@
         //清空指定文件夹
         [CleanCaches clearCachesFromDirectoryPath:path];
         
-        
-        //清除cookies
-        NSHTTPCookie *cookie;
-        NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-        for (cookie in [storage cookies]){
-            [storage deleteCookie:cookie];
-        }
         //清除UIWebView的缓存
         [[NSURLCache sharedURLCache] removeAllCachedResponses];
         NSURLCache * cache = [NSURLCache sharedURLCache];
@@ -277,7 +270,7 @@
         
     } faliure:^(id error) {
         
-        [SVPShow showFailureWithMessage:@"退出登录失败"];
+        [SVPShow showFailureWithMessage:@"请求服务器失败"];
         
     }];
 }

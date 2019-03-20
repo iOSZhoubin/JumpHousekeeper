@@ -51,9 +51,10 @@
 /**
  * 设备详情刷新方法
  * @model 模型
+ * @status 0-离线 1-在线
  * @indexPath 索引
  */
--(void)refreshDeviceWithModel:(DeviceDetailModel *)model indexPath:(NSIndexPath *)indexPath;
+-(void)refreshDeviceWithModel:(DeviceDetailModel *)model status:(NSString *)status indexPath:(NSIndexPath *)indexPath;
 
 
 @property (weak,nonatomic) id<OpinionTextDelegate> delegate;

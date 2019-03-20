@@ -47,12 +47,10 @@
     self.cpuLabel.layer.cornerRadius =  self.cpuLabel.size.width/2;
     self.cpuLabel.layer.borderWidth = 3;
     self.cpuLabel.layer.borderColor = Customershallow.CGColor;
-    self.cpuLabel.text = @"80%";
     
     self.memoryLabel.layer.cornerRadius =  self.memoryLabel.size.width/2;
     self.memoryLabel.layer.borderWidth = 3;
     self.memoryLabel.layer.borderColor = Customershallow.CGColor;
-    self.memoryLabel.text = @"80%";
     
     WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
     config.selectionGranularity = WKSelectionGranularityDynamic;
@@ -168,6 +166,23 @@
         [SVPShow showFailureWithMessage:@"图表获取失败"];
         
     }];
+}
+
+-(void)refreshCpu:(NSString *)cpu memory:(NSString *)memory andStatus:(NSString *)status{
+
+    self.cpuLabel.text = [NSString stringWithFormat:@"%@%%",cpu];
+    
+    self.memoryLabel.text = [NSString stringWithFormat:@"%@%%",memory];
+    
+    if([status isEqualToString:@"1"]){
+        
+        self.echartView.hidden = NO;
+        
+    }else{
+        
+        self.echartView.hidden = YES;
+
+    }
 }
 
 @end

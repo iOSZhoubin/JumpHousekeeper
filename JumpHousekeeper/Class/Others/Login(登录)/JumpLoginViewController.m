@@ -109,7 +109,7 @@
 #pragma mark --- 扫码注册
 
 - (IBAction)sweepAction:(UIButton *)sender {
-    
+
     //判断是否开启了相机的权限
     BOOL isopen = [JumpPublicAction isopenCamera];
     
