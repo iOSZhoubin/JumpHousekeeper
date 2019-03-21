@@ -112,7 +112,7 @@
         
         vc.vcTitle = @"详细地址";
         
-        vc.saveText = self.model.address;
+        vc.saveText = SafeString(self.model.address);
         
         vc.block = ^(NSString *backstr) {
             
@@ -153,10 +153,35 @@
 #pragma mark --- 保存方法
 
 -(void)saveAction{
-    
+
+    [self.view endEditing:YES];
+
     L2CWeakSelf(self);
     
-    [self.view endEditing:YES];
+    if(self.model.nickname.length > 10){
+        
+        [SVPShow showInfoWithMessage:@"昵称过长，请重新输入"];
+        
+        return;
+    
+    }else if (self.model.truename.length > 10){
+        
+        [SVPShow showInfoWithMessage:@"真实姓名过长，请重新输入"];
+        
+        return;
+    
+    }else if (self.model.mailnum.length > 0){
+        
+        BOOL isTrue = [self isEmailAdress:self.model.mailnum];
+        
+        if(!isTrue){
+            
+            [SVPShow showInfoWithMessage:@"邮箱格式不正确"];
+            
+            return;
+        }
+    }
+    
     
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     
@@ -254,5 +279,18 @@
 
     }];
 }
+
+
+//正则校验邮箱
+-(BOOL)isEmailAdress:(NSString *)email
+{
+    NSString *emailCheck = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES%@",emailCheck];
+    return [emailTest evaluateWithObject:email];
+}
+
+
+
+
 
 @end

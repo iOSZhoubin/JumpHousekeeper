@@ -47,6 +47,7 @@
 @property (assign,nonatomic) NSInteger timerNum;
 //定时器
 @property (strong,nonatomic) NSTimer *timer;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewtopH;
 
 @end
 
@@ -62,6 +63,8 @@
     [super viewDidLoad];
 
     [self initUI];
+    
+    self.viewtopH.constant = L2C_StatusBarAndNavigationBarHeight + 40;
 }
 
 

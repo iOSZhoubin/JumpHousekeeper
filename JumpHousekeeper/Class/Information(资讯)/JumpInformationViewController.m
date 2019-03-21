@@ -23,6 +23,8 @@
 //数据源(轮播图)
 @property (strong,nonatomic) NSMutableArray *newsArray;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topH;
+
 @end
 
 @implementation JumpInformationViewController
@@ -31,6 +33,8 @@
     [super viewDidLoad];
     
     [self setupUI];
+    
+      self.topH.constant = L2C_StatusBarAndNavigationBarHeight;
 
 }
 
@@ -160,6 +164,8 @@
         vc.hidesBottomBarWhenPushed = YES;
         
         vc.isShow = YES;
+        
+        vc.informationId = model.fid;
         
         vc.url = [NSString stringWithFormat:@"%@%@",ImageBaseUrl,model.uri];
         

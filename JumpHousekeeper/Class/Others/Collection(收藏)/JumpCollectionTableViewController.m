@@ -170,18 +170,18 @@
         
         if([responseObject[@"result"] isEqualToString:@"1"]){
             
-            [SVPShow showSuccessWithMessage:@"删除成功"];
+            [SVPShow showSuccessWithMessage:@"取消收藏成功"];
         
             [weakself refresh];
             
         }else{
             
-            [SVPShow showSuccessWithMessage:@"删除失败"];
+            [SVPShow showSuccessWithMessage:@"取消收藏失败"];
         }
         
     } faliure:^(id error) {
         
-        [SVPShow showSuccessWithMessage:@"删除失败"];
+        [SVPShow showSuccessWithMessage:@"请求服务器失败"];
         
     }];
 }

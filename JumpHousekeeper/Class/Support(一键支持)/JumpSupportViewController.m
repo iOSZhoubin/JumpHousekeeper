@@ -11,6 +11,8 @@
 
 @interface JumpSupportViewController ()
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topH;
+
 @end
 
 @implementation JumpSupportViewController
@@ -18,6 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.topH.constant = L2C_StatusBarAndNavigationBarHeight;
 }
 
 

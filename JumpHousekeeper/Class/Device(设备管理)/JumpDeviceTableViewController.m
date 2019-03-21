@@ -163,7 +163,7 @@
     
     JumpDeviceModel *model = self.dataArray[indexPath.row];
     
-    DeviceDetailEchartsViewController *vc = [[DeviceDetailEchartsViewController alloc]init];
+    DeviceDetailEchartsViewController *vc = [[DeviceDetailEchartsViewController alloc]initWithStyle:UITableViewStyleGrouped];
     
     vc.deviceId = SafeString(model.fid);
     

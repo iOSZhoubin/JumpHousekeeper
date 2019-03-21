@@ -74,7 +74,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     
-    return 0.001;
+    return 80;
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -156,7 +156,7 @@
     [AFNHelper get:BaseUrl parameter:parameters success:^(id responseObject) {
         
         JumpLog(@"设备信息：====%@",responseObject);
-        
+            
         weakself.dict = responseObject[@"result"];
         
         NSString *status = [NSString stringWithFormat:@"%@",weakself.dict[@"online"]];

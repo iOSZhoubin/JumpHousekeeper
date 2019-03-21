@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JumpSupportViewController">
             <connections>
+                <outlet property="topH" destination="hWa-Gr-s1W" id="yTT-4P-Bvy"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -60,7 +61,7 @@
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="配置向导" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oDq-Ih-UAd">
-                                    <rect key="frame" x="65" y="78" width="57.5" height="21"/>
+                                    <rect key="frame" x="64.5" y="78" width="57.5" height="21"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="21" id="4Zd-3F-ERY"/>
                                     </constraints>
@@ -91,7 +92,7 @@
                             <rect key="frame" x="188.5" y="34" width="186.5" height="116"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="file" translatesAutoresizingMaskIntoConstraints="NO" id="Qv7-5I-R5Z">
-                                    <rect key="frame" x="63" y="10" width="60" height="60"/>
+                                    <rect key="frame" x="63.5" y="10" width="60" height="60"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="60" id="4GU-eO-yhA"/>
                                         <constraint firstAttribute="height" constant="60" id="C2S-rT-J99"/>

@@ -152,7 +152,7 @@
             
         }else{
             //意见反馈
-            JumpFeedbackTableViewController *vc = [[JumpFeedbackTableViewController alloc]init];
+            JumpFeedbackTableViewController *vc = [[JumpFeedbackTableViewController alloc]initWithStyle:UITableViewStyleGrouped];
            
             vc.hidesBottomBarWhenPushed = YES;
             
