@@ -298,13 +298,12 @@
     parameters[@"contact"] = SafeString(self.contentDict[@"contactName"]);
     parameters[@"phone"] = str3;
     parameters[@"image"] = self.baseStr;
-
-    parameters[@"m"] = @"4";
-    parameters[@"t"] = @"1";
     
     [SVPShow show];
-
-    [AFNHelper get:BaseUrl parameter:parameters success:^(id responseObject) {
+    
+    NSString *url = [NSString stringWithFormat:@"%@?m=4&t=1",BaseUrl];
+    
+    [AFNHelper post:url parameters:parameters success:^(id responseObject) {
         
         if([responseObject[@"result"] isEqualToString:@"1"]){
             
@@ -315,7 +314,7 @@
         }else{
             
             [SVPShow showFailureWithMessage:@"发送失败"];
-
+            
         }
         
     } faliure:^(id error) {

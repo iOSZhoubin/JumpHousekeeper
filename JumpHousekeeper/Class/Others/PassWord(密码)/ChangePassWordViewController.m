@@ -98,6 +98,12 @@
             self.passH.constant = 90;
             self.line2.hidden = YES;
             self.line2H.constant = 0;
+            self.phoneNumber.enabled = NO;
+            
+            //如果有本地保存，那么直接赋值
+            NSDictionary *dict = [JumpKeyChain getKeychainDataForKey:@"userInfo"];
+            NSString *account = SafeString(dict[@"account"]);
+            self.phoneNumber.text = account;
 
         }else{
 
@@ -108,6 +114,9 @@
             self.line2.hidden = NO;
             self.passH.constant = 130;
             self.line2H.constant = 42;
+            self.phoneNumber.enabled = YES;
+            self.phoneNumber.text = @"";
+            
         }
         
         self.deviceView.hidden = NO;
