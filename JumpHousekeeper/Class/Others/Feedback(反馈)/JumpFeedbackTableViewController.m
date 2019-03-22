@@ -11,6 +11,7 @@
 #import "ExperienceViewController.h"
 #import "JumpTypeTableViewController.h"
 #import "JumpquestionTypeTableViewController.h"
+#import "SelectImageTableViewController.h"
 
 @interface JumpFeedbackTableViewController ()<OpinionTextDelegate>
 
@@ -18,6 +19,10 @@
 @property (strong,nonatomic) UIButton *toolBarBtn;
 //存储内容的字典
 @property (strong,nonatomic) NSMutableDictionary *contentDict;
+//上传时的imageStr
+@property (copy,nonatomic) NSString *baseStr;
+//附件Array
+@property (copy,nonatomic) NSMutableArray *dataArray;
 
 @end
 
@@ -83,7 +88,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    if(section == 0){
+    if(section == 0 || section == 3){
         
         return 1;
     }
@@ -93,7 +98,7 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
-    return 3;
+    return 4;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -223,6 +228,29 @@
 
         }
         
+    }else if (indexPath.section == 3){
+        
+        JumpLog(@"添加附件");
+        
+        L2CWeakSelf(self);
+        
+        SelectImageTableViewController *vc = [[SelectImageTableViewController alloc]init];
+        
+        vc.selectArray = self.dataArray;
+        
+        vc.block = ^(NSString *baseStr, NSMutableArray *dataArray) {
+            
+            weakself.baseStr = baseStr;
+            
+            weakself.dataArray = dataArray;
+            
+            weakself.contentDict[@"fileNum"] = [NSString stringWithFormat:@"%ld",dataArray.count];
+            
+            [weakself.tableView reloadData];
+            
+        };
+        
+        [self.navigationController pushViewController:vc animated:YES];
     }
 }
 
@@ -269,6 +297,8 @@
     parameters[@"fdesc"] = SafeString(self.contentDict[@"remark"]);
     parameters[@"contact"] = SafeString(self.contentDict[@"contactName"]);
     parameters[@"phone"] = str3;
+    parameters[@"image"] = self.baseStr;
+
     parameters[@"m"] = @"4";
     parameters[@"t"] = @"1";
     

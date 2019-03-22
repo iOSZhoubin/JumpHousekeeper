@@ -104,8 +104,9 @@
     NSArray *array1 = @[@"设备类型"];
     NSArray *array2 = @[@"问题类型",@"问题描述"];
     NSArray *array3 = @[@"联系人姓名",@"联系人电话"];
-    
-    NSArray *sumArray = @[array1,array2,array3];
+    NSArray *array4 = @[@"添加附件"];
+
+    NSArray *sumArray = @[array1,array2,array3,array4];
     
     self.titleName.text = sumArray[indexPath.section][indexPath.row];
     
@@ -158,6 +159,16 @@
             }
         }
             break;
+        
+        case 3:
+        {
+            self.contentField.enabled = NO;
+            
+            self.contentField.text = SafeString(contentDict[@"fileNum"]);
+        }
+            
+            break;
+            
         default:
             break;
     }
