@@ -167,6 +167,8 @@
     
     vc.deviceId = SafeString(model.fid);
     
+    vc.showchart = model.showchart;
+    
     vc.hidesBottomBarWhenPushed = YES;
     
     [self.navigationController pushViewController:vc animated:YES];

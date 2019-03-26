@@ -64,8 +64,9 @@
 #define KeyWindow [UIApplication sharedApplication].keyWindow
 #define TOPWindow [[[UIApplication sharedApplication] windows] lastObject]
 
-//适配iPhoneX
-#define  L2C_iPhoneX (kWidth == 375.f && kHeight == 812.f ? YES : NO)
+//适配iPhoneX系列
+#define L2C_iPhoneX ((kHeight == 812.f || kHeight == 896.f) ? YES : NO)
+
 // 电池栏高度
 #define  L2C_StatusBarHeight      (L2C_iPhoneX ? 44.f : 20.f)
 // 导航栏高度.

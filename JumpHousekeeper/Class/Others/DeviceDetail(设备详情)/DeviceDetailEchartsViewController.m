@@ -60,9 +60,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     
-    NSString *status = [NSString stringWithFormat:@"%@",self.dict[@"online"]];
-
-    if([status isEqualToString:@"1"]){
+    if([self.showchart isEqualToString:@"1"]){
 
         return 480;
 
@@ -159,9 +157,7 @@
             
         weakself.dict = responseObject[@"result"];
         
-        NSString *status = [NSString stringWithFormat:@"%@",weakself.dict[@"online"]];
-        
-        [weakself.headView refreshCpu:SafeString(weakself.dict[@"cpu"]) memory:SafeString(weakself.dict[@"mem"]) andStatus:status];
+        [weakself.headView refreshCpu:SafeString(weakself.dict[@"cpu"]) memory:SafeString(weakself.dict[@"mem"]) andStatus:self.showchart];
         
         [weakself.tableView reloadData];
         

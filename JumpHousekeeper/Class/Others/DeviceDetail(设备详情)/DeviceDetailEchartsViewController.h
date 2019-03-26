@@ -12,5 +12,8 @@
 
 //设备id
 @property (copy,nonatomic) NSString *deviceId;
+//是否展示折线图 0-否 1-是
+@property (copy,nonatomic) NSString *showchart;
+
 
 @end

@@ -16,6 +16,8 @@
 //名称
 @property (copy,nonatomic) NSString *fname;
 @property (copy,nonatomic) NSString *ftype;
+////是否展示折线图 0-否 1-是
+
 @property (copy,nonatomic) NSString *showchart;
 
 @end
