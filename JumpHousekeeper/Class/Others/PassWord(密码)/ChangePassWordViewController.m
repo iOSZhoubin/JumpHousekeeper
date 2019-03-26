@@ -17,7 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *deviceCode;
 //设备View
 @property (weak, nonatomic) IBOutlet UIView *deviceView;
-//距上高度   注册时为100  其他为40
+//距上高度   注册时为130  其他为40
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topH;
 //确认按钮
 @property (weak, nonatomic) IBOutlet UIButton *sureBtn;
@@ -64,7 +64,7 @@
 
     [self initUI];
     
-    self.viewtopH.constant = L2C_StatusBarAndNavigationBarHeight + 40;
+    self.viewtopH.constant = L2C_StatusBarAndNavigationBarHeight + 20;
 }
 
 
@@ -81,11 +81,12 @@
         
         if([self.resultType isEqualToString:@"1"]){
             //注册管理员
-            self.topH.constant = 100;
+            self.topH.constant = L2C_StatusBarAndNavigationBarHeight + 100;
+            
 
         }else{
             //注册用户
-            self.topH.constant = 130;
+            self.topH.constant = L2C_StatusBarAndNavigationBarHeight + 130;
 
         }
         
@@ -128,7 +129,7 @@
         
         self.passWordTitle.text = @"新密码";
         
-        self.topH.constant = 40;
+        self.topH.constant = L2C_StatusBarAndNavigationBarHeight + 40;
         
         self.deviceView.hidden = YES;
         
@@ -144,7 +145,7 @@
         
         self.passWordTitle.text = @"新密码";
 
-        self.topH.constant = 40;
+        self.topH.constant = L2C_StatusBarAndNavigationBarHeight + 40;
         
         self.deviceView.hidden = YES;
         
@@ -177,7 +178,16 @@
         
         self.line.hidden = NO;
         
-        self.viewH.constant = 82;
+        if([self.type isEqualToString:@"2"] || [self.type isEqualToString:@"3"]){
+
+            self.viewH.constant = 0;
+
+        }else{
+            
+            self.viewH.constant = 82;
+
+        }
+        
     }
     
     //设置键盘类型
@@ -299,7 +309,7 @@
     }
     
     
-    if([self.type isEqualToString:@"1"] && [self.resultType isEqualToString:@"2"]){
+    if([self.type isEqualToString:@"1"] && [self.resultType isEqualToString:@"2"] && self.authorizationCode.text.length < 1){
         
         [SVPShow showInfoWithMessage:@"授权码不能为空"];
         

@@ -297,7 +297,10 @@
     parameters[@"fdesc"] = SafeString(self.contentDict[@"remark"]);
     parameters[@"contact"] = SafeString(self.contentDict[@"contactName"]);
     parameters[@"phone"] = str3;
-    parameters[@"image"] = self.baseStr;
+    if(self.dataArray.count > 0){
+        
+        parameters[@"image"] = self.baseStr;
+    }
     
     [SVPShow show];
     

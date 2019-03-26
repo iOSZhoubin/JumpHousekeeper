@@ -116,13 +116,13 @@
 //    if(isopen){
     
     ScanningDeviceViewController *vc = [[ScanningDeviceViewController alloc]init];
-        
+
     vc.type = @"1";
-        
+
     vc.hidesBottomBarWhenPushed = YES;
-        
+
     [self.navigationController pushViewController:vc animated:YES];
-        
+    
 //    }else{
 //
 //        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"去开启访问相机权限?" message:nil preferredStyle:UIAlertControllerStyleAlert];
@@ -141,6 +141,20 @@
 //
 //        [self presentViewController:alertController animated:YES completion:nil];
 //    }
+    
+    
+//测试用
+//    ChangePassWordViewController *vc = [[ChangePassWordViewController alloc]init];
+//
+//    vc.deviceStr = @"123";
+//
+//    vc.type = @"1";
+//
+//    vc.resultType = @"2";
+//
+//    vc.hidesBottomBarWhenPushed = YES;
+//
+//    [self.navigationController pushViewController:vc animated:YES];
     
 }
 
