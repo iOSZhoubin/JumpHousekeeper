@@ -96,10 +96,17 @@
     [AFNHelper get:BaseUrl parameter:parameters success:^(id responseObject) {
         
         NSArray *array = responseObject[@"result"][@"result"];
-                
-        weakself.dataArray = [SafeThingsModel mj_objectArrayWithKeyValuesArray:array];
-
-        [weakself.tableView reloadData];
+        
+        if(array.count > 0){
+            
+            weakself.dataArray = [SafeThingsModel mj_objectArrayWithKeyValuesArray:array];
+            
+            [weakself.tableView reloadData];
+            
+        }else{
+            
+            [SVPShow showInfoWithMessage:@"暂无安全事件"];
+        }
         
         [weakself.tableView.mj_header endRefreshing];
 
