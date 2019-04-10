@@ -23,6 +23,8 @@ static BOOL isProduction = NO;
 
 @interface AppDelegate ()<JPUSHRegisterDelegate>
 
+@property (strong,nonatomic) NSMutableArray *dataArray;
+
 @end
 
 @implementation AppDelegate
@@ -31,6 +33,8 @@ static BOOL isProduction = NO;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [self isLogin]; //判断是否登录过
+    
+    self.dataArray = [NSMutableArray array];
     
     self.window = [[UIWindow alloc]init];
     
@@ -215,10 +219,16 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     }
 }
 
-// iOS 10 Support
+#pragma markk --- 通知发来消息的回掉方法
+
 - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler {
     // Required
     NSDictionary * userInfo = notification.request.content.userInfo;
+    
+    NSString *content = userInfo[@"aps"][@"alert"];
+    
+    [self saveContent:SafeString(content)];
+    
     if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         [JPUSHService handleRemoteNotification:userInfo];
     }
@@ -228,7 +238,9 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 // iOS 10 Support
 - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler {
     // Required
-    NSDictionary * userInfo = response.notification.request.content.userInfo;
+    NSDictionary *userInfo = response.notification.request.content.userInfo;
+    
+    NSString *content = userInfo[@"aps"][@"alert"]; //点击通知进入的内容
     
     if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
     
@@ -250,5 +262,40 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     [JPUSHService handleRemoteNotification:userInfo];
 }
 
+
+#pragma mark --- 存入数据
+
+-(void)saveContent:(NSString *)content{
+    
+    if(content.length > 0){
+        
+        NSDate *date = [NSDate new];
+        
+        NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+        
+        [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+
+        NSString *time = [formatter stringFromDate:date];
+        
+        NSDictionary *dict = @{@"content":content,@"time":time};
+        
+        [self.dataArray addObject:dict];
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        
+        [defaults setObject:self.dataArray forKey:@"noticeList"];
+        
+        [defaults synchronize];
+        
+        [KNotification postNotificationName:@"JumpNoticeTableViewController" object:nil userInfo:nil];
+
+        
+    }
+}
+
+-(void)dealloc{
+    
+    [KNotification removeObserver:@"JumpNoticeTableViewController"];
+}
 
 @end

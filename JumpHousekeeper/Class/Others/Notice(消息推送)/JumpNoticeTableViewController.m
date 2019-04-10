@@ -28,6 +28,15 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"JumpNoticeTableViewCell" bundle:nil] forCellReuseIdentifier:@"JumpNoticeTableViewCell"];
     
     [RefreshHelper refreshHelperWithScrollView:self.tableView target:self loadNewData:@selector(message) loadMoreData:nil isBeginRefresh:YES];
+    
+    [KNotification addObserver:self selector:@selector(notifi:) name:@"JumpNoticeTableViewController" object:nil];
+
+}
+
+//接收到了发送来的消息
+- (void)notifi:(NSNotification *)note{
+    
+    [self message];
 }
 
 
@@ -70,17 +79,15 @@
 
 -(void)message{
     
-    self.dataArray = [NSMutableArray array];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    for (NSInteger i=0; i<5; i++) {
-        
-        NSDictionary *dict = @{@"time":@"2019-04-10",@"content":@"测试通知"};
-
-        [self.dataArray addObject:dict];
-        
+    self.dataArray = [defaults objectForKey:@"noticeList"];
+    
+    if(self.dataArray.count < 1){
+     
+        [SVPShow showInfoWithMessage:@"暂无推送消息"];
     }
-    
-    
+
     [self.tableView.mj_header endRefreshing];
 
     [self.tableView reloadData];
