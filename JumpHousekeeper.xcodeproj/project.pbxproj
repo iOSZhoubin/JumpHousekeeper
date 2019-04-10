@@ -80,11 +80,15 @@
 		397C638321F9B1A300E566A3 /* QiCodePreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 397C638021F9B1A300E566A3 /* QiCodePreviewView.m */; };
 		397C638421F9B1A300E566A3 /* QiCodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 397C638221F9B1A300E566A3 /* QiCodeManager.m */; };
 		397C638721F9B27700E566A3 /* ScanningDeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 397C638621F9B27700E566A3 /* ScanningDeviceViewController.m */; };
+		397FF3F9225D962800322BAB /* DSPushService.m in Sources */ = {isa = PBXBuildFile; fileRef = 397FF3F8225D962800322BAB /* DSPushService.m */; };
 		399B3FED2242374400FFB9B9 /* SafeThingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 399B3FEC2242374400FFB9B9 /* SafeThingsTableViewController.m */; };
 		399B3FF12242375F00FFB9B9 /* SafeThingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 399B3FEF2242375F00FFB9B9 /* SafeThingsTableViewCell.m */; };
 		399B3FF22242375F00FFB9B9 /* SafeThingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 399B3FF02242375F00FFB9B9 /* SafeThingsTableViewCell.xib */; };
 		399B3FF52242377700FFB9B9 /* SafeThingsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 399B3FF42242377700FFB9B9 /* SafeThingsModel.m */; };
 		399E74822201407800D1063F /* JumpTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 399E74812201407800D1063F /* JumpTypeModel.m */; };
+		399F6E1C225DDED60099F158 /* JumpNoticeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 399F6E1B225DDED60099F158 /* JumpNoticeTableViewController.m */; };
+		399F6E20225DDF580099F158 /* JumpNoticeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 399F6E1E225DDF580099F158 /* JumpNoticeTableViewCell.m */; };
+		399F6E21225DDF580099F158 /* JumpNoticeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 399F6E1F225DDF580099F158 /* JumpNoticeTableViewCell.xib */; };
 		39A5D19A21F16A2D002CBC0D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A5D19921F16A2D002CBC0D /* AppDelegate.m */; };
 		39A5D1A321F16A2E002CBC0D /* JumpHousekeeper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 39A5D1A121F16A2E002CBC0D /* JumpHousekeeper.xcdatamodeld */; };
 		39A5D1A521F16A3C002CBC0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39A5D1A421F16A3C002CBC0D /* Assets.xcassets */; };
@@ -231,6 +235,9 @@
 		397C638221F9B1A300E566A3 /* QiCodeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiCodeManager.m; sourceTree = "<group>"; };
 		397C638521F9B27700E566A3 /* ScanningDeviceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScanningDeviceViewController.h; sourceTree = "<group>"; };
 		397C638621F9B27700E566A3 /* ScanningDeviceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScanningDeviceViewController.m; sourceTree = "<group>"; };
+		397FF3F6225D90FA00322BAB /* JumpHousekeeper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JumpHousekeeper.entitlements; sourceTree = "<group>"; };
+		397FF3F7225D962800322BAB /* DSPushService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSPushService.h; sourceTree = "<group>"; };
+		397FF3F8225D962800322BAB /* DSPushService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSPushService.m; sourceTree = "<group>"; };
 		399B3FEB2242374400FFB9B9 /* SafeThingsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SafeThingsTableViewController.h; sourceTree = "<group>"; };
 		399B3FEC2242374400FFB9B9 /* SafeThingsTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SafeThingsTableViewController.m; sourceTree = "<group>"; };
 		399B3FEE2242375F00FFB9B9 /* SafeThingsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SafeThingsTableViewCell.h; sourceTree = "<group>"; };
@@ -240,6 +247,11 @@
 		399B3FF42242377700FFB9B9 /* SafeThingsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SafeThingsModel.m; sourceTree = "<group>"; };
 		399E74802201407800D1063F /* JumpTypeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JumpTypeModel.h; sourceTree = "<group>"; };
 		399E74812201407800D1063F /* JumpTypeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JumpTypeModel.m; sourceTree = "<group>"; };
+		399F6E1A225DDED60099F158 /* JumpNoticeTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JumpNoticeTableViewController.h; sourceTree = "<group>"; };
+		399F6E1B225DDED60099F158 /* JumpNoticeTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JumpNoticeTableViewController.m; sourceTree = "<group>"; };
+		399F6E1D225DDF580099F158 /* JumpNoticeTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JumpNoticeTableViewCell.h; sourceTree = "<group>"; };
+		399F6E1E225DDF580099F158 /* JumpNoticeTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JumpNoticeTableViewCell.m; sourceTree = "<group>"; };
+		399F6E1F225DDF580099F158 /* JumpNoticeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JumpNoticeTableViewCell.xib; sourceTree = "<group>"; };
 		39A5D19521F16A2D002CBC0D /* JumpHousekeeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JumpHousekeeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39A5D19821F16A2D002CBC0D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		39A5D19921F16A2D002CBC0D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -578,6 +590,33 @@
 			path = "Scanning(扫描)";
 			sourceTree = "<group>";
 		};
+		397FF3D0225D88E900322BAB /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				397FF3D1225D88E900322BAB /* push */,
+			);
+			path = Lib;
+			sourceTree = "<group>";
+		};
+		397FF3D1225D88E900322BAB /* push */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = push;
+			sourceTree = "<group>";
+		};
+		399F6E19225DDEBA0099F158 /* Notice(消息推送) */ = {
+			isa = PBXGroup;
+			children = (
+				399F6E1A225DDED60099F158 /* JumpNoticeTableViewController.h */,
+				399F6E1B225DDED60099F158 /* JumpNoticeTableViewController.m */,
+				399F6E1D225DDF580099F158 /* JumpNoticeTableViewCell.h */,
+				399F6E1E225DDF580099F158 /* JumpNoticeTableViewCell.m */,
+				399F6E1F225DDF580099F158 /* JumpNoticeTableViewCell.xib */,
+			);
+			path = "Notice(消息推送)";
+			sourceTree = "<group>";
+		};
 		39A5D18C21F16A2D002CBC0D = {
 			isa = PBXGroup;
 			children = (
@@ -599,6 +638,7 @@
 		39A5D19721F16A2D002CBC0D /* JumpHousekeeper */ = {
 			isa = PBXGroup;
 			children = (
+				397FF3F6225D90FA00322BAB /* JumpHousekeeper.entitlements */,
 				39A5D1B321F16DE3002CBC0D /* Class */,
 				39A5D19821F16A2D002CBC0D /* AppDelegate.h */,
 				39A5D19921F16A2D002CBC0D /* AppDelegate.m */,
@@ -616,6 +656,7 @@
 		39A5D1B321F16DE3002CBC0D /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				397FF3D0225D88E900322BAB /* Lib */,
 				3917015F21F80DD400D90AC0 /* Information(资讯) */,
 				3917015E21F80DCF00D90AC0 /* Device(设备管理) */,
 				3917015D21F80DC800D90AC0 /* Support(一键支持) */,
@@ -653,6 +694,7 @@
 		39A5D1B621F16DE3002CBC0D /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				399F6E19225DDEBA0099F158 /* Notice(消息推送) */,
 				397C637E21F9B17F00E566A3 /* Scanning(扫描) */,
 				397C637021F95C9C00E566A3 /* DeviceType(设备问题类型) */,
 				397C636621F946D400E566A3 /* Configuration(配置向导) */,
@@ -695,6 +737,8 @@
 				39A5D1C121F1A216002CBC0D /* myWkWebView.m */,
 				39FFD6DC21FADAD400E71924 /* JumpPublicAction.h */,
 				39FFD6DD21FADAD400E71924 /* JumpPublicAction.m */,
+				397FF3F7225D962800322BAB /* DSPushService.h */,
+				397FF3F8225D962800322BAB /* DSPushService.m */,
 			);
 			path = Public;
 			sourceTree = "<group>";
@@ -749,6 +793,14 @@
 				TargetAttributes = {
 					39A5D19421F16A2D002CBC0D = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -798,6 +850,7 @@
 				396E15822244927200BD1BCC /* btn_circle@3x.png in Resources */,
 				3917019921F851AD00D90AC0 /* JumpMineTableViewCell.xib in Resources */,
 				39FFD6D321FAAA1200E71924 /* DeviceHeadView.xib in Resources */,
+				399F6E21225DDF580099F158 /* JumpNoticeTableViewCell.xib in Resources */,
 				396E158B2244927200BD1BCC /* btn_unselected@3x.png in Resources */,
 				3917016C21F80F3300D90AC0 /* JumpSupportViewController.xib in Resources */,
 				396E15912244927200BD1BCC /* ZLPhotoActionSheet.xib in Resources */,
@@ -902,6 +955,7 @@
 				39A5D1DC21F1A510002CBC0D /* SecurityNSString.m in Sources */,
 				39BE8B32221B9CEA00CAA7DD /* JumpquestionTypeTableViewController.m in Sources */,
 				3917015121F808F600D90AC0 /* JumpBaseTabBarViewController.m in Sources */,
+				399F6E1C225DDED60099F158 /* JumpNoticeTableViewController.m in Sources */,
 				39A5D1DE21F1A510002CBC0D /* RefreshHelper.m in Sources */,
 				397C638421F9B1A300E566A3 /* QiCodeManager.m in Sources */,
 				391701A221F860A700D90AC0 /* JumpAboutViewController.m in Sources */,
@@ -910,6 +964,7 @@
 				396E15952244927200BD1BCC /* ToastUtils.m in Sources */,
 				396E159B2244927200BD1BCC /* ZLPhotoBrowser.m in Sources */,
 				3966F9C1221EB01500AAC1BF /* JumpDeleteDeviceViewController.m in Sources */,
+				399F6E20225DDF580099F158 /* JumpNoticeTableViewCell.m in Sources */,
 				399B3FF12242375F00FFB9B9 /* SafeThingsTableViewCell.m in Sources */,
 				396E154822447F6700BD1BCC /* SelectImageTableViewCell.m in Sources */,
 				3917019821F851AD00D90AC0 /* JumpMineTableViewCell.m in Sources */,
@@ -927,6 +982,7 @@
 				39A5D1E621F1A711002CBC0D /* JumpBaseTableViewController.m in Sources */,
 				3917016321F80EB700D90AC0 /* JumpInformationViewController.m in Sources */,
 				39A5D1C321F1A216002CBC0D /* myWkWebView.m in Sources */,
+				397FF3F9225D962800322BAB /* DSPushService.m in Sources */,
 				399E74822201407800D1063F /* JumpTypeModel.m in Sources */,
 				399B3FED2242374400FFB9B9 /* SafeThingsTableViewController.m in Sources */,
 			);
@@ -1001,6 +1057,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LIBTOOLFLAGS = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1053,6 +1110,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LIBTOOLFLAGS = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1064,6 +1122,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = JumpHousekeeper/JumpHousekeeper.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XDYY7V85NM;
@@ -1072,6 +1131,10 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/JumpHousekeeper/Class/Lib/push",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.com.jumpwaf;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1086,6 +1149,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = JumpHousekeeper/JumpHousekeeper.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XDYY7V85NM;
@@ -1094,6 +1158,10 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/JumpHousekeeper/Class/Lib/push",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.com.jumpwaf;
 				PRODUCT_NAME = "$(TARGET_NAME)";

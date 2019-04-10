@@ -9,6 +9,10 @@
 #import "JumpAboutViewController.h"
 
 @interface JumpAboutViewController ()
+//距上
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topH;
+//版权
+@property (weak, nonatomic) IBOutlet UILabel *copyrightL;
 
 @end
 
@@ -18,6 +22,20 @@
     [super viewDidLoad];
 
     self.navigationItem.title = @"关于我们";
+    
+    self.topH.constant = L2C_StatusBarAndNavigationBarHeight;
+    
+    //获取当前时间的年
+    
+    NSDate *date =[NSDate date];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    
+    [formatter setDateFormat:@"yyyy"];
+    
+    NSInteger currentYear=[[formatter stringFromDate:date] integerValue];
+    
+    self.copyrightL.text = [NSString stringWithFormat:@"Copyright©1999-%ld.ALL Rights Reserved.",currentYear];
 
 }
 

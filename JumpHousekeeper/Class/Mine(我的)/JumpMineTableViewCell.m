@@ -28,15 +28,16 @@
 -(void)refreshWithIndexPath:(NSIndexPath *)indexPath{
     
     NSArray *array1 = @[@{@"title":@"帐户信息",@"image":@"accountImage"}];
-    NSArray *array2 = @[
+    NSArray *array2 = @[@{@"title":@"消息推送",@"image":@"message"}];
+    NSArray *array3 = @[
                           @{@"title":@"我的收藏",@"image":@"collectionImage"},
                           @{@"title":@"关于我们",@"image":@"aboutimage"},
                           @{@"title":@"意见反馈",@"image":@"feedback"}
                         ];
-    NSArray *array3 = @[@{@"title":@"清除缓存",@"image":@"cleanImage"}];
-    NSArray *array4 = @[@{@"title":@"修改密码",@"image":@"changepassword"}];
+    NSArray *array4 = @[@{@"title":@"清除缓存",@"image":@"cleanImage"}];
+    NSArray *array5 = @[@{@"title":@"修改密码",@"image":@"changepassword"}];
 
-    NSArray *sumArray = @[array1,array2,array3,array4];
+    NSArray *sumArray = @[array1,array2,array3,array4,array5];
     
     self.title.text = SafeString(sumArray[indexPath.section][indexPath.row][@"title"]);
     

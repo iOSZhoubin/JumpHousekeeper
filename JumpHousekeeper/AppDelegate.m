@@ -9,8 +9,19 @@
 #import "AppDelegate.h"
 #import "JumpBaseTabBarViewController.h"
 #import "JumpLoginViewController.h"
+#import "JPUSHService.h"
 
-@interface AppDelegate ()
+// iOS10注册APNs所需头文件
+#ifdef NSFoundationVersionNumber_iOS_9_x_Max
+#import <UserNotifications/UserNotifications.h>
+#endif
+
+static NSString *appKey = @"ffff22c96c7b38b1e480b3d2";
+static NSString *channel = @"App Store";
+static BOOL isProduction = NO;
+
+
+@interface AppDelegate ()<JPUSHRegisterDelegate>
 
 @end
 
@@ -27,16 +38,43 @@
     
     self.window.backgroundColor = [UIColor whiteColor];
     
-//    JumpBaseTabBarViewController *vc = [[JumpBaseTabBarViewController alloc]init];
+
+    JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
+    entity.types = JPAuthorizationOptionAlert|JPAuthorizationOptionBadge|JPAuthorizationOptionSound|JPAuthorizationOptionProvidesAppNotificationSettings;
+    if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
+        // 可以添加自定义 categories
+        // NSSet<UNNotificationCategory *> *categories for iOS10 or later
+        // NSSet<UIUserNotificationCategory *> *categories for iOS8 and iOS9
+    }
+    [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
+    
+    // Optional
+    // 获取 IDFA
+    // 如需使用 IDFA 功能请添加此代码并在初始化方法的 advertisingIdentifier 参数中填写对应值
+//    NSString *advertisingId = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+    
+    // Required
+    // init Push
+    // notice: 2.1.5 版本的 SDK 新增的注册方法，改成可上报 IDFA，如果没有使用 IDFA 直接传 nil
+    // 如需继续使用 pushConfig.plist 文件声明 appKey 等配置内容，请依旧使用 [JPUSHService setupWithOption:launchOptions] 方式初始化。
+    [JPUSHService setupWithOption:launchOptions appKey:appKey
+                          channel:channel
+                 apsForProduction:isProduction
+            advertisingIdentifier:nil];
+    
     
     JumpLoginViewController *vc = [[JumpLoginViewController alloc]init];
-
+    
     UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vc];
     
     self.window.rootViewController = nav;
     
     [self.window makeKeyAndVisible];
     
+    //设置角标
+//    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+//    
+//    [JPUSHService setBadge:0];
 
     return YES;
 }
@@ -81,6 +119,10 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+    //设置角标
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    
+    [JPUSHService setBadge:0];
 }
 
 
@@ -118,7 +160,7 @@
                      * The store could not be migrated to the current model version.
                      Check the error message to determine what the actual problem was.
                     */
-                    NSLog(@"Unresolved error %@, %@", error, error.userInfo);
+                    JumpLog(@"Unresolved error %@, %@", error, error.userInfo);
                     abort();
                 }
             }];
@@ -136,12 +178,77 @@
     if ([context hasChanges] && ![context save:&error]) {
         // Replace this implementation with code to handle the error appropriately.
         // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-        NSLog(@"Unresolved error %@, %@", error, error.userInfo);
+        JumpLog(@"Unresolved error %@, %@", error, error.userInfo);
         abort();
     }
 }
 
 
+
+#pragma mark --- 推送
+
+//注册成功
+- (void)application:(UIApplication *)application
+didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    
+    /// Required - 注册 DeviceToken
+    [JPUSHService registerDeviceToken:deviceToken];
+}
+
+//注册失败
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    //Optional
+    NSLog(@"did Fail To Register For Remote Notifications With Error: %@", error);
+}
+
+#pragma mark- JPUSHRegisterDelegate
+
+// iOS 12 Support
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center openSettingsForNotification:(UNNotification *)notification{
+    if (notification && [notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
+        
+        JumpLog(@"从通知界面直接进入应用");
+        
+    }else{
+        
+        JumpLog(@"从通知设置界面进入应用");
+    }
+}
+
+// iOS 10 Support
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler {
+    // Required
+    NSDictionary * userInfo = notification.request.content.userInfo;
+    if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
+        [JPUSHService handleRemoteNotification:userInfo];
+    }
+    completionHandler(UNNotificationPresentationOptionAlert); // 需要执行这个方法，选择是否提醒用户，有 Badge、Sound、Alert 三种类型可以选择设置
+}
+
+// iOS 10 Support
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler {
+    // Required
+    NSDictionary * userInfo = response.notification.request.content.userInfo;
+    
+    if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
+    
+        [JPUSHService handleRemoteNotification:userInfo];
+    }
+    completionHandler();  // 系统要求执行这个方法
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    
+    // Required, iOS 7 Support
+    [JPUSHService handleRemoteNotification:userInfo];
+    completionHandler(UIBackgroundFetchResultNewData);
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    
+    // Required, For systems with less than or equal to iOS 6
+    [JPUSHService handleRemoteNotification:userInfo];
+}
 
 
 @end

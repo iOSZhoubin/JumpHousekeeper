@@ -10,4 +10,6 @@ pod 'MJRefresh'
 
 pod 'SDWebImage'
 
+pod 'JPush'
+
 end

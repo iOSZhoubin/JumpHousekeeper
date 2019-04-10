@@ -17,6 +17,7 @@
 #import "ChangePassWordViewController.h"
 #import "JumpBaseTabBarViewController.h"
 #import "JumpLoginViewController.h"
+#import "JumpNoticeTableViewController.h"
 
 @interface JumpMineTableViewController ()
 
@@ -47,7 +48,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    if(section == 1){
+    if(section == 2){
         
         return 3;
     }
@@ -57,7 +58,7 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
-    return 5;
+    return 6;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -67,7 +68,7 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if(indexPath.section == 4){
+    if(indexPath.section == 5){
         
         static NSString *identifier = @"cell";
         
@@ -131,6 +132,15 @@
         [self.navigationController pushViewController:vc animated:YES];
         
     }else if (indexPath.section == 1){
+        //消息推送
+        
+        JumpNoticeTableViewController *vc = [[JumpNoticeTableViewController alloc]init];
+        
+        vc.hidesBottomBarWhenPushed = YES;
+        
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    }else if (indexPath.section == 2){
         
         if(indexPath.row == 0){
             
