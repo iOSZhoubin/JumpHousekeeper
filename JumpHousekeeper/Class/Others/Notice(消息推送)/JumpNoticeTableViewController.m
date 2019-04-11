@@ -75,13 +75,61 @@
     
 }
 
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return YES;
+}
+
+
+- (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    L2CWeakSelf(self);
+    
+    UITableViewRowAction *cancel = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"删除" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+        
+        UIAlertController * alertController = [UIAlertController alertControllerWithTitle: @"确认删除?" message: nil preferredStyle:UIAlertControllerStyleActionSheet];
+        
+        [alertController addAction: [UIAlertAction actionWithTitle:@"确认" style: UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+            
+            JumpLog(@"%ld",indexPath.row);
+            
+            //删除数组中的数据，并同步UserDefaults数据
+            [weakself.dataArray removeObjectAtIndex:indexPath.row];
+            
+            [weakself.tableView reloadData];
+            
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            
+            [defaults setObject:weakself.dataArray forKey:@"noticeList"];
+            
+            [defaults synchronize];
+            
+        }]];
+        
+        [alertController addAction: [UIAlertAction actionWithTitle:@"取消" style: UIAlertActionStyleCancel handler:nil]];
+        
+        [weakself presentViewController:alertController animated:YES completion:nil];
+        
+    }];
+    
+    return @[cancel];
+    
+}
+
+
+
 #pragma mark -- 消息
 
 -(void)message{
     
+    self.dataArray = [NSMutableArray array];
+    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    self.dataArray = [defaults objectForKey:@"noticeList"];
+    NSArray *array = [defaults objectForKey:@"noticeList"];
+    
+    [self.dataArray addObjectsFromArray:array];
     
     if(self.dataArray.count < 1){
      

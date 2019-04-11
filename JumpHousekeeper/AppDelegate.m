@@ -242,6 +242,8 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
     NSString *content = userInfo[@"aps"][@"alert"]; //点击通知进入的内容
     
+    [self saveContent:SafeString(content)];
+
     if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
     
         [JPUSHService handleRemoteNotification:userInfo];
@@ -267,6 +269,15 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 -(void)saveContent:(NSString *)content{
     
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSArray *array = [defaults objectForKey:@"noticeList"];
+    
+    if(array.count > 0){
+        
+        [self.dataArray addObjectsFromArray:array];
+    }
+    
     if(content.length > 0){
         
         NSDate *date = [NSDate new];
@@ -281,17 +292,31 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         
         [self.dataArray addObject:dict];
         
+        //进行数组去重操作
+        NSMutableArray *resultArr = [NSMutableArray array];
+        
+        for (NSDictionary *item in self.dataArray) {
+           
+            if (![resultArr containsObject:item]) {
+            
+                [resultArr addObject:item];
+            }
+        }
+
+        //同步保存
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         
-        [defaults setObject:self.dataArray forKey:@"noticeList"];
+        [defaults setObject:resultArr forKey:@"noticeList"];
         
         [defaults synchronize];
         
+        //发送通知到我界面的推送列表
         [KNotification postNotificationName:@"JumpNoticeTableViewController" object:nil userInfo:nil];
-
         
     }
 }
+
+
 
 -(void)dealloc{
     
