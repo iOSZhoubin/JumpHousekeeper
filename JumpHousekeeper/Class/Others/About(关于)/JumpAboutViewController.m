@@ -35,7 +35,7 @@
     
     NSInteger currentYear=[[formatter stringFromDate:date] integerValue];
     
-    self.copyrightL.text = [NSString stringWithFormat:@"Copyright©1999-%ld.ALL Rights Reserved.",currentYear];
+    self.copyrightL.text = [NSString stringWithFormat:@"Copyright©1999-%d.ALL Rights Reserved.",currentYear];
 
 }
 

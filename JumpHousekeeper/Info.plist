@@ -28,14 +28,13 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>是否允许应用访问您的相机?</string>
+	<string>需要获取相机进行扫描是否允许此App获取相机权限？</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>需要获取个人照片进行扫描是否允许此App获取相册权限？</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>
 	</array>
-
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

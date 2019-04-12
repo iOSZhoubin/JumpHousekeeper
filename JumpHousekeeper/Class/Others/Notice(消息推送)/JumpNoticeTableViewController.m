@@ -92,8 +92,6 @@
         
         [alertController addAction: [UIAlertAction actionWithTitle:@"确认" style: UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
             
-            JumpLog(@"%ld",indexPath.row);
-            
             //删除数组中的数据，并同步UserDefaults数据
             [weakself.dataArray removeObjectAtIndex:indexPath.row];
             

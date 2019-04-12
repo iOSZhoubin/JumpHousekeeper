@@ -169,11 +169,11 @@
             [self.navigationController pushViewController:vc animated:YES];
         }
         
-    }else if (indexPath.section == 2){
+    }else if (indexPath.section == 3){
         //清除缓存
         [self cleanRubbish];
         
-    }else if (indexPath.section == 3){
+    }else if (indexPath.section == 4){
         //修改密码
         ChangePassWordViewController *vc = [[ChangePassWordViewController alloc]init];
         
@@ -183,7 +183,7 @@
         
         [self.navigationController pushViewController:vc animated:YES];
         
-    }else if (indexPath.section == 4){
+    }else if (indexPath.section == 5){
         //退出登录
        
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"是否退出登录?" message:nil preferredStyle:UIAlertControllerStyleAlert];
