@@ -107,6 +107,7 @@
 		39A5D1E621F1A711002CBC0D /* JumpBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A5D1E421F1A710002CBC0D /* JumpBaseTableViewController.m */; };
 		39A5D1EE21F1AC18002CBC0D /* echarts.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 39A5D1ED21F1AC18002CBC0D /* echarts.min.js */; };
 		39A5D1F521F1B9ED002CBC0D /* JumpEcharts.html in Resources */ = {isa = PBXBuildFile; fileRef = 39A5D1F421F1B9ED002CBC0D /* JumpEcharts.html */; };
+		39BDCC19226FEF6F00F3CBC0 /* SupportModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BDCC18226FEF6F00F3CBC0 /* SupportModel.m */; };
 		39BE8B32221B9CEA00CAA7DD /* JumpquestionTypeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BE8B31221B9CEA00CAA7DD /* JumpquestionTypeTableViewController.m */; };
 		39E5EBCE221AA45C002566DB /* JumpDeviceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 39E5EBCD221AA45C002566DB /* JumpDeviceModel.m */; };
 		39FFD6CD21FA9DC800E71924 /* DeviceDetailEchartsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FFD6CB21FA9DC800E71924 /* DeviceDetailEchartsViewController.m */; };
@@ -286,6 +287,8 @@
 		39A5D1E421F1A710002CBC0D /* JumpBaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JumpBaseTableViewController.m; sourceTree = "<group>"; };
 		39A5D1ED21F1AC18002CBC0D /* echarts.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = echarts.min.js; sourceTree = "<group>"; };
 		39A5D1F421F1B9ED002CBC0D /* JumpEcharts.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = JumpEcharts.html; sourceTree = "<group>"; };
+		39BDCC17226FEF6F00F3CBC0 /* SupportModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SupportModel.h; sourceTree = "<group>"; };
+		39BDCC18226FEF6F00F3CBC0 /* SupportModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SupportModel.m; sourceTree = "<group>"; };
 		39BE8B30221B9CEA00CAA7DD /* JumpquestionTypeTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JumpquestionTypeTableViewController.h; sourceTree = "<group>"; };
 		39BE8B31221B9CEA00CAA7DD /* JumpquestionTypeTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JumpquestionTypeTableViewController.m; sourceTree = "<group>"; };
 		39E5EBCC221AA45C002566DB /* JumpDeviceModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JumpDeviceModel.h; sourceTree = "<group>"; };
@@ -428,6 +431,8 @@
 				3917016821F80F3300D90AC0 /* JumpSupportViewController.h */,
 				3917016921F80F3300D90AC0 /* JumpSupportViewController.m */,
 				3917016A21F80F3300D90AC0 /* JumpSupportViewController.xib */,
+				39BDCC17226FEF6F00F3CBC0 /* SupportModel.h */,
+				39BDCC18226FEF6F00F3CBC0 /* SupportModel.m */,
 			);
 			path = "Support(一键支持)";
 			sourceTree = "<group>";
@@ -788,6 +793,7 @@
 		39A5D18D21F16A2D002CBC0D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = Jump;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = zhoubin;
 				TargetAttributes = {
@@ -965,6 +971,7 @@
 				396E159B2244927200BD1BCC /* ZLPhotoBrowser.m in Sources */,
 				3966F9C1221EB01500AAC1BF /* JumpDeleteDeviceViewController.m in Sources */,
 				399F6E20225DDF580099F158 /* JumpNoticeTableViewCell.m in Sources */,
+				39BDCC19226FEF6F00F3CBC0 /* SupportModel.m in Sources */,
 				399B3FF12242375F00FFB9B9 /* SafeThingsTableViewCell.m in Sources */,
 				396E154822447F6700BD1BCC /* SelectImageTableViewCell.m in Sources */,
 				3917019821F851AD00D90AC0 /* JumpMineTableViewCell.m in Sources */,

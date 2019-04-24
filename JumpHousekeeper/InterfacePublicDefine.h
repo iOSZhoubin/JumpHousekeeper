@@ -9,5 +9,6 @@
 #ifndef InterfacePublicDefine_h
 #define InterfacePublicDefine_h
 
+#define CompanyMessage @"http://app.jump.net.cn:8000/app/support.php?act=contact"
 
 #endif /* InterfacePublicDefine_h */
