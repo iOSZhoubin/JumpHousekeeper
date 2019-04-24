@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JumpSupportViewController">
             <connections>
                 <outlet property="address" destination="j1t-ag-iqg" id="4j7-2L-11t"/>
+                <outlet property="code" destination="zuK-1e-jes" id="h7S-K7-F8b"/>
                 <outlet property="email" destination="hE7-KZ-89s" id="eKB-Mg-mee"/>
                 <outlet property="telephone1" destination="iVX-8X-Irm" id="s5f-1N-0na"/>
                 <outlet property="telephone2" destination="dsm-eH-vdw" id="kvK-qd-dGn"/>
