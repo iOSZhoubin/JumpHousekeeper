@@ -219,7 +219,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     }
 }
 
-#pragma markk --- 通知发来消息的回掉方法
+#pragma mark --- 通知发来消息的回掉方法
 
 - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler {
     // Required
@@ -241,7 +241,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     NSDictionary *userInfo = response.notification.request.content.userInfo;
     
     NSString *content = userInfo[@"aps"][@"alert"]; //点击通知进入的内容
-    
+    //存储通知内容
     [self saveContent:SafeString(content)];
 
     if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
