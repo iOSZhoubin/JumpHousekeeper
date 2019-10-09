@@ -177,11 +177,20 @@
 
 
 -(void)refreshDeviceWithModel:(DeviceDetailModel *)model status:(NSString *)status indexPath:(NSIndexPath *)indexPath{
+    
+    NSMutableArray *muArray = [NSMutableArray array];
 
-    NSArray *titleArray = @[@"设备状态",@"设备版本信息",@"设备安全补丁",@"设备升级信息",@"设备许可信息",@"设备IP地址",@"设备ID",@"最新安全事件"];
+    NSArray *titleArray = @[@"设备状态",@"设备版本信息",@"规则库版本",@"设备升级信息",@"设备许可信息",@"设备IP地址",@"设备ID",@"最新安全事件"];
     
-    self.titleName.text = titleArray[indexPath.row];
+    [muArray addObjectsFromArray:titleArray];
     
+    if([model.ftype isEqualToString:@"6"] || [model.ftype isEqualToString:@"8"]){
+        
+        [muArray addObject:@"更多"];
+    }
+    
+    self.titleName.text = muArray[indexPath.row];
+     
     self.contentField.enabled = NO;
     
     NSString *stautus;
@@ -195,7 +204,7 @@
         stautus = @"离线";
     }
     
-    if(indexPath.row == 7){
+    if(indexPath.row == 7 || indexPath.row == 8){
         
         self.arrowImage.hidden = NO;
 
@@ -233,14 +242,240 @@
             self.contentField.text = SafeString(model.devid);
             
             break;
+
+        default:
+            break;
+    }
+}
+
++(NSMutableArray *)returnModelArray:(JumpMoreModel *)model{
+    
+    NSMutableArray *muArray = [NSMutableArray array];
+    
+    NSArray *array1 = model.engstatus;
+    
+    for (NSDictionary *dict in array1) {
+        
+        NSString *name = @"";
+        
+        if([SafeString(dict[@"name"]) isEqualToString:@"datacenter"]){
             
-        case 7:
-            self.contentField.text = @"";
+            name = @"数据中心";
             
+        }else if ([SafeString(dict[@"name"]) isEqualToString:@"analyse_eng"]){
+
+            name = @"分析引擎";
+
+        }else if ([SafeString(dict[@"name"]) isEqualToString:@"capture_eng"]){
+            
+            name = @"抓包引擎";
+
+        }else if ([SafeString(dict[@"name"]) isEqualToString:@"secure_eng"]){
+
+            name = @"安全引擎";
+        }
+        
+        NSDictionary *newDict = @{
+                                  @"status":SafeString(dict[@"status"]),
+                                  @"anatype":SafeString(dict[@"anatype"]),
+                                  @"anaid":SafeString(dict[@"anaid"]),
+                                  @"name":SafeString(name)
+                                  };
+        
+        [muArray addObject:newDict];
+        
+    }
+    
+    return muArray;
+    
+}
+
+
+-(void)refreshMoreVcWithModel:(JumpMoreModel *)model indexPath:(NSIndexPath *)indexPath{
+    
+    self.contentField.enabled = NO;
+    
+    NSArray *array0 = @[@"硬盘使用率",@"引擎版本",@"激活模块",@"数据库服务",@"设备支持raid级别",@"系统运行时间",@"系统会话数",@"安全监控"];
+    
+    NSMutableArray *array1 = [AccountDetailTableViewCell returnModelArray:model];
+    
+    
+    if(indexPath.section == 0){
+        
+        self.titleName.text = array0[indexPath.row];
+
+    }else{
+        
+        NSString *str = SafeString(array1[indexPath.row][@"name"]);
+        
+        if([str isEqualToString:@"分析引擎"]){
+            
+            NSString *anatype = SafeString(array1[indexPath.row][@"anatype"]);
+            NSString *anaid = SafeString(array1[indexPath.row][@"anaid"]);
+
+            NSString *type = @"";
+            
+            if([anatype isEqualToString:@"0"]){
+                
+                type = @"流量引擎";
+            
+            }else{
+
+                type = @"代理引擎";
+            }
+            
+            self.titleName.text = [NSString stringWithFormat:@"分析引擎 %@ (%@)",anaid,type];
+
+        }else{
+            
+            self.titleName.text = array1[indexPath.row][@"name"];
+        }
+    }
+    
+    if(indexPath.section == 0 && (indexPath.row == 2 || indexPath.row == 7)){
+        
+        self.arrowImage.hidden = NO;
+
+    }else{
+        
+        self.arrowImage.hidden = YES;
+
+    }
+    
+    if(indexPath.section == 0){
+        
+        switch (indexPath.row) {
+            case 0:
+                self.contentField.text = [NSString stringWithFormat:@"%@%%",SafeString(model.disk)];
+
+                break;
+            case 1:
+                self.contentField.text = SafeString(model.engver);
+                
+                break;
+
+            case 3:
+                self.contentField.text = SafeString(model.dbnum);
+
+                break;
+            case 4:
+            {
+                NSString *str = @"";
+                
+                if([SafeString(model.raid) isEqualToString:@"-1"]){
+                    
+                    str = @"未启用";
+                    
+                }else{
+                    
+                    str = SafeString(model.raid);
+                }
+                
+                self.contentField.text = str;
+            }
+                
+                break;
+            case 5:
+            {
+                
+                NSString *runTimer = @"";
+                
+                int dates = [model.runtime intValue]/(3600*24);
+                int hours = [model.runtime intValue]%(3600*24)/3600;
+                int minute = [model.runtime intValue]%(3600*24)%3600/60;
+                int second = [model.runtime intValue]%(3600*24)%3600%60;
+                
+                if (dates == 0 && hours == 0 && minute == 0 &second == 0) {
+                    runTimer = @"";
+                }else if (dates == 0 && hours == 0 && minute == 0 && !(second == 0)){
+                    runTimer = [NSString stringWithFormat:@"%i秒",second];
+                }else if (dates == 0 && hours == 0 && !(minute == 0)){
+                    runTimer = [NSString stringWithFormat:@"%i分%i秒",minute,second];
+                }else if (dates == 0 && !(hours ==0)){
+                    runTimer = [NSString stringWithFormat:@"%i小时%i分%i秒",hours,minute,second];
+                }else if (!(dates == 0)){
+                    runTimer = [NSString stringWithFormat:@"%i天%i小时%i分%i秒",dates,hours,minute,second];
+                }else{
+                    runTimer = @"";
+                }
+               
+                self.contentField.text = SafeString(runTimer);
+
+            }
+                break;
+            case 6:
+                self.contentField.text = SafeString(model.sessionnum);
+
+                break;
+            default:
+                break;
+        }
+        
+    }else{
+
+        NSString *status = SafeString(array1[indexPath.row][@"status"]);
+        
+        if([status isEqualToString:@"1"]){
+            
+            self.contentField.text = @"正常";
+
+        }else{
+
+            self.contentField.text = @"故障";
+        }
+    }
+
+}
+
+
+-(void)refreshSafeWithDict:(NSDictionary *)dict ftype:(NSString *)ftype indexPath:(NSIndexPath *)indexPath{
+    
+    self.arrowImage.hidden = YES;
+    
+    self.contentField.enabled = NO;
+    
+    NSArray *titleArray1 = @[@"IP",@"类型",@"监控状态",@"会话数",@"用户连接数"];
+
+    self.titleName.text = titleArray1[indexPath.row];
+    
+    switch (indexPath.row) {
+        case 0:
+            self.contentField.text = SafeString(dict[@"ip"]);
+            
+            break;
+        case 1:
+            self.contentField.text = SafeString(dict[@"dbtype"]);
+
+            break;
+        case 2:
+        {
+            NSString *status = @"";
+            
+            if([dict[@"serverstate"] isEqualToString:@"1"]){
+                
+                status = @"在线";
+                
+            }else{
+              
+                status = @"离线";
+            }
+            
+            self.contentField.text = status;
+        }
+
+            break;
+        case 3:
+            self.contentField.text = SafeString(dict[@"sessionnum"]);
+
+            break;
+        case 4:
+            self.contentField.text = SafeString(dict[@"connnum"]);
+
             break;
         default:
             break;
     }
+    
 }
 
 

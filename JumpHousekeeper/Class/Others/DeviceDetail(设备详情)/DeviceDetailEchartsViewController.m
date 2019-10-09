@@ -11,6 +11,7 @@
 #import "AccountDetailTableViewCell.h"
 #import "DeviceDetailModel.h"
 #import "SafeThingsTableViewController.h"
+#import "JumpMoreTableViewController.h"
 
 @interface DeviceDetailEchartsViewController ()
 
@@ -82,6 +83,11 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
+    if([self.model.ftype isEqualToString:@"6"] || [self.model.ftype isEqualToString:@"8"]){
+        
+        return 9;
+    }
+    
     return 8;
 }
 
@@ -103,11 +109,32 @@
     
     if(indexPath.row == 7){
         
+        //最新安全事件
         SafeThingsTableViewController *vc = [[SafeThingsTableViewController alloc]init];
         
         vc.deviceId = self.deviceId;
         
         [self.navigationController pushViewController:vc animated:YES];
+    
+    }else if (indexPath.row == 8){
+        
+        NSString *status = [NSString stringWithFormat:@"%@",self.dict[@"online"]];
+        
+//        if(![status isEqualToString:@"1"]){
+//
+//            [SVPShow showInfoWithMessage:@"该设备处于离线状态"];
+//
+//        }else{
+        
+            //更多
+            JumpMoreTableViewController *vc = [[JumpMoreTableViewController alloc]init];
+            
+            vc.deviceId = self.deviceId;
+        
+            vc.ftype = self.model.ftype;
+        
+            [self.navigationController pushViewController:vc animated:YES];
+//        }
     }
 }
 

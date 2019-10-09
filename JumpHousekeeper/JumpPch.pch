@@ -25,7 +25,7 @@
 
 #define AppstoreID @"app@jump.net.cn"//开发者账号ID
 
-//#define BaseUrl @"https://app.jump.net.cn:4430/app/iosapi.php"
+//#define BaseUrl @"https://app.jump.net.cn:4430/app/iosapi.php"w
 #define BaseUrl @"http://app.jump.net.cn:8000/app/iosapi.php"
 #define ImageBaseUrl @"http://app.jump.net.cn:8000/app"
 

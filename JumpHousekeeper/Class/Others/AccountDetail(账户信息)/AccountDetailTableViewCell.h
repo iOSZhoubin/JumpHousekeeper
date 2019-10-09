@@ -10,6 +10,7 @@
 #import "JumpAccountDetailModel.h"
 #import "DeviceDetailModel.h"
 #import "JumpTypeModel.h"
+#import "JumpMoreModel.h"
 
 @class AccountDetailTableViewCell;
 
@@ -55,6 +56,30 @@
  * @indexPath 索引
  */
 -(void)refreshDeviceWithModel:(DeviceDetailModel *)model status:(NSString *)status indexPath:(NSIndexPath *)indexPath;
+
+
+
+/**
+ 刷新更多界面视图
+
+ @param model model
+ @param indexPath 索引
+ */
+-(void)refreshMoreVcWithModel:(JumpMoreModel *)model indexPath:(NSIndexPath *)indexPath;
+//获取section对应的行数
++(NSMutableArray *)returnModelArray:(JumpMoreModel *)model;
+
+
+
+
+/**
+ 安全监控刷新视图
+
+ @param dict 数据
+ @param ftype 设备类型
+ @param indexPath 索引
+ */
+-(void)refreshSafeWithDict:(NSDictionary *)dict ftype:(NSString *)ftype indexPath:(NSIndexPath *)indexPath;
 
 
 @property (weak,nonatomic) id<OpinionTextDelegate> delegate;

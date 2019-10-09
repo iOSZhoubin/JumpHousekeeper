@@ -81,6 +81,7 @@
 		397C638421F9B1A300E566A3 /* QiCodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 397C638221F9B1A300E566A3 /* QiCodeManager.m */; };
 		397C638721F9B27700E566A3 /* ScanningDeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 397C638621F9B27700E566A3 /* ScanningDeviceViewController.m */; };
 		397FF3F9225D962800322BAB /* DSPushService.m in Sources */ = {isa = PBXBuildFile; fileRef = 397FF3F8225D962800322BAB /* DSPushService.m */; };
+		3982C54C234DAE420002F84E /* JumpSafeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3982C54B234DAE420002F84E /* JumpSafeTableViewController.m */; };
 		399B3FED2242374400FFB9B9 /* SafeThingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 399B3FEC2242374400FFB9B9 /* SafeThingsTableViewController.m */; };
 		399B3FF12242375F00FFB9B9 /* SafeThingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 399B3FEF2242375F00FFB9B9 /* SafeThingsTableViewCell.m */; };
 		399B3FF22242375F00FFB9B9 /* SafeThingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 399B3FF02242375F00FFB9B9 /* SafeThingsTableViewCell.xib */; };
@@ -109,6 +110,8 @@
 		39A5D1F521F1B9ED002CBC0D /* JumpEcharts.html in Resources */ = {isa = PBXBuildFile; fileRef = 39A5D1F421F1B9ED002CBC0D /* JumpEcharts.html */; };
 		39BDCC19226FEF6F00F3CBC0 /* SupportModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BDCC18226FEF6F00F3CBC0 /* SupportModel.m */; };
 		39BE8B32221B9CEA00CAA7DD /* JumpquestionTypeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BE8B31221B9CEA00CAA7DD /* JumpquestionTypeTableViewController.m */; };
+		39E188B5234D672100F0743E /* JumpMoreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39E188B4234D672100F0743E /* JumpMoreTableViewController.m */; };
+		39E188B8234D697A00F0743E /* JumpMoreModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 39E188B7234D697A00F0743E /* JumpMoreModel.m */; };
 		39E5EBCE221AA45C002566DB /* JumpDeviceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 39E5EBCD221AA45C002566DB /* JumpDeviceModel.m */; };
 		39FFD6CD21FA9DC800E71924 /* DeviceDetailEchartsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FFD6CB21FA9DC800E71924 /* DeviceDetailEchartsViewController.m */; };
 		39FFD6D121FAAA0B00E71924 /* DeviceHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FFD6D021FAAA0B00E71924 /* DeviceHeadView.m */; };
@@ -239,6 +242,8 @@
 		397FF3F6225D90FA00322BAB /* JumpHousekeeper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JumpHousekeeper.entitlements; sourceTree = "<group>"; };
 		397FF3F7225D962800322BAB /* DSPushService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSPushService.h; sourceTree = "<group>"; };
 		397FF3F8225D962800322BAB /* DSPushService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSPushService.m; sourceTree = "<group>"; };
+		3982C54A234DAE420002F84E /* JumpSafeTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JumpSafeTableViewController.h; sourceTree = "<group>"; };
+		3982C54B234DAE420002F84E /* JumpSafeTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JumpSafeTableViewController.m; sourceTree = "<group>"; };
 		399B3FEB2242374400FFB9B9 /* SafeThingsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SafeThingsTableViewController.h; sourceTree = "<group>"; };
 		399B3FEC2242374400FFB9B9 /* SafeThingsTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SafeThingsTableViewController.m; sourceTree = "<group>"; };
 		399B3FEE2242375F00FFB9B9 /* SafeThingsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SafeThingsTableViewCell.h; sourceTree = "<group>"; };
@@ -291,6 +296,10 @@
 		39BDCC18226FEF6F00F3CBC0 /* SupportModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SupportModel.m; sourceTree = "<group>"; };
 		39BE8B30221B9CEA00CAA7DD /* JumpquestionTypeTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JumpquestionTypeTableViewController.h; sourceTree = "<group>"; };
 		39BE8B31221B9CEA00CAA7DD /* JumpquestionTypeTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JumpquestionTypeTableViewController.m; sourceTree = "<group>"; };
+		39E188B3234D672100F0743E /* JumpMoreTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JumpMoreTableViewController.h; sourceTree = "<group>"; };
+		39E188B4234D672100F0743E /* JumpMoreTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JumpMoreTableViewController.m; sourceTree = "<group>"; };
+		39E188B6234D697A00F0743E /* JumpMoreModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JumpMoreModel.h; sourceTree = "<group>"; };
+		39E188B7234D697A00F0743E /* JumpMoreModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JumpMoreModel.m; sourceTree = "<group>"; };
 		39E5EBCC221AA45C002566DB /* JumpDeviceModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JumpDeviceModel.h; sourceTree = "<group>"; };
 		39E5EBCD221AA45C002566DB /* JumpDeviceModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JumpDeviceModel.m; sourceTree = "<group>"; };
 		39FFD6CA21FA9DC800E71924 /* DeviceDetailEchartsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceDetailEchartsViewController.h; sourceTree = "<group>"; };
@@ -699,6 +708,7 @@
 		39A5D1B621F16DE3002CBC0D /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				39E188B1234D66C800F0743E /* More(更多) */,
 				399F6E19225DDEBA0099F158 /* Notice(消息推送) */,
 				397C637E21F9B17F00E566A3 /* Scanning(扫描) */,
 				397C637021F95C9C00E566A3 /* DeviceType(设备问题类型) */,
@@ -746,6 +756,27 @@
 				397FF3F8225D962800322BAB /* DSPushService.m */,
 			);
 			path = Public;
+			sourceTree = "<group>";
+		};
+		39E188B1234D66C800F0743E /* More(更多) */ = {
+			isa = PBXGroup;
+			children = (
+				39E188B3234D672100F0743E /* JumpMoreTableViewController.h */,
+				39E188B4234D672100F0743E /* JumpMoreTableViewController.m */,
+				39E188B6234D697A00F0743E /* JumpMoreModel.h */,
+				39E188B7234D697A00F0743E /* JumpMoreModel.m */,
+				39E188B2234D66C800F0743E /* Safe(安全监控) */,
+			);
+			path = "More(更多)";
+			sourceTree = "<group>";
+		};
+		39E188B2234D66C800F0743E /* Safe(安全监控) */ = {
+			isa = PBXGroup;
+			children = (
+				3982C54A234DAE420002F84E /* JumpSafeTableViewController.h */,
+				3982C54B234DAE420002F84E /* JumpSafeTableViewController.m */,
+			);
+			path = "Safe(安全监控)";
 			sourceTree = "<group>";
 		};
 		42604E14DFD05A6A613F40D0 /* Pods */ = {
@@ -964,6 +995,7 @@
 				399F6E1C225DDED60099F158 /* JumpNoticeTableViewController.m in Sources */,
 				39A5D1DE21F1A510002CBC0D /* RefreshHelper.m in Sources */,
 				397C638421F9B1A300E566A3 /* QiCodeManager.m in Sources */,
+				39E188B8234D697A00F0743E /* JumpMoreModel.m in Sources */,
 				391701A221F860A700D90AC0 /* JumpAboutViewController.m in Sources */,
 				396E159A2244927200BD1BCC /* ZLPhotoActionSheet.m in Sources */,
 				397C636421F9456B00E566A3 /* CleanCaches.m in Sources */,
@@ -989,9 +1021,11 @@
 				39A5D1E621F1A711002CBC0D /* JumpBaseTableViewController.m in Sources */,
 				3917016321F80EB700D90AC0 /* JumpInformationViewController.m in Sources */,
 				39A5D1C321F1A216002CBC0D /* myWkWebView.m in Sources */,
+				39E188B5234D672100F0743E /* JumpMoreTableViewController.m in Sources */,
 				397FF3F9225D962800322BAB /* DSPushService.m in Sources */,
 				399E74822201407800D1063F /* JumpTypeModel.m in Sources */,
 				399B3FED2242374400FFB9B9 /* SafeThingsTableViewController.m in Sources */,
+				3982C54C234DAE420002F84E /* JumpSafeTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
